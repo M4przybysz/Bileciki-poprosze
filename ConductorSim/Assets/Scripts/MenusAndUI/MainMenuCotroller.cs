@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,13 +12,19 @@ public class MainMenuCotroller : MonoBehaviour
     [SerializeField] GameObject newGameConfirm;
     [SerializeField] GameObject credits;
     [SerializeField] GameObject options;
+    [SerializeField] Button continueButton;
+    [SerializeField] Button newGameButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Hide subpages
         HideUIElement(newGameConfirm);
         HideUIElement(credits);
         HideUIElement(options);
+
+        // Allow player to continue playing saved game
+        if(GameManager.doesSaveExist) { continueButton.interactable = true; }
 
         // Unlock and show cursor
         Cursor.visible = true;
@@ -37,6 +45,12 @@ public class MainMenuCotroller : MonoBehaviour
     {
         print("new game");
         SceneManager.LoadScene("GameScene");     
+    }
+
+    public void NewGameConfirmation()
+    {
+        if(!GameManager.doesSaveExist) { NewGame(); } // Start new game without confirmation if there's no savefile
+        else { ShowUIElement(newGameConfirm); } // Require confirmation if save file exists 
     }
 
     public void QuitGame()

@@ -313,6 +313,8 @@ MonoBehaviour:
   newGameConfirm: {fileID: 1257773028}
   credits: {fileID: 1716168545}
   options: {fileID: 1776356988}
+  continueButton: {fileID: 719602073}
+  newGameButton: {fileID: 1990712111}
 --- !u!1 &90912754
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,6 +605,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176876646}
   m_CullTransparentMesh: 1
+--- !u!1 &281888141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 281888143}
+  - component: {fileID: 281888142}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &281888142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281888141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7fe2802aa1d2745be350782e215f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &281888143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281888141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 826.53015, y: 501.9028, z: -9.075689}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &391543702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1340,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 719602074}
   m_OnClick:
     m_PersistentCalls:
@@ -4060,11 +4106,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 89056263}
         m_TargetAssemblyTypeName: MainMenuCotroller, Assembly-CSharp
-        m_MethodName: ShowUIElement
-        m_Mode: 2
+        m_MethodName: NewGameConfirmation
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1257773028}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4385,3 +4431,4 @@ SceneRoots:
   - {fileID: 769988560}
   - {fileID: 1947758716}
   - {fileID: 1853721097}
+  - {fileID: 281888143}
