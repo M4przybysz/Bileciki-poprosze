@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     //========================================================================
     // Game data
     //========================================================================
-    
     public static float SFXVolume;
     public static float musicVolume;
 
@@ -51,18 +50,15 @@ public class GameManager : MonoBehaviour
         public float musicVolume;
     }
 
-    public static void CheckSaveFile()
-    {
-        doesSaveExist = File.Exists(Application.persistentDataPath + "/savefile.json");
-    }
-
     public static void SaveGameData()
     {
         SaveData data = new();
 
+        // Set save data
         data.SFXVolume = SFXVolume;
         data.musicVolume = musicVolume;
 
+        // Write json save file
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
@@ -72,9 +68,13 @@ public class GameManager : MonoBehaviour
         string path = Application.persistentDataPath + "/savefile.json";
         if (File.Exists(path))
         {
+            doesSaveExist = true; // Confirm save existence
+
+            // Read json savefile
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
+            // Load save data
             SFXVolume = data.SFXVolume;
             musicVolume = data.musicVolume;
         }
