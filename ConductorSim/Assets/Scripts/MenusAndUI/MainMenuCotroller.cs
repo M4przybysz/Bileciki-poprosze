@@ -55,6 +55,8 @@ public class MainMenuCotroller : MonoBehaviour
 
     public void QuitGame()
     {
+        GameManager.SaveGameData();
+
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else

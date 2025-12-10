@@ -6,14 +6,15 @@ public class GameManager : MonoBehaviour
     // Instance
     public static GameManager Instance;
 
-    // Generl variables
+    // General variables
     public static bool doesSaveExist {get; private set;}
 
     //========================================================================
     // Game data
     //========================================================================
     
-    // [Insert game data vriables]
+    public static float SFXVolume;
+    public static float musicVolume;
 
     //========================================================================
     // Awake, Start and Update
@@ -46,7 +47,8 @@ public class GameManager : MonoBehaviour
     //========================================================================
     class SaveData
     {
-        // [Insert game data vriables]
+        public float SFXVolume;
+        public float musicVolume;
     }
 
     public static void CheckSaveFile()
@@ -58,7 +60,8 @@ public class GameManager : MonoBehaviour
     {
         SaveData data = new();
 
-        // [save game data]
+        data.SFXVolume = SFXVolume;
+        data.musicVolume = musicVolume;
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
@@ -72,7 +75,8 @@ public class GameManager : MonoBehaviour
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            // [Load saved data]
+            SFXVolume = data.SFXVolume;
+            musicVolume = data.musicVolume;
         }
         else
         {
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     static void SetDefaultData()
     {
-        // [Set deafult data]
+        SFXVolume = 0.5f;
+        musicVolume = 0.5f;
     }
 }

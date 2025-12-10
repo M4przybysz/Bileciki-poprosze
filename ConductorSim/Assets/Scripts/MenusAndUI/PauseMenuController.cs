@@ -3,12 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
-    [SerializeField] GameObject menuContainer;
+    [SerializeField] GameObject pauseMenuContainer;
+    [SerializeField] GameObject settingsMenu;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        HideUIElement(pauseMenuContainer);
+        HideUIElement(settingsMenu);
     }
 
     // Update is called once per frame
@@ -21,8 +23,8 @@ public class PauseMenuController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape)) 
         {
-            if(menuContainer.activeSelf) { HideUIElement(menuContainer); }
-            else { ShowUIElement(menuContainer); } 
+            if(pauseMenuContainer.activeSelf) { HideUIElement(pauseMenuContainer); }
+            else { ShowUIElement(pauseMenuContainer); } 
         }
     }
 
