@@ -5,6 +5,9 @@ public class PlayerController : MonoBehaviour
     //=====================================================================================================
     // Variables and constants
     //=====================================================================================================
+    // External elements
+    [SerializeField] TicketCheckingScreenController TicketCheckingScreen; 
+    
     // Unity components
     Rigidbody2D playerRigidbody;
     
@@ -84,5 +87,6 @@ public class PlayerController : MonoBehaviour
     void StartConverstation()
     {
         print("Starting converstation with " + targetPassenger.FirstName);
+        TicketCheckingScreen.ShowUIElement(TicketCheckingScreen.TicketCheckingScreenContainer);
     }
 }
