@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
+    [SerializeField] PlayerController player;
     [SerializeField] GameObject pauseMenuContainer;
     [SerializeField] GameObject settingsMenu;
 
@@ -28,9 +29,15 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
-    public void ShowUIElement(GameObject UIElement) { UIElement.SetActive(true); }
+    public void ShowUIElement(GameObject UIElement) { 
+        if(UIElement == pauseMenuContainer) { player.isGamePaused = true; }
+        UIElement.SetActive(true); 
+    }
 
-    public void HideUIElement(GameObject UIElement) { UIElement.SetActive(false); }
+    public void HideUIElement(GameObject UIElement) { 
+        if(UIElement == pauseMenuContainer) { player.isGamePaused = false; }
+        UIElement.SetActive(false); 
+    }
 
     public void SaveAndQuit()
     {

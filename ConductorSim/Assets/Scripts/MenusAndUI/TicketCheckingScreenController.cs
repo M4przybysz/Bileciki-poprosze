@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class TicketCheckingScreenController : MonoBehaviour
 {
+    [SerializeField] PlayerController player;
     public GameObject TicketCheckingScreenContainer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        HideUIElement(TicketCheckingScreenContainer);
+        HideTicketCheckingScreen();
     }
 
     // Update is called once per frame
@@ -16,7 +17,13 @@ public class TicketCheckingScreenController : MonoBehaviour
         
     }
 
-    public void ShowUIElement(GameObject UIElement) { UIElement.SetActive(true); }
+    public void ShowTicketCheckingScreen() { 
+        TicketCheckingScreenContainer.SetActive(true); 
+        player.isInConversation = true;
+    }
 
-    public void HideUIElement(GameObject UIElement) { UIElement.SetActive(false); }
+    public void HideTicketCheckingScreen() { 
+        TicketCheckingScreenContainer.SetActive(false); 
+        player.isInConversation = false;
+    }
 }

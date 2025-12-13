@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TicketCheckingScreen: {fileID: 320900754}
+  isInConversation: 0
+  isGamePaused: 0
 --- !u!50 &35676738
 Rigidbody2D:
   serializedVersion: 5
@@ -316,11 +318,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 320900754}
         m_TargetAssemblyTypeName: TicketCheckingScreenController, Assembly-CSharp
-        m_MethodName: HideUIElement
-        m_Mode: 2
+        m_MethodName: HideTicketCheckingScreen
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1677695491}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1154,6 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6698fe8ed1c64e6408aaca3101c176f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 35676737}
   TicketCheckingScreenContainer: {fileID: 1677695491}
 --- !u!1 &326145886
 GameObject:
@@ -2871,7 +2874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &795389664
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2904,6 +2907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd8dc3d753fbc6428f3f26a676b7504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 35676737}
   pauseMenuContainer: {fileID: 551474105}
   settingsMenu: {fileID: 2097474782}
 --- !u!1 &795775223

@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     const float DefaultSpeedModifier = 1f;
     const float SprintSpeedModifier = 1.5f;
 
+    // Action limiters
+    public bool isInConversation = false;
+    public bool isGamePaused = false;
+
     //=====================================================================================================
     // Start and Update
     //=====================================================================================================
@@ -47,18 +51,22 @@ public class PlayerController : MonoBehaviour
     //=====================================================================================================
     void HandleInputs()
     {
-        // Movement inputs
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
-        input.Normalize();
-
-        // Sprint while holding shift
-        if(Input.GetKey(KeyCode.LeftShift)) { speedModifier = SprintSpeedModifier; }
-        else { speedModifier = DefaultSpeedModifier; }
-
-        if(Input.GetKeyDown(KeyCode.F) && targetPassenger != null)
+        if(!isInConversation && !isGamePaused)
         {
-            StartConverstation();
+            // Movement inputs
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
+            input.Normalize();
+
+            // Sprint while holding shift
+            if(Input.GetKey(KeyCode.LeftShift)) { speedModifier = SprintSpeedModifier; }
+            else { speedModifier = DefaultSpeedModifier; }
+
+            // Starting conversation 
+            if(Input.GetKeyDown(KeyCode.F) && targetPassenger != null)
+            {
+                StartConverstation();
+            }   
         }
     }
 
@@ -87,6 +95,6 @@ public class PlayerController : MonoBehaviour
     void StartConverstation()
     {
         print("Starting converstation with " + targetPassenger.FirstName);
-        TicketCheckingScreen.ShowUIElement(TicketCheckingScreen.TicketCheckingScreenContainer);
+        TicketCheckingScreen.ShowTicketCheckingScreen();
     }
 }
