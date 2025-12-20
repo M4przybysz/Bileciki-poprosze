@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     //========================================================================
     public static float SFXVolume;
     public static float musicVolume;
+    public const int startingInGameYear = 2006;
+    public static DateTime startingInGameDate = new DateTime(startingInGameYear, 1, 18);
 
     //========================================================================
     // Awake, Start and Update

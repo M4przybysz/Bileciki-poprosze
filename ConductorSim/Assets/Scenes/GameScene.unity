@@ -2564,7 +2564,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ab73211c2fec64fa14897daa4078b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstName: AAA
+  doNotGeneratePassenger: 0
+  customPassengerData:
+    character: 0
+    gender: 0
+    firstName: 
+    lastName: 
+    yearOfBirth: 0
+    monthOfBirth: 0
+    dayOfBirth: 0
 --- !u!58 &742140349
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5063,7 +5071,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ab73211c2fec64fa14897daa4078b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstName: XXX
+  doNotGeneratePassenger: 1
+  customPassengerData:
+    character: 2
+    gender: 0
+    firstName: XXX
+    lastName: YYY
+    yearOfBirth: 1980
+    monthOfBirth: 6
+    dayOfBirth: 20
 --- !u!1 &1323102785
 GameObject:
   m_ObjectHideFlags: 0
@@ -7514,7 +7530,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ab73211c2fec64fa14897daa4078b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstName: ZZZ
+  doNotGeneratePassenger: 0
+  customPassengerData:
+    character: 0
+    gender: 0
+    firstName: 
+    lastName: 
+    yearOfBirth: 1930
+    monthOfBirth: 1
+    dayOfBirth: 1
 --- !u!58 &2080906851
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7638,7 +7662,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ab73211c2fec64fa14897daa4078b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstName: YYY
+  doNotGeneratePassenger: 0
+  customPassengerData:
+    character: 0
+    gender: 0
+    firstName: 
+    lastName: 
+    yearOfBirth: 1930
+    monthOfBirth: 1
+    dayOfBirth: 1
 --- !u!58 &2140225900
 CircleCollider2D:
   m_ObjectHideFlags: 0
