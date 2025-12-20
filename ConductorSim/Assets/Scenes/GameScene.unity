@@ -2570,9 +2570,9 @@ MonoBehaviour:
     gender: 0
     firstName: 
     lastName: 
-    yearOfBirth: 0
-    monthOfBirth: 0
-    dayOfBirth: 0
+    yearOfBirth: 1930
+    monthOfBirth: 1
+    dayOfBirth: 1
 --- !u!58 &742140349
 CircleCollider2D:
   m_ObjectHideFlags: 0
