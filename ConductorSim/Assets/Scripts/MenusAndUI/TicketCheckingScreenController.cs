@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class TicketCheckingScreenController : MonoBehaviour
 {
+    // External elements
     [SerializeField] PlayerController player;
-    public GameObject TicketCheckingScreenContainer;
+    [SerializeField] GameObject TicketCheckingScreenContainer;
+    [SerializeField] GameObject Ticket;
+
+    // Ticket data
+    public static TicketData ticketData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,5 +30,12 @@ public class TicketCheckingScreenController : MonoBehaviour
     public void HideTicketCheckingScreen() { 
         TicketCheckingScreenContainer.SetActive(false); 
         player.isInConversation = false;
+    }
+
+    public void ShowTicket() { Ticket.SetActive(true); }
+
+    public void PullTicketData(Passenger passenger)
+    {
+        ticketData = passenger.ticketData;
     }
 }

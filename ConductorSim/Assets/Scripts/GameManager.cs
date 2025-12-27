@@ -10,13 +10,16 @@ public class GameManager : MonoBehaviour
     // General variables
     public static bool doesSaveExist {get; private set;}
 
+    // Constant game data
+    public const int startingInGameYear = 2006;
+    public static DateTime startingInGameDate = new DateTime(startingInGameYear, 1, 18);
+
     //========================================================================
-    // Game data
+    // Game save data
     //========================================================================
     public static float SFXVolume;
     public static float musicVolume;
-    public const int startingInGameYear = 2006;
-    public static DateTime startingInGameDate = new DateTime(startingInGameYear, 1, 18);
+    public static DateTime currentDateTime;
 
     //========================================================================
     // Awake, Start and Update
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         public float SFXVolume;
         public float musicVolume;
+        public DateTime currentDateTime;
     }
 
     public static void SaveGameData()
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
         // Set save data
         data.SFXVolume = SFXVolume;
         data.musicVolume = musicVolume;
+        data.currentDateTime = currentDateTime;
 
         // Write json save file
         string json = JsonUtility.ToJson(data);
@@ -80,6 +85,7 @@ public class GameManager : MonoBehaviour
             // Load save data
             SFXVolume = data.SFXVolume;
             musicVolume = data.musicVolume;
+            currentDateTime = data.currentDateTime;
         }
         else
         {
@@ -87,9 +93,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    static void SetDefaultData()
+    public static void SetDefaultData()
     {
         SFXVolume = 0.5f;
         musicVolume = 0.5f;
+        currentDateTime = startingInGameDate;
     }
 }

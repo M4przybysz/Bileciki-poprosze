@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 5305132238791375355}
   - component: {fileID: 4437033661213467754}
   m_Layer: 0
-  m_Name: Km
+  m_Name: Stacje
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2336,7 +2336,7 @@ GameObject:
   - component: {fileID: 7431567247238787654}
   - component: {fileID: 1869779830236293792}
   m_Layer: 0
-  m_Name: Numer2
+  m_Name: Seria+Numer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6655,7 +6655,7 @@ GameObject:
   - component: {fileID: 193714261257482116}
   - component: {fileID: 2608722682386885218}
   m_Layer: 5
-  m_Name: Km
+  m_Name: Stacje
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6708,7 +6708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: km
+  m_text: Stacje
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6844,7 +6844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 420
+  m_text: 8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6966,6 +6966,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1ab7b0772770438952d88e2f42221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kasaWydaniaButton: {fileID: 2159785589098898361}
+  klasaButton: {fileID: 6835107115600872331}
+  przejazdButton: {fileID: 1036147078514230475}
+  liczbaOsobButton: {fileID: 1285161298994626319}
+  taryfaButton: {fileID: 6311189109373333790}
+  waznyWTamButton: {fileID: 3949746893474744010}
+  waznyDoTamButton: {fileID: 1798126704822666459}
+  waznyWPowrotButton: {fileID: 6327300073827149839}
+  waznyDoPowrotButton: {fileID: 8051781656781148985}
+  stacjaOdButton: {fileID: 3127220038979095524}
+  stacjaDoButton: {fileID: 5494637224589063468}
+  przezButton: {fileID: 6349694922284645021}
+  seriaButton: {fileID: 5328671008518052274}
+  numerButton: {fileID: 5171242789409807292}
+  seriaINumerBotton: {fileID: 2816666528399631875}
+  StacjeButton: {fileID: 623574297864998974}
+  PTUButton: {fileID: 3061908994286849229}
+  CenaButton: {fileID: 3073929047891843337}
 --- !u!1 &8677199708214374759
 GameObject:
   m_ObjectHideFlags: 0

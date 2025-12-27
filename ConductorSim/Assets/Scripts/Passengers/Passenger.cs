@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum PassengerType {Special, Normal, Problematic};
@@ -30,7 +31,7 @@ public class Passenger : MonoBehaviour
     int age;
 
     // Passenger's documents
-    // [instert documents]
+    public TicketData ticketData = new TicketData();
     
     //=====================================================================================================
     // Variable encapsulation
@@ -80,22 +81,18 @@ public class Passenger : MonoBehaviour
     public int Age
     {
         get { return age; }
-        private set { age = value; }
+        private set { age = Math.Clamp(value, 4, 100); }
     }
 
     //=====================================================================================================
-    // Awake, Start and Update
+    // Start and Update
     //=====================================================================================================
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
         if (doNotGeneratePassenger) { SetCustomPassenger(); } 
-        else
-        {
-            RandomizePassengerProfile();
-            PrintProfile(); 
-        }
+        else { RandomizePassengerProfile(); }
     }
 
     // Update is called once per frame
@@ -136,6 +133,10 @@ public class Passenger : MonoBehaviour
 
         // Calculate PESEL
         PESEL = GeneratePesel(DateOfBirth, Gender);
+
+        PrintProfile();
+
+        GenerateTicket();
     }
 
     void SetCustomPassenger()
@@ -161,6 +162,8 @@ public class Passenger : MonoBehaviour
         PESEL = GeneratePesel(DateOfBirth, Gender);
 
         PrintProfile();
+
+        GenerateTicket();
     }
 
     string GeneratePesel(DateTime date, PassengerGender gender)
@@ -191,6 +194,110 @@ public class Passenger : MonoBehaviour
         print($"Created new Passenger:\n  - Type: {Type};\n  - Character: {Character};\n  - Gender: {Gender};\n  - Name: {FirstName} {LastName};\n  - Date of birth: {DateOfBirth.Date};\n  - Age: {Age};\n  - PESEL: {PESEL}");
     }
 
+    void GenerateTicket()
+    {
+        // Constant values
+        ticketData.przejazd = "PRZEJAZD TAM\nPOC P";
+        ticketData.waznyWPorot = "--.--.----";
+        ticketData.waznyWPorot = "--.--.----";
+        ticketData.liczbaOsob = "1";
+
+        // Randomize stations
+        int from = UnityEngine.Random.Range(0, TicketData.numberOfStartStations), 
+            to = UnityEngine.Random.Range(from, TicketData.numberOfStartStations + 1), 
+            through = UnityEngine.Random.Range(from, to); 
+        
+        ticketData.stacjaOd = TicketData.stations[from]; // Start staion
+        ticketData.stacjaDo = TicketData.stations[to]; // End station
+        ticketData.stacjaPrzez = TicketData.stations[through]; // Through station
+
+        ticketData.stacje = (to - from).ToString();
+
+        // Set travel date
+        DateTime date = GameManager.currentDateTime;
+        if(UnityEngine.Random.Range(0, 2) == 0)
+        {
+            // Set the travel date as today and expiration date 1 day later
+            ticketData.waznyWTam = date.ToString("dd.MM.yyyy");
+            date = date.AddDays(1);
+            ticketData.waznyDoTam = date.ToString("dd.MM.yyyy");
+        }
+        else
+        {
+            // Set today as expiration date
+            ticketData.waznyDoTam = date.ToString("dd.MM.yyyy");
+            date = date.AddDays(-1);
+            ticketData.waznyWTam = date.ToString("dd.MM.yyyy");
+        }
+
+        // Set ticket office
+        date = date.AddDays(UnityEngine.Random.Range(-6, 1));
+        ticketData.kasaWydania = TicketData.kasyWydania[ticketData.stacjaOd] + date.ToString("dd.MM.yyyy");
+
+        // Randomize class
+        ticketData.klasa = UnityEngine.Random.Range(1, 3).ToString();
+
+        // Randomize tariff
+        if (ticketData.klasa == "2")
+        {
+            ticketData.taryfa = TicketData.tariffCodes[UnityEngine.Random.Range(0, 5)];
+            while(Age < TicketData.tariffMinAge[ticketData.taryfa] || Age > TicketData.tariffMaxAge[ticketData.taryfa])
+            {
+                ticketData.taryfa = TicketData.tariffCodes[UnityEngine.Random.Range(0, 5)];
+            }
+        }
+        else
+        {
+            if(Age >= 60) { ticketData.taryfa = "E"; }
+            else { ticketData.taryfa = "N"; }
+        }
+
+        // Calcluate ticket price
+        if(ticketData.klasa == "1")
+        {
+            float price = int.Parse(ticketData.stacje) * TicketData.priceForClass1;
+            if(ticketData.taryfa == "E") { price *= TicketData.tariffPriceModifier[ticketData.taryfa]; }
+            
+            ticketData.PTU = (price * TicketData.PTUPriceModifier).ToString();
+            price *= 1 + TicketData.PTUPriceModifier;
+
+            ticketData.cena = price.ToString();
+        }
+        else
+        {
+            float price = int.Parse(ticketData.stacje) * TicketData.priceForClass2 * TicketData.tariffPriceModifier[ticketData.taryfa];
+
+            ticketData.PTU = (price * TicketData.PTUPriceModifier).ToString();
+            price *= 1 + TicketData.PTUPriceModifier;
+
+            ticketData.cena = price.ToString();
+        }
+
+        // Calculate ticket car number and seat number
+        if(ticketData.klasa == "1")
+        {
+            ticketData.carNumber = UnityEngine.Random.Range(1, 3);
+            ticketData.seatNumber = UnityEngine.Random.Range(1, 7) + 10 * UnityEngine.Random.Range(0, 5);
+        }
+        else
+        {
+            ticketData.carNumber = UnityEngine.Random.Range(4, 9);
+            ticketData.seatNumber = UnityEngine.Random.Range(1, 9) + 10 * UnityEngine.Random.Range(0, 5);
+        }
+
+        // Create a ticket series and number
+        ticketData.seria = TicketData.ticketSeries[UnityEngine.Random.Range(0, 3)];
+        ticketData.numer = "0" + ticketData.carNumber.ToString() + ticketData.seatNumber.ToString();
+
+        string controlNumber = UnityEngine.Random.Range(0, 100000).ToString();
+        while (controlNumber.Length < 5) { controlNumber = "0" + controlNumber; }
+
+        ticketData.numer += controlNumber;
+        ticketData.seriaINumer = ticketData.seria + ticketData.numer;
+
+        print(ticketData);
+    }
+
     //=====================================================================================================
     // Custom classes
     //=====================================================================================================
@@ -204,4 +311,39 @@ public class Passenger : MonoBehaviour
         [Range(1, 12)]public int monthOfBirth; 
         [Range(1, 28)]public int dayOfBirth;
     }
+}
+
+// Class responsible for storing the data of each ticket and static information used to generate tickets
+public class TicketData 
+{
+    // Reference values
+    public const int numberOfStartStations = 9;
+    public const float priceForClass2 = 5.5f, priceForClass1 = 9.25f, PTUPriceModifier = 0.07f;
+    public static string[] stations = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", 
+        "Łowicz Główny", "Włocławek", "Toruń Główny", "Bydgoszcz Główna", "Piła Główna", "Kołobrzeg"};
+    public static Dictionary<string, string> kasyWydania = new Dictionary<string, string>
+    {
+        ["Rzeszów Główny"] = "Rzeszów\n\n12345789\n",
+        ["Stalowa Wola Rozwadów"] = "Stalowa Wola\n\n192837465\n",
+        ["Lublin Główny"] = "Lublin\n\n98754321\n",
+        ["Warszawa Centralna"] = "Warszawa\n\n91827345\n",
+        ["Łowicz Główny"] = "Łowicz\n\n101010101\n",
+        ["Włocławek"] = "Włocławek\n\n111111111\n",
+        ["Toruń Główny"] = "Toruń\n\n123454321\n",
+        ["Bydgoszcz Główna"] = "Bydgoszcz\n\n98756789\n",
+        ["Piła Główna"] = "Piła\n\n546372819\n",
+    };
+    public static string[] ticketSeries = {"A", "B", "C"};
+    public static string[] tariffCodes = {"N", "S", "D", "E", "Z"};
+    public static Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float>
+        { ["N"] = 1f, ["S"] = 0.49f, ["D"] = 0.63f, ["E"] = 0.7f, ["Z"] = 0.22f, };
+    public static Dictionary<string, int> tariffMinAge = new Dictionary<string, int>
+        { ["N"] = 0, ["S"] = 19, ["D"] = 4, ["E"] = 60, ["Z"] = 18, };
+    public static Dictionary<string, int> tariffMaxAge = new Dictionary<string, int>
+        { ["N"] = 1000, ["S"] = 26, ["D"] = 18, ["E"] = 1000, ["Z"] = 63, };
+
+    // Data varaibles
+    public int carNumber, seatNumber;
+    public string kasaWydania, klasa, przejazd, liczbaOsob, taryfa, waznyWTam, waznyDoTam, waznyWPorot, 
+        waznyDoPowrot, stacjaOd, stacjaDo, stacjaPrzez, seria, numer, seriaINumer, stacje, PTU, cena;
 }
