@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     //=====================================================================================================
     // External elements
     [SerializeField] TicketCheckingScreenController TicketCheckingScreen; 
+    [SerializeField] SpriteRenderer playerSprite;
     
     // Unity components
     Rigidbody2D playerRigidbody;
@@ -79,6 +80,11 @@ public class PlayerController : MonoBehaviour
         {
             targetPassenger = collision.transform.parent.GetComponent<Passenger>();
         }
+
+        if(collision.CompareTag("PlayerSpriteTrigger"))
+        {
+            playerSprite.sortingOrder = -2;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -86,6 +92,11 @@ public class PlayerController : MonoBehaviour
         if(collision.CompareTag("PassengerTrigger") && targetPassenger == collision.transform.parent.GetComponent<Passenger>()) 
         { 
             targetPassenger = null; 
+        }
+
+        if(collision.CompareTag("PlayerSpriteTrigger"))
+        {
+            playerSprite.sortingOrder = 2;
         }
     }
 

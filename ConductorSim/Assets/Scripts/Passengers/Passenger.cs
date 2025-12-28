@@ -276,12 +276,12 @@ public class Passenger : MonoBehaviour
         // Calculate ticket car number and seat number
         if(ticketData.klasa == "1")
         {
-            ticketData.carNumber = UnityEngine.Random.Range(1, 3);
+            ticketData.carNumber = UnityEngine.Random.Range(1, 3); // 2 cars for the first class
             ticketData.seatNumber = UnityEngine.Random.Range(1, 7) + 10 * UnityEngine.Random.Range(0, 5);
         }
         else
         {
-            ticketData.carNumber = UnityEngine.Random.Range(4, 9);
+            ticketData.carNumber = UnityEngine.Random.Range(4, 7); // 3 cars for the second class
             ticketData.seatNumber = UnityEngine.Random.Range(1, 9) + 10 * UnityEngine.Random.Range(0, 5);
         }
 
