@@ -96,5 +96,6 @@ public class PlayerController : MonoBehaviour
     {
         print("Starting converstation with " + targetPassenger.FirstName);
         TicketCheckingScreen.ShowTicketCheckingScreen();
+        TicketCheckingScreen.PullTicketData(targetPassenger);
     }
 }

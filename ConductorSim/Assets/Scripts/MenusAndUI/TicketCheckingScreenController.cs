@@ -4,8 +4,8 @@ public class TicketCheckingScreenController : MonoBehaviour
 {
     // External elements
     [SerializeField] PlayerController player;
-    [SerializeField] GameObject TicketCheckingScreenContainer;
-    [SerializeField] GameObject Ticket;
+    [SerializeField] GameObject ticketCheckingScreenContainer;
+    [SerializeField] GameObject ticket;
 
     // Ticket data
     public static TicketData ticketData;
@@ -23,19 +23,20 @@ public class TicketCheckingScreenController : MonoBehaviour
     }
 
     public void ShowTicketCheckingScreen() { 
-        TicketCheckingScreenContainer.SetActive(true); 
+        ticketCheckingScreenContainer.SetActive(true); 
         player.isInConversation = true;
     }
 
     public void HideTicketCheckingScreen() { 
-        TicketCheckingScreenContainer.SetActive(false); 
+        ticketCheckingScreenContainer.SetActive(false); 
         player.isInConversation = false;
     }
 
-    public void ShowTicket() { Ticket.SetActive(true); }
+    public void ShowTicket() { ticket.SetActive(true); }
 
     public void PullTicketData(Passenger passenger)
     {
         ticketData = passenger.ticketData;
+        ticket.GetComponent<Ticket>().setTicketText(ticketData);
     }
 }

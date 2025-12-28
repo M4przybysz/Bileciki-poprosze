@@ -198,13 +198,13 @@ public class Passenger : MonoBehaviour
     {
         // Constant values
         ticketData.przejazd = "PRZEJAZD TAM\nPOC P";
-        ticketData.waznyWPorot = "--.--.----";
-        ticketData.waznyWPorot = "--.--.----";
+        ticketData.waznyWPowrot = "--.--.----";
+        ticketData.waznyDoPowrot = "--.--.----";
         ticketData.liczbaOsob = "1";
 
         // Randomize stations
         int from = UnityEngine.Random.Range(0, TicketData.numberOfStartStations), 
-            to = UnityEngine.Random.Range(from, TicketData.numberOfStartStations + 1), 
+            to = UnityEngine.Random.Range(from + 1, TicketData.numberOfStartStations + 1), 
             through = UnityEngine.Random.Range(from, to); 
         
         ticketData.stacjaOd = TicketData.stations[from]; // Start staion
@@ -258,19 +258,19 @@ public class Passenger : MonoBehaviour
             float price = int.Parse(ticketData.stacje) * TicketData.priceForClass1;
             if(ticketData.taryfa == "E") { price *= TicketData.tariffPriceModifier[ticketData.taryfa]; }
             
-            ticketData.PTU = (price * TicketData.PTUPriceModifier).ToString();
+            ticketData.PTU = Math.Round(price * TicketData.PTUPriceModifier, 2).ToString() + " zł";
             price *= 1 + TicketData.PTUPriceModifier;
 
-            ticketData.cena = price.ToString();
+            ticketData.cena = Math.Round(price, 2).ToString() + " zł";
         }
         else
         {
             float price = int.Parse(ticketData.stacje) * TicketData.priceForClass2 * TicketData.tariffPriceModifier[ticketData.taryfa];
 
-            ticketData.PTU = (price * TicketData.PTUPriceModifier).ToString();
+            ticketData.PTU = Math.Round(price * TicketData.PTUPriceModifier, 2).ToString() + " zł";
             price *= 1 + TicketData.PTUPriceModifier;
 
-            ticketData.cena = price.ToString();
+            ticketData.cena = Math.Round(price, 2).ToString() + " zł";
         }
 
         // Calculate ticket car number and seat number
@@ -344,6 +344,6 @@ public class TicketData
 
     // Data varaibles
     public int carNumber, seatNumber;
-    public string kasaWydania, klasa, przejazd, liczbaOsob, taryfa, waznyWTam, waznyDoTam, waznyWPorot, 
+    public string kasaWydania, klasa, przejazd, liczbaOsob, taryfa, waznyWTam, waznyDoTam, waznyWPowrot, 
         waznyDoPowrot, stacjaOd, stacjaDo, stacjaPrzez, seria, numer, seriaINumer, stacje, PTU, cena;
 }

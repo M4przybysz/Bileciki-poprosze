@@ -1218,8 +1218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 35676737}
-  TicketCheckingScreenContainer: {fileID: 1677695491}
-  Ticket: {fileID: 5331578562799557375}
+  ticketCheckingScreenContainer: {fileID: 1677695491}
+  ticket: {fileID: 5331578562799557375}
 --- !u!1 &326145886
 GameObject:
   m_ObjectHideFlags: 0

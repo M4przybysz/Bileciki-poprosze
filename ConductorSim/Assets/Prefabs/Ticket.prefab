@@ -4147,9 +4147,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: -125}
-  m_SizeDelta: {x: 50, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -250, y: -125}
+  m_SizeDelta: {x: 100, y: 20}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4946061653949586509
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6205,7 +6205,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -6977,7 +6977,7 @@ MonoBehaviour:
   waznyDoPowrotButton: {fileID: 8051781656781148985}
   stacjaOdButton: {fileID: 3127220038979095524}
   stacjaDoButton: {fileID: 5494637224589063468}
-  przezButton: {fileID: 6349694922284645021}
+  stacjaPrzezButton: {fileID: 6349694922284645021}
   seriaButton: {fileID: 5328671008518052274}
   numerButton: {fileID: 5171242789409807292}
   seriaINumerBotton: {fileID: 2816666528399631875}
