@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PassengerType {Special, Normal, Problematic};
-public enum PassengerCharacter {Nice, Rude, Talkative, Quiet, TimeWaster};
+public enum PassengerCharacter {Nice, Rude, Talkative, Quiet};
 public enum PassengerGender {M, F};
 
 public class Passenger : MonoBehaviour
@@ -107,13 +107,21 @@ public class Passenger : MonoBehaviour
     }
 
     //=====================================================================================================
+    // Unity methods
+    //=====================================================================================================
+    void OnDestroy()
+    {
+        train.RemovePassenger(gameObject);
+    }
+
+    //=====================================================================================================
     // Custom methods
     //=====================================================================================================
     void RandomizePassengerProfile()
     {
         // Randomize basic data
         Type = (PassengerType)Enum.GetValues(typeof(PassengerType)).GetValue(UnityEngine.Random.Range(1, 3));
-        Character = (PassengerCharacter)Enum.GetValues(typeof(PassengerCharacter)).GetValue(UnityEngine.Random.Range(0, 5));
+        Character = (PassengerCharacter)Enum.GetValues(typeof(PassengerCharacter)).GetValue(UnityEngine.Random.Range(0, 4));
         Gender = (PassengerGender)Enum.GetValues(typeof(PassengerGender)).GetValue(UnityEngine.Random.Range(0, 2));
         if (Gender == PassengerGender.F)
         {
@@ -128,7 +136,7 @@ public class Passenger : MonoBehaviour
 
         // Randomize date of birth
         DateOfBirth = new DateTime(
-            UnityEngine.Random.Range(1930, GameManager.startingInGameDate.Year), 
+            UnityEngine.Random.Range(1930, GameManager.startingInGameDate.Year - 13), 
             UnityEngine.Random.Range(1, 13),
             UnityEngine.Random.Range(1, 29));
 
@@ -241,6 +249,7 @@ public class Passenger : MonoBehaviour
 
         // Sarch for a free seat 
         bool isSeatFound = false;
+        int loopBreaker = 0;
         do
         {
             // Randomize class
@@ -264,11 +273,14 @@ public class Passenger : MonoBehaviour
             { 
                 transform.position = chosenSeat.seatPosition;
                 chosenSeat.isTaken = true;
-                print(train.FindTrainCar(ticketData.carNumber).FindSeat(ticketData.seatNumber).isTaken);
                 isSeatFound = true; 
             }
+
+            loopBreaker += 1;
         } 
-        while(!isSeatFound);
+        while(!isSeatFound && loopBreaker < 50);
+
+        if(loopBreaker >= 50) { Destroy(gameObject); } // Cancel passenger's life subscription if they can't find a seat
 
         // Randomize tariff
         if (ticketData.klasa == "2")
@@ -315,8 +327,6 @@ public class Passenger : MonoBehaviour
 
         ticketData.numer += controlNumber;
         ticketData.seriaINumer = ticketData.seria + ticketData.numer;
-
-        print(ticketData);
     }
 
     //=====================================================================================================

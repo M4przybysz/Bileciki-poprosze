@@ -1,9 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Train : MonoBehaviour
 {
     [SerializeField] Transform passengerCarsContainer;
-    public TrainCar[] passengerCars;
+    [SerializeField] Transform passengerContainer;
+    [SerializeField] GameObject passengerPrefab;
+    const int maxPassengersNumber = 174;
+    public static TrainCar[] passengerCars;
+    public static List<GameObject> passengersList = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,13 +28,16 @@ public class Train : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnPassengers(Random.Range(5, 11));
+            // print(passengers.Count);
+        }
     }
 
     //=====================================================================================================
     // Custom methods
     //=====================================================================================================
-
     public TrainCar FindTrainCar(int carNumber)
     {
         foreach(TrainCar car in passengerCars)
@@ -39,5 +47,22 @@ public class Train : MonoBehaviour
 
         print($"Train car number {carNumber} not found");
         return null;
+    }
+
+    void SpawnPassengers(int numberOfPassengers)
+    {
+        if(passengersList.Count < maxPassengersNumber)
+        {
+            for(int i = 0; i < numberOfPassengers; i++)
+                {
+                    passengersList.Add(Instantiate(passengerPrefab, passengerContainer));
+                }   
+        }
+        else { print($"Rached passenger limit: {maxPassengersNumber} \nLast passenger: {passengersList[passengersList.Count - 1].GetComponent<Passenger>().FirstName}"); }
+    }
+
+    public void RemovePassenger(GameObject passenger)
+    {
+        passengersList.Remove(passenger);
     }
 }
