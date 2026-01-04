@@ -16,11 +16,6 @@ public class Door : MonoBehaviour
                 cam.MoveToNewRoom(previousRoom);
         }
     }
-
-    private void Awake()
-    {
-        cam = Camera.main.GetComponent<CameraController>();
-    }
 }
 
 

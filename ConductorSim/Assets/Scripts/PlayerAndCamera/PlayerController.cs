@@ -12,17 +12,19 @@ public class PlayerController : MonoBehaviour
     
     // Unity components
     Rigidbody2D playerRigidbody;
-    private PlayerFatigue fatigue; 
+    private PlayerFatigue fatigueScript; 
     
     // Passenger interaction variables
     Passenger targetPassenger = null; 
 
+    // Movement consts
+    const float sprintSpeedModifier = 1.5f;
+    const float defaultSpeedModifier = 1f;
+
     // Movement variables
     Vector2 input;
     float speed = 3f;
-    float speedModifier = DefaultSpeedModifier;
-    const float DefaultSpeedModifier = 1f;
-    const float SprintSpeedModifier = 1.5f;
+    float speedModifier = defaultSpeedModifier;
 
     // Action limiters
     public bool isInConversation = false;
@@ -35,16 +37,8 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerRigidbody = GetComponent<Rigidbody2D>();
-
-        // Pobranie PlayerFatigue (na obiekcie lub w dzieciach)
-        fatigue = GetComponent<PlayerFatigue>() ?? GetComponentInChildren<PlayerFatigue>();
-        if (fatigue == null)
-            Debug.LogWarning("PlayerFatigue nie znaleziony na graczu. Sprint i modyfikator szybko�ci nie b�d� dzia�a�.");
-
-        // Podpowied� konfiguracyjna � triggery drzwi oczekuj� tagu "Player"
-        if (!CompareTag("Player"))
-            Debug.LogWarning("Obiekt PlayerController nie ma tagu 'Player'. Trigger drzwi mo�e tego wymaga�.");
+        playerRigidbody = GetComponent<Rigidbody2D>(); // Get rigidbody
+        fatigueScript = GetComponent<PlayerFatigue>(); // Get player fatigue script
     }
 
     // Update is called once per frame
@@ -78,16 +72,11 @@ public class PlayerController : MonoBehaviour
 
             // Sprint while holding shift
             bool sprinting = Input.GetKey(KeyCode.LeftShift);
+            fatigueScript.SetSprinting(sprinting);
 
-            if (fatigue != null)
-                fatigue.SetSprinting(sprinting);
-
-            float fatigueModifier = fatigue != null ? fatigue.GetSpeedModifier() : 1f;
-
-            if (sprinting)
-                speedModifier = SprintSpeedModifier * fatigueModifier;
-            else
-                speedModifier = DefaultSpeedModifier * fatigueModifier;
+            // Adjust sprint and fatigue modifiers
+            if (sprinting) { speedModifier = sprintSpeedModifier * fatigueScript.GetSpeedModifier(); }
+            else {speedModifier = defaultSpeedModifier * fatigueScript.GetSpeedModifier(); }
 
             // Starting conversation 
             if (Input.GetKeyDown(KeyCode.F) && targetPassenger != null)

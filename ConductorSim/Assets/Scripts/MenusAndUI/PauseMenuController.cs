@@ -41,7 +41,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void SaveAndQuit()
     {
-        print("save and quit");
+        GameManager.SaveGameData();
         SceneManager.LoadScene("TitleScreen");
     }
 }

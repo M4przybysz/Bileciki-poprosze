@@ -1,13 +1,6 @@
 using UnityEngine;
 
-public enum FatiguePhase
-{
-    Rested,
-    Tired,
-    VeryTired,
-    Exhausted,
-    PassingOut
-}
+public enum FatiguePhase { Rested, Tired, VeryTired, Exhausted, PassingOut }
 
 public class PlayerFatigue : MonoBehaviour
 {
@@ -36,34 +29,25 @@ public class PlayerFatigue : MonoBehaviour
     {
         float gain = baseFatigueGain * Time.deltaTime;
 
-        if (isSprinting)
-            gain *= sprintFatigueMultiplier;
+        if (isSprinting) { gain *= sprintFatigueMultiplier; }
 
         fatigue = Mathf.Clamp(fatigue + gain, 0f, 100f);
     }
 
     void UpdatePhase()
     {
-        if (fatigue < 50f)
-            currentPhase = FatiguePhase.Rested;
-        else if (fatigue < 70f)
-            currentPhase = FatiguePhase.Tired;
-        else if (fatigue < 85f)
-            currentPhase = FatiguePhase.VeryTired;
-        else if (fatigue < 95f)
-            currentPhase = FatiguePhase.Exhausted;
-        else
-            currentPhase = FatiguePhase.PassingOut;
+        if (fatigue < 50f) { currentPhase = FatiguePhase.Rested; }
+        else if (fatigue < 70f) { currentPhase = FatiguePhase.Tired; }
+        else if (fatigue < 85f) { currentPhase = FatiguePhase.VeryTired; }
+        else if (fatigue < 95f) { currentPhase = FatiguePhase.Exhausted; }
+        else { currentPhase = FatiguePhase.PassingOut; }
     }
 
     // ====================================================================
     // Public API (for other systems)
     // ====================================================================
 
-    public void SetSprinting(bool sprinting)
-    {
-        isSprinting = sprinting;
-    }
+    public void SetSprinting(bool sprinting) { isSprinting = sprinting; }
 
     public float GetSpeedModifier()
     {
