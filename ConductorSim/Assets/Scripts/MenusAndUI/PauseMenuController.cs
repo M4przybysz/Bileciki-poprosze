@@ -24,18 +24,27 @@ public class PauseMenuController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape)) 
         {
-            if(pauseMenuContainer.activeSelf) { HideUIElement(pauseMenuContainer); }
+            if(settingsMenu.activeSelf) { HideUIElement(settingsMenu); }
+            else if(pauseMenuContainer.activeSelf) { HideUIElement(pauseMenuContainer); }
             else { ShowUIElement(pauseMenuContainer); } 
         }
     }
 
     public void ShowUIElement(GameObject UIElement) { 
-        if(UIElement == pauseMenuContainer) { player.isGamePaused = true; }
+        if(UIElement == pauseMenuContainer) 
+        { 
+            Time.timeScale = 0;
+            player.isGamePaused = true; 
+        }
         UIElement.SetActive(true); 
     }
 
     public void HideUIElement(GameObject UIElement) { 
-        if(UIElement == pauseMenuContainer) { player.isGamePaused = false; }
+        if(UIElement == pauseMenuContainer) 
+        { 
+            Time.timeScale = 1;
+            player.isGamePaused = false; 
+        }
         UIElement.SetActive(false); 
     }
 
