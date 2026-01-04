@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passengerCarsContainer: {fileID: 8090191026893556948}
+  passengerContainer: {fileID: 2739075213149386687}
   passengerPrefab: {fileID: 8703133001968469398, guid: a3e1fa64e9169b344ab2d8b47e120f84, type: 3}
 --- !u!1001 &429955736179410719
 PrefabInstance:

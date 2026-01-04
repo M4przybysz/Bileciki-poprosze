@@ -8201,10 +8201,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7188882082289386801, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
-      propertyPath: passengerContainer
-      value: 
-      objectReference: {fileID: 1027164067298964960}
     - target: {fileID: 8606854155041997855, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
       propertyPath: m_Name
       value: Train
@@ -8214,11 +8210,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
---- !u!4 &1027164067298964960 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2739075213149386687, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
-  m_PrefabInstance: {fileID: 1027164067298964959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5331578562799557374
 PrefabInstance:
   m_ObjectHideFlags: 0
