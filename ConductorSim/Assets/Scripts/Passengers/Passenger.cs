@@ -21,6 +21,9 @@ public class Passenger : MonoBehaviour
     // Train reference
     static Train train;
 
+    // Default date
+    DateTime defaulDateTime = new DateTime(2006, 1, 18);
+
     // General variables
     [SerializeField] bool doNotGeneratePassenger = false;
     [SerializeField] PassengerData customPassengerData;
@@ -137,15 +140,14 @@ public class Passenger : MonoBehaviour
             LastName = maleLastNames[UnityEngine.Random.Range(0, maleLastNames.Length)];
         }
 
-        // Randomize date of birth
+        // Randomize date of birth and calculate age
         DateOfBirth = new DateTime(
             UnityEngine.Random.Range(1930, GameManager.startingInGameDate.Year - 12), 
             UnityEngine.Random.Range(1, 13),
-            UnityEngine.Random.Range(1, 29));
+            UnityEngine.Random.Range(1, 29));  
 
-        // Calculate age
         Age = GameManager.startingInGameDate.Year - DateOfBirth.Year;
-        if (dateOfBirth.Date > GameManager.startingInGameDate.AddYears(-Age)) { Age -= 1; }
+        if (dateOfBirth.Date > GameManager.startingInGameDate.AddYears(-Age)) { Age -= 1; } 
 
         // Calculate PESEL
         PESEL = GeneratePesel(DateOfBirth, Gender);
@@ -230,7 +232,7 @@ public class Passenger : MonoBehaviour
         ticketData.stacje = (to - from).ToString();
 
         // Set travel date
-        DateTime date = GameManager.currentDateTime;
+        DateTime date = (GameManager.currentDateTime.Year != 1) ? GameManager.currentDateTime : defaulDateTime;
         if(UnityEngine.Random.Range(0, 2) == 0)
         {
             // Set the travel date as today and expiration date 1 day later
