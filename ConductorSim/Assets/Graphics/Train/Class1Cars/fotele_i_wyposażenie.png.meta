@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 202d9eb212b3c9f4380bde0f6a8ca79c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 564167744347610250
+    second: "fotele_i_wyposa\u017Cenie_0"
+  - first:
+      213: 3807106922877915383
+    second: "fotele_i_wyposa\u017Cenie_1"
+  - first:
+      213: -3664043322055392064
+    second: "fotele_i_wyposa\u017Cenie_2"
+  - first:
+      213: -4054290991713455616
+    second: "fotele_i_wyposa\u017Cenie_3"
+  - first:
+      213: 4397513888215529103
+    second: "fotele_i_wyposa\u017Cenie_4"
+  - first:
+      213: 6271323111428987618
+    second: "fotele_i_wyposa\u017Cenie_5"
+  - first:
+      213: -588767648904994533
+    second: "fotele_i_wyposa\u017Cenie_6"
+  - first:
+      213: 8973501587318817968
+    second: "fotele_i_wyposa\u017Cenie_7"
+  - first:
+      213: -8835444114235728288
+    second: "fotele_i_wyposa\u017Cenie_8"
+  - first:
+      213: -870019930621181197
+    second: "fotele_i_wyposa\u017Cenie_9"
+  - first:
+      213: -674544559523526466
+    second: "fotele_i_wyposa\u017Cenie_10"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_0"
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 826
+        width: 3469
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c929b039354d700800000000000000
+      internalID: 564167744347610250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_1"
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 854
+        width: 229
+        height: 373
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f09110539f85d430800000000000000
+      internalID: 3807106922877915383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_2"
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 826
+        width: 185
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c40f33f204b62dc0800000000000000
+      internalID: -3664043322055392064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_3"
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 826
+        width: 186
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0027ad6d2d34cb7c0800000000000000
+      internalID: -4054290991713455616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_4"
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 825
+        width: 185
+        height: 522
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86fee1159b170d30800000000000000
+      internalID: 4397513888215529103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_5"
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 826
+        width: 186
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ea1c689427380750800000000000000
+      internalID: 6271323111428987618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_6"
+      rect:
+        serializedVersion: 2
+        x: 2115
+        y: 826
+        width: 185
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b11a6c751f644d7f0800000000000000
+      internalID: -588767648904994533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_7"
+      rect:
+        serializedVersion: 2
+        x: 2376
+        y: 826
+        width: 186
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b4ca876628488c70800000000000000
+      internalID: 8973501587318817968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_8"
+      rect:
+        serializedVersion: 2
+        x: 2824
+        y: 826
+        width: 185
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06ed92ae362326580800000000000000
+      internalID: -8835444114235728288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_9"
+      rect:
+        serializedVersion: 2
+        x: 3085
+        y: 826
+        width: 186
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f280df8b711de3f0800000000000000
+      internalID: -870019930621181197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "fotele_i_wyposa\u017Cenie_10"
+      rect:
+        serializedVersion: 2
+        x: 3533
+        y: 826
+        width: 185
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb88d680c4983a6f0800000000000000
+      internalID: -674544559523526466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 227ecc032c28915419234d2795b29533
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "fotele_i_wyposa\u017Cenie_0": 564167744347610250
+      "fotele_i_wyposa\u017Cenie_1": 3807106922877915383
+      "fotele_i_wyposa\u017Cenie_10": -674544559523526466
+      "fotele_i_wyposa\u017Cenie_2": -3664043322055392064
+      "fotele_i_wyposa\u017Cenie_3": -4054290991713455616
+      "fotele_i_wyposa\u017Cenie_4": 4397513888215529103
+      "fotele_i_wyposa\u017Cenie_5": 6271323111428987618
+      "fotele_i_wyposa\u017Cenie_6": -588767648904994533
+      "fotele_i_wyposa\u017Cenie_7": 8973501587318817968
+      "fotele_i_wyposa\u017Cenie_8": -8835444114235728288
+      "fotele_i_wyposa\u017Cenie_9": -870019930621181197
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

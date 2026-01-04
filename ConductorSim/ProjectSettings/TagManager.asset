@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Passenger
   - PassengerTrigger
+  - PlayerSpriteTrigger
   layers:
   - Default
   - TransparentFX
