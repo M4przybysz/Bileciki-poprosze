@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
     // Variables and constants
     //=====================================================================================================
     // External elements
+    [SerializeField] UIController uiController;
+    [SerializeField] GameObject UseBedConfirm;
+    [SerializeField] Train train;
     [SerializeField] TicketCheckingScreenController TicketCheckingScreen; 
     [SerializeField] SpriteRenderer playerSprite;
     [SerializeField] Animator playerAnimator;
@@ -14,8 +17,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D playerRigidbody;
     private PlayerFatigue fatigueScript; 
     
-    // Passenger interaction variables
+    // Passenger and round interaction variables
     Passenger targetPassenger = null; 
+    bool isByBed = false;
 
     // Movement consts
     const float sprintSpeedModifier = 1.5f;
@@ -49,9 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // poprawne ustawianie pr�dko�ci Rigidbody2D
-        if (playerRigidbody != null)
-            playerRigidbody.linearVelocity = input * speed * speedModifier;
+        playerRigidbody.linearVelocity = input * speed * speedModifier;
     }
 
     //=====================================================================================================
@@ -79,9 +81,10 @@ public class PlayerController : MonoBehaviour
             else {speedModifier = defaultSpeedModifier * fatigueScript.GetSpeedModifier(); }
 
             // Starting conversation 
-            if (Input.GetKeyDown(KeyCode.F) && targetPassenger != null)
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                StartConverstation();
+                if(isByBed && train.trainState == "ride") { uiController.ShowUIElement(UseBedConfirm); }
+                else if(targetPassenger != null) { StartConverstation(); }
             }   
         }
     }
@@ -91,28 +94,26 @@ public class PlayerController : MonoBehaviour
     //=====================================================================================================
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.CompareTag("Bed")) { isByBed = true; }
+
         if(collision.CompareTag("PassengerTrigger"))
         {
             targetPassenger = collision.transform.parent.GetComponent<Passenger>();
         }
 
-        if(collision.CompareTag("PlayerSpriteTrigger"))
-        {
-            playerSprite.sortingOrder = -2;
-        }
+        if(collision.CompareTag("PlayerSpriteTrigger")) { playerSprite.sortingOrder = -2; }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        if(collision.CompareTag("Bed")) { isByBed = false; }
+
         if(collision.CompareTag("PassengerTrigger") && targetPassenger == collision.transform.parent.GetComponent<Passenger>()) 
         { 
             targetPassenger = null; 
         }
 
-        if(collision.CompareTag("PlayerSpriteTrigger"))
-        {
-            playerSprite.sortingOrder = 2;
-        }
+        if(collision.CompareTag("PlayerSpriteTrigger")) { playerSprite.sortingOrder = 2; }
     }
 
     //=====================================================================================================
