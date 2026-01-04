@@ -95,8 +95,8 @@ public class GameManager : MonoBehaviour
 
     public static void SetDefaultData()
     {
-        SFXVolume = 0.5f;
-        musicVolume = 0.5f;
+        // SFXVolume = 0.5f;
+        // musicVolume = 0.5f;
         currentDateTime = startingInGameDate;
     }
 }

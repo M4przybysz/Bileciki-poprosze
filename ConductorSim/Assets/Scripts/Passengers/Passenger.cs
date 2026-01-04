@@ -111,7 +111,7 @@ public class Passenger : MonoBehaviour
     //=====================================================================================================
     void OnDestroy()
     {
-        print($"{firstName} {lastName}'s raid: {ticketData.stacjaOd} --> {ticketData.stacjaDo}");
+        print($"Passenger {firstName} {lastName} leaves the train, route: {ticketData.stacjaOd} -> {ticketData.stacjaDo}");
         if(train != null) { train.RemovePassenger(gameObject); }
     }
 
@@ -121,7 +121,9 @@ public class Passenger : MonoBehaviour
     void RandomizePassengerProfile()
     {
         // Randomize basic data
-        Type = (PassengerType)Enum.GetValues(typeof(PassengerType)).GetValue(UnityEngine.Random.Range(1, 3));
+        if(UnityEngine.Random.Range(1, 11) > 2) { Type = PassengerType.Normal; }
+        else { Type = PassengerType.Problematic; }
+        
         Character = (PassengerCharacter)Enum.GetValues(typeof(PassengerCharacter)).GetValue(UnityEngine.Random.Range(0, 4));
         Gender = (PassengerGender)Enum.GetValues(typeof(PassengerGender)).GetValue(UnityEngine.Random.Range(0, 2));
         if (Gender == PassengerGender.F)

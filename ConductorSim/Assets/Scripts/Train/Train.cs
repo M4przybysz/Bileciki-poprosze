@@ -72,7 +72,7 @@ public class Train : MonoBehaviour
         if(currentStationNumber < endStationNumber)
         {
             targetTime -= Time.deltaTime * timeScale;
-            print(targetTime);
+            // print(targetTime);
 
             if(targetTime <= 0)
             {
@@ -95,7 +95,7 @@ public class Train : MonoBehaviour
                     { 
                         nextStationName = stationNames[currentStationNumber + 1]; 
                         targetTime = minutesPerStationStop[currentStationNumber] * 60;
-                        SpawnPassengers(Random.Range(10, 16));
+                        SpawnPassengers(Random.Range(5, 16));
                     }
 
                     trainState = "stop";
@@ -127,7 +127,7 @@ public class Train : MonoBehaviour
                     passengersList.Add(Instantiate(passengerPrefab, passengerContainer));
                 }   
         }
-        else { print($"Rached passenger limit: {maxPassengersNumber} \nLast passenger: {passengersList[passengersList.Count - 1].GetComponent<Passenger>().FirstName}"); }
+        else { print($"Reached passenger limit: {maxPassengersNumber} \nLast passenger: {passengersList[passengersList.Count - 1].GetComponent<Passenger>().FirstName}"); }
     }
 
     public void RemovePassenger(GameObject passenger)
@@ -141,7 +141,6 @@ public class Train : MonoBehaviour
         {
             if(passenger.GetComponent<Passenger>().ticketData.stacjaDo == currentStationName)
             {
-                print($"{passenger.GetComponent<Passenger>().FirstName} {passenger.GetComponent<Passenger>().LastName} leaves the train.");
                 Destroy(passenger);
             }
         }
