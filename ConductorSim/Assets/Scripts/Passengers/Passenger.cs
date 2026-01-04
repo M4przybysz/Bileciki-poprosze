@@ -136,7 +136,7 @@ public class Passenger : MonoBehaviour
 
         // Randomize date of birth
         DateOfBirth = new DateTime(
-            UnityEngine.Random.Range(1930, GameManager.startingInGameDate.Year - 13), 
+            UnityEngine.Random.Range(1930, GameManager.startingInGameDate.Year - 12), 
             UnityEngine.Random.Range(1, 13),
             UnityEngine.Random.Range(1, 29));
 
@@ -216,7 +216,7 @@ public class Passenger : MonoBehaviour
         ticketData.liczbaOsob = "1";
 
         // Randomize stations
-        int from = UnityEngine.Random.Range(0, TicketData.numberOfStartStations), 
+        int from = train.currentStationNumber, 
             to = UnityEngine.Random.Range(from + 1, TicketData.numberOfStartStations + 1), 
             through = UnityEngine.Random.Range(from, to); 
         
@@ -350,7 +350,7 @@ public class TicketData
     // Reference values
     public const int numberOfStartStations = 9;
     public const float priceForClass2 = 5.5f, priceForClass1 = 9.25f, PTUPriceModifier = 0.07f;
-    public static string[] stations = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", 
+    public static readonly string[] stations = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", 
         "Łowicz Główny", "Włocławek", "Toruń Główny", "Bydgoszcz Główna", "Piła Główna", "Kołobrzeg"};
     public static Dictionary<string, string> kasyWydania = new Dictionary<string, string>
     {
@@ -364,13 +364,13 @@ public class TicketData
         ["Bydgoszcz Główna"] = "Bydgoszcz\n\n98756789\n",
         ["Piła Główna"] = "Piła\n\n546372819\n",
     };
-    public static string[] ticketSeries = {"A", "B", "C"};
-    public static string[] tariffCodes = {"N", "S", "D", "E", "Z"};
-    public static Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float>
+    public static readonly string[] ticketSeries = {"A", "B", "C"};
+    public static readonly string[] tariffCodes = {"N", "S", "D", "E", "Z"};
+    public readonly static Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float>
         { ["N"] = 1f, ["S"] = 0.49f, ["D"] = 0.63f, ["E"] = 0.7f, ["Z"] = 0.22f, };
-    public static Dictionary<string, int> tariffMinAge = new Dictionary<string, int>
+    public readonly static Dictionary<string, int> tariffMinAge = new Dictionary<string, int>
         { ["N"] = 0, ["S"] = 19, ["D"] = 4, ["E"] = 60, ["Z"] = 18, };
-    public static Dictionary<string, int> tariffMaxAge = new Dictionary<string, int>
+    public readonly static Dictionary<string, int> tariffMaxAge = new Dictionary<string, int>
         { ["N"] = 1000, ["S"] = 26, ["D"] = 18, ["E"] = 1000, ["Z"] = 63, };
 
     // Data varaibles
