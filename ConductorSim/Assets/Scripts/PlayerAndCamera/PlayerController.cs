@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     
     // Unity components
     Rigidbody2D playerRigidbody;
+    private PlayerFatigue fatigue; 
     
     // Passenger interaction variables
     Passenger targetPassenger = null; 
@@ -35,6 +36,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+
+        // Pobranie PlayerFatigue (na obiekcie lub w dzieciach)
+        fatigue = GetComponent<PlayerFatigue>() ?? GetComponentInChildren<PlayerFatigue>();
+        if (fatigue == null)
+            Debug.LogWarning("PlayerFatigue nie znaleziony na graczu. Sprint i modyfikator szybko�ci nie b�d� dzia�a�.");
+
+        // Podpowied� konfiguracyjna � triggery drzwi oczekuj� tagu "Player"
+        if (!CompareTag("Player"))
+            Debug.LogWarning("Obiekt PlayerController nie ma tagu 'Player'. Trigger drzwi mo�e tego wymaga�.");
     }
 
     // Update is called once per frame
@@ -45,7 +55,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        playerRigidbody.linearVelocity = input * speed * speedModifier;
+        // poprawne ustawianie pr�dko�ci Rigidbody2D
+        if (playerRigidbody != null)
+            playerRigidbody.linearVelocity = input * speed * speedModifier;
     }
 
     //=====================================================================================================
@@ -65,11 +77,20 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetFloat("inputY", input.y);
 
             // Sprint while holding shift
-            if(Input.GetKey(KeyCode.LeftShift)) { speedModifier = SprintSpeedModifier; }
-            else { speedModifier = DefaultSpeedModifier; }
+            bool sprinting = Input.GetKey(KeyCode.LeftShift);
+
+            if (fatigue != null)
+                fatigue.SetSprinting(sprinting);
+
+            float fatigueModifier = fatigue != null ? fatigue.GetSpeedModifier() : 1f;
+
+            if (sprinting)
+                speedModifier = SprintSpeedModifier * fatigueModifier;
+            else
+                speedModifier = DefaultSpeedModifier * fatigueModifier;
 
             // Starting conversation 
-            if(Input.GetKeyDown(KeyCode.F) && targetPassenger != null)
+            if (Input.GetKeyDown(KeyCode.F) && targetPassenger != null)
             {
                 StartConverstation();
             }   
