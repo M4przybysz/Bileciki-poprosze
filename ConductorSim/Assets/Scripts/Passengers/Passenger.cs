@@ -111,7 +111,8 @@ public class Passenger : MonoBehaviour
     //=====================================================================================================
     void OnDestroy()
     {
-        train.RemovePassenger(gameObject);
+        print($"{firstName} {lastName}'s raid: {ticketData.stacjaOd} --> {ticketData.stacjaDo}");
+        if(train != null) { train.RemovePassenger(gameObject); }
     }
 
     //=====================================================================================================

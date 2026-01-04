@@ -20,7 +20,7 @@ public class Train : MonoBehaviour
     const int maxPassengersNumber = 174;
     const int startStationNumber = 0;
     const int endStationNumber = 9;
-    const int timeScale = 2; // How many times faster does in-game time flow
+    const int timeScale = 1000; // How many times faster does in-game time flow
 
     // Train elements
     public static TrainCar[] passengerCars;
@@ -80,24 +80,25 @@ public class Train : MonoBehaviour
                 {
                     targetTime = minutesPerRide[currentStationNumber] * 60;
                     trainState = "ride";
-                    print($"Starting ride from {currentStationName} to {nextStationName}");
+                    print($"Starting ride from {currentStationName} to {nextStationName}. Passneger count: {passengersList.Count}");
                 }
                 else if(trainState == "ride") // End of ride time
                 {
+                    print($"Stopped on station {currentStationName}");
+
                     currentStationNumber += 1;
                     currentStationName = stationNames[currentStationNumber];
+                    CheckPassengerLeave();
 
                     if(currentStationNumber == endStationNumber) { nextStationName = "Koniec trasy"; }
                     else 
                     { 
                         nextStationName = stationNames[currentStationNumber + 1]; 
-                        SpawnPassengers(Random.Range(5, 16));
-
                         targetTime = minutesPerStationStop[currentStationNumber] * 60;
+                        SpawnPassengers(Random.Range(10, 16));
                     }
 
                     trainState = "stop";
-                    print($"Stopping on station {currentStationName}");
                 }
             }   
         }
@@ -132,5 +133,17 @@ public class Train : MonoBehaviour
     public void RemovePassenger(GameObject passenger)
     {
         passengersList.Remove(passenger);
+    }
+
+    void CheckPassengerLeave()
+    {
+        foreach(GameObject passenger in passengersList)
+        {
+            if(passenger.GetComponent<Passenger>().ticketData.stacjaDo == currentStationName)
+            {
+                print($"{passenger.GetComponent<Passenger>().FirstName} {passenger.GetComponent<Passenger>().LastName} leaves the train.");
+                Destroy(passenger);
+            }
+        }
     }
 }
