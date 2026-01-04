@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: a6b1d75ece342a644ba8e61ac190f0cc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3028098874889656438
+    second: wagon_wars_meble_0
+  - first:
+      213: -8363055106617415561
+    second: wagon_wars_meble_1
+  - first:
+      213: -8531878245154922422
+    second: wagon_wars_meble_2
+  - first:
+      213: 2370963759697149939
+    second: wagon_wars_meble_3
+  - first:
+      213: 3046675178865244807
+    second: wagon_wars_meble_4
+  - first:
+      213: -2784601393273417866
+    second: wagon_wars_meble_5
+  - first:
+      213: 6299227219533889269
+    second: wagon_wars_meble_6
+  - first:
+      213: 5819074396275039241
+    second: wagon_wars_meble_7
+  - first:
+      213: -6018944463438233225
+    second: wagon_wars_meble_8
+  - first:
+      213: 4623860927320396851
+    second: wagon_wars_meble_9
+  - first:
+      213: -8691104285081478344
+    second: wagon_wars_meble_10
+  - first:
+      213: 7123634027318718279
+    second: wagon_wars_meble_11
+  - first:
+      213: 7135672398533036706
+    second: wagon_wars_meble_12
+  - first:
+      213: -3913027528423900978
+    second: wagon_wars_meble_13
+  - first:
+      213: -3632797255135080810
+    second: wagon_wars_meble_14
+  - first:
+      213: -5524169541758145448
+    second: wagon_wars_meble_15
+  - first:
+      213: 1402431069668980196
+    second: wagon_wars_meble_16
+  - first:
+      213: -6578780007986339017
+    second: wagon_wars_meble_17
+  - first:
+      213: 7352533564434415670
+    second: wagon_wars_meble_18
+  - first:
+      213: -5756702904845113558
+    second: wagon_wars_meble_19
+  - first:
+      213: 8261666086535673901
+    second: wagon_wars_meble_20
+  - first:
+      213: 5967291719319188540
+    second: wagon_wars_meble_21
+  - first:
+      213: -6069617111527260343
+    second: wagon_wars_meble_22
+  - first:
+      213: -7854901948338910236
+    second: wagon_wars_meble_23
+  - first:
+      213: 375411063060609635
+    second: wagon_wars_meble_24
+  - first:
+      213: 3919155456322209079
+    second: wagon_wars_meble_25
+  - first:
+      213: 2051080527918514096
+    second: wagon_wars_meble_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wagon_wars_meble_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 568
+        width: 3908
+        height: 820
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a872179ed180af5d0800000000000000
+      internalID: -3028098874889656438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_1
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 1142
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7786d0d90b570fb80800000000000000
+      internalID: -8363055106617415561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_2
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 1048
+        width: 344
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4068aa90fda89980800000000000000
+      internalID: -8531878245154922422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_3
+      rect:
+        serializedVersion: 2
+        x: 1755
+        y: 1048
+        width: 344
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffb2104afa57e020800000000000000
+      internalID: 2370963759697149939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_4
+      rect:
+        serializedVersion: 2
+        x: 2555
+        y: 1048
+        width: 344
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a3346eee6f74a20800000000000000
+      internalID: 3046675178865244807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_5
+      rect:
+        serializedVersion: 2
+        x: 3355
+        y: 1290
+        width: 344
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67f41e849cb1b59d0800000000000000
+      internalID: -2784601393273417866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_6
+      rect:
+        serializedVersion: 2
+        x: 3723
+        y: 1280
+        width: 198
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fef9cb08c95b6750800000000000000
+      internalID: 6299227219533889269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_7
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 1089
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c5b87255181c050800000000000000
+      internalID: 5819074396275039241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_8
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 1089
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 771c5f576e9687ca0800000000000000
+      internalID: -6018944463438233225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_9
+      rect:
+        serializedVersion: 2
+        x: 1592
+        y: 1089
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3349dbfd3014b2040800000000000000
+      internalID: 4623860927320396851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_10
+      rect:
+        serializedVersion: 2
+        x: 2111
+        y: 1089
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83bd7dd33bef26780800000000000000
+      internalID: -8691104285081478344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_11
+      rect:
+        serializedVersion: 2
+        x: 2392
+        y: 1089
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74fa73cb76b3cd260800000000000000
+      internalID: 7123634027318718279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_12
+      rect:
+        serializedVersion: 2
+        x: 2911
+        y: 1089
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aa0f147d30070360800000000000000
+      internalID: 7135672398533036706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_13
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 912
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec8f7fbe13222b9c0800000000000000
+      internalID: -3913027528423900978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_14
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 582
+        width: 228
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ec8a2d426b59dc0800000000000000
+      internalID: -3632797255135080810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_15
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 583
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85c2970f1153653b0800000000000000
+      internalID: -5524169541758145448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_16
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 568
+        width: 319
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e53791a0af667310800000000000000
+      internalID: 1402431069668980196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_17
+      rect:
+        serializedVersion: 2
+        x: 1276
+        y: 583
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7336888407a73b4a0800000000000000
+      internalID: -6578780007986339017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_18
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 583
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630004b4252790660800000000000000
+      internalID: 7352533564434415670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_19
+      rect:
+        serializedVersion: 2
+        x: 1725
+        y: 568
+        width: 319
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a276f3755351c10b0800000000000000
+      internalID: -5756702904845113558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_20
+      rect:
+        serializedVersion: 2
+        x: 2076
+        y: 583
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d28b9d4988557a270800000000000000
+      internalID: 8261666086535673901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_21
+      rect:
+        serializedVersion: 2
+        x: 2351
+        y: 583
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c347621e33410d250800000000000000
+      internalID: 5967291719319188540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_22
+      rect:
+        serializedVersion: 2
+        x: 2525
+        y: 568
+        width: 319
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94ff8c0356364cba0800000000000000
+      internalID: -6069617111527260343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_23
+      rect:
+        serializedVersion: 2
+        x: 2876
+        y: 583
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eb4cb78b48cdf290800000000000000
+      internalID: -7854901948338910236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_24
+      rect:
+        serializedVersion: 2
+        x: 3151
+        y: 583
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36aba727f5ab53500800000000000000
+      internalID: 375411063060609635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_25
+      rect:
+        serializedVersion: 2
+        x: 3325
+        y: 568
+        width: 319
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7358e997f13a36630800000000000000
+      internalID: 3919155456322209079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wagon_wars_meble_26
+      rect:
+        serializedVersion: 2
+        x: 3676
+        y: 583
+        width: 148
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bfbd408fd6e67c10800000000000000
+      internalID: 2051080527918514096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9ae5c51150e14d243b220ceefd59741f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      wagon_wars_meble_0: -3028098874889656438
+      wagon_wars_meble_1: -8363055106617415561
+      wagon_wars_meble_10: -8691104285081478344
+      wagon_wars_meble_11: 7123634027318718279
+      wagon_wars_meble_12: 7135672398533036706
+      wagon_wars_meble_13: -3913027528423900978
+      wagon_wars_meble_14: -3632797255135080810
+      wagon_wars_meble_15: -5524169541758145448
+      wagon_wars_meble_16: 1402431069668980196
+      wagon_wars_meble_17: -6578780007986339017
+      wagon_wars_meble_18: 7352533564434415670
+      wagon_wars_meble_19: -5756702904845113558
+      wagon_wars_meble_2: -8531878245154922422
+      wagon_wars_meble_20: 8261666086535673901
+      wagon_wars_meble_21: 5967291719319188540
+      wagon_wars_meble_22: -6069617111527260343
+      wagon_wars_meble_23: -7854901948338910236
+      wagon_wars_meble_24: 375411063060609635
+      wagon_wars_meble_25: 3919155456322209079
+      wagon_wars_meble_26: 2051080527918514096
+      wagon_wars_meble_3: 2370963759697149939
+      wagon_wars_meble_4: 3046675178865244807
+      wagon_wars_meble_5: -2784601393273417866
+      wagon_wars_meble_6: 6299227219533889269
+      wagon_wars_meble_7: 5819074396275039241
+      wagon_wars_meble_8: -6018944463438233225
+      wagon_wars_meble_9: 4623860927320396851
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

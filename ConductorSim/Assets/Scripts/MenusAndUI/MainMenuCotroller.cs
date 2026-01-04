@@ -37,13 +37,12 @@ public class MainMenuCotroller : MonoBehaviour
 
     public void ContinueGame()
     {
-        print("continue game");
         SceneManager.LoadScene("GameScene");
     }
 
     public void NewGame()
     {
-        print("new game");
+        GameManager.SetDefaultData();
         SceneManager.LoadScene("GameScene");     
     }
 

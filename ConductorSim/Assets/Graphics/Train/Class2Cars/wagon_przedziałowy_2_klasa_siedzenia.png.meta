@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 0da573a4dbee2e24ca5d814cd460a753
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6316723407624117192
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_0"
+  - first:
+      213: 3697220220892416620
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_1"
+  - first:
+      213: 6521986995451857259
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_2"
+  - first:
+      213: -7208204967284830079
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_3"
+  - first:
+      213: -5710167629464779897
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_4"
+  - first:
+      213: -8978725706942940436
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_5"
+  - first:
+      213: 2471233147066642155
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_6"
+  - first:
+      213: -5406994405343046099
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_7"
+  - first:
+      213: 3856374423405341111
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_8"
+  - first:
+      213: 818719338783247133
+    second: "wagon_przedzia\u0142owy_2_klasa_siedzenia_9"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_0"
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 826
+        width: 3468
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8346b28378d7658a0800000000000000
+      internalID: -6316723407624117192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_1"
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 826
+        width: 184
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6a0fa2c33a2f4330800000000000000
+      internalID: 3697220220892416620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_2"
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 826
+        width: 171
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6900ad0e90c28a50800000000000000
+      internalID: 6521986995451857259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_3"
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 826
+        width: 184
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18018c0e5cf47fb90800000000000000
+      internalID: -7208204967284830079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_4"
+      rect:
+        serializedVersion: 2
+        x: 1671
+        y: 826
+        width: 171
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78341d57bc861c0b0800000000000000
+      internalID: -5710167629464779897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_5"
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 826
+        width: 184
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cea7ff57a88256380800000000000000
+      internalID: -8978725706942940436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_6"
+      rect:
+        serializedVersion: 2
+        x: 2381
+        y: 826
+        width: 171
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beee31044759b4220800000000000000
+      internalID: 2471233147066642155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_7"
+      rect:
+        serializedVersion: 2
+        x: 2823
+        y: 826
+        width: 184
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26d00f5c3f76f4b0800000000000000
+      internalID: -5406994405343046099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_8"
+      rect:
+        serializedVersion: 2
+        x: 3091
+        y: 826
+        width: 171
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b92afb2b18948530800000000000000
+      internalID: 3856374423405341111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "wagon_przedzia\u0142owy_2_klasa_siedzenia_9"
+      rect:
+        serializedVersion: 2
+        x: 3533
+        y: 826
+        width: 184
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1b0bee96ecac5b00800000000000000
+      internalID: 818719338783247133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3b600c902bc8b5d4cb639acd5c202274
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_0": -6316723407624117192
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_1": 3697220220892416620
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_2": 6521986995451857259
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_3": -7208204967284830079
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_4": -5710167629464779897
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_5": -8978725706942940436
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_6": 2471233147066642155
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_7": -5406994405343046099
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_8": 3856374423405341111
+      "wagon_przedzia\u0142owy_2_klasa_siedzenia_9": 818719338783247133
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

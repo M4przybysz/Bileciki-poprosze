@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     //=====================================================================================================
     // External elements
     [SerializeField] TicketCheckingScreenController TicketCheckingScreen; 
+    [SerializeField] SpriteRenderer playerSprite;
+    [SerializeField] Animator playerAnimator;
     
     // Unity components
     Rigidbody2D playerRigidbody;
@@ -70,6 +72,10 @@ public class PlayerController : MonoBehaviour
             input.y = Input.GetAxisRaw("Vertical");
             input.Normalize();
 
+            // Set animation based on movement
+            playerAnimator.SetFloat("inputX", input.x);
+            playerAnimator.SetFloat("inputY", input.y);
+
             // Sprint while holding shift
             bool sprinting = Input.GetKey(KeyCode.LeftShift);
 
@@ -100,6 +106,11 @@ public class PlayerController : MonoBehaviour
         {
             targetPassenger = collision.transform.parent.GetComponent<Passenger>();
         }
+
+        if(collision.CompareTag("PlayerSpriteTrigger"))
+        {
+            playerSprite.sortingOrder = -2;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -107,6 +118,11 @@ public class PlayerController : MonoBehaviour
         if(collision.CompareTag("PassengerTrigger") && targetPassenger == collision.transform.parent.GetComponent<Passenger>()) 
         { 
             targetPassenger = null; 
+        }
+
+        if(collision.CompareTag("PlayerSpriteTrigger"))
+        {
+            playerSprite.sortingOrder = 2;
         }
     }
 
@@ -117,5 +133,6 @@ public class PlayerController : MonoBehaviour
     {
         print("Starting converstation with " + targetPassenger.FirstName);
         TicketCheckingScreen.ShowTicketCheckingScreen();
+        TicketCheckingScreen.PullTicketData(targetPassenger);
     }
 }
