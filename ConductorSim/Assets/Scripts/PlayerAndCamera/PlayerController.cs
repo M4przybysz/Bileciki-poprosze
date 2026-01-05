@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement variables
     Vector2 input;
-    float speed = 3f;
+    float speed = 2f;
     float speedModifier = defaultSpeedModifier;
 
     // Action limiters
