@@ -38,6 +38,11 @@ public class Passenger : MonoBehaviour
 
     // Passenger's documents
     public TicketData ticketData = new TicketData();
+    public PersonalIDData personalIDData = null;
+    public SchoolIDData schoolIDData = null;
+    public UniversityIDData universityIDData = null;
+    public ArmyIDData armyIDData = null;
+    public PensionerIDData pensionerIDData = null;
     
     //=====================================================================================================
     // Variable encapsulation
@@ -152,9 +157,9 @@ public class Passenger : MonoBehaviour
         // Calculate PESEL
         PESEL = GeneratePesel(DateOfBirth, Gender);
 
-        PrintProfile();
-
         GenerateTicket();
+
+        PrintProfile();
     }
 
     void SetCustomPassenger()
@@ -179,9 +184,9 @@ public class Passenger : MonoBehaviour
         // Calculate PESEL
         PESEL = GeneratePesel(DateOfBirth, Gender);
 
-        PrintProfile();
-
         GenerateTicket();
+
+        PrintProfile();
     }
 
     string GeneratePesel(DateTime date, PassengerGender gender)
@@ -332,6 +337,100 @@ public class Passenger : MonoBehaviour
 
         ticketData.numer += controlNumber;
         ticketData.seriaINumer = ticketData.seria + ticketData.numer;
+
+        // Generate documents passenger needs
+        switch(ticketData.taryfa)
+        {
+            case "N":
+                GeneratePersonalID();
+                break;
+            case "S":
+                GenerateUniversityID();
+                break;
+            case "D":
+                GenerateSchoolID();
+                break;
+            case "E":
+                GeneratePersonalID();
+                GenerateRetiredID();
+                break;
+            case "Z":
+                GenerateArmyID();
+                break;
+            default:
+                Debug.LogError($"Unknown tariff: {ticketData.taryfa} - can't generate documents.");
+                break;
+        }
+    }
+
+    void GenerateSchoolID()
+    {
+        schoolIDData = new(); // Create new school ID data for the passenger
+
+        // Set already generated passenger data
+        schoolIDData.name = FirstName + " " + LastName;
+        schoolIDData.signature = schoolIDData.name;
+        schoolIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
+        schoolIDData.pesel = PESEL;
+
+        // Generate new data
+
+    }
+
+    void GenerateUniversityID()
+    {
+        universityIDData = new(); // Create new university ID data for the passenger
+
+        // Set already generated passenger data
+        universityIDData.name = FirstName + " " + LastName;
+        universityIDData.signature = universityIDData.name;
+        universityIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
+
+        // Generate new data
+
+    }
+
+    void GeneratePersonalID()
+    {
+        personalIDData = new(); // Create new personal ID data for the passenger
+
+        // Set already generated passenger data
+        personalIDData.firstName = FirstName;
+        personalIDData.lastName = LastName;
+        personalIDData.familyName = LastName;
+        personalIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
+        personalIDData.gender = Gender.ToString();
+        personalIDData.pesel = PESEL;
+
+        // Generate new data
+
+    }
+
+    void GenerateArmyID()
+    {
+        armyIDData = new(); // Create new army ID data
+
+        // Set already generated passenger data
+        armyIDData.firstName = FirstName;
+        armyIDData.lastName = LastName;
+        armyIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
+        armyIDData.gender = Gender.ToString();
+        armyIDData.pesel = PESEL;
+
+        // Generate new data
+
+    }
+
+    void GenerateRetiredID()
+    {
+        pensionerIDData = new(); // Create new retired ID data for the passenger
+
+        // Set already generated passenger data
+        pensionerIDData.firstName = FirstName;
+        pensionerIDData.lastName = LastName;
+
+        // Generate new data
+
     }
 
     //=====================================================================================================
@@ -355,8 +454,7 @@ public class TicketData
     // Reference values
     public const int numberOfStartStations = 9;
     public const float priceForClass2 = 5.5f, priceForClass1 = 9.25f, PTUPriceModifier = 0.07f;
-    public static readonly string[] stations = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", 
-        "Łowicz Główny", "Włocławek", "Toruń Główny", "Bydgoszcz Główna", "Piła Główna", "Kołobrzeg"};
+    public static readonly string[] stations = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", "Łowicz Główny", "Włocławek", "Toruń Główny", "Bydgoszcz Główna", "Piła Główna", "Kołobrzeg"};
     public static Dictionary<string, string> kasyWydania = new Dictionary<string, string>
     {
         ["Rzeszów Główny"] = "Rzeszów\n\n12345789\n",
@@ -371,15 +469,77 @@ public class TicketData
     };
     public static readonly string[] ticketSeries = {"A", "B", "C"};
     public static readonly string[] tariffCodes = {"N", "S", "D", "E", "Z"};
-    public readonly static Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float>
-        { ["N"] = 1f, ["S"] = 0.49f, ["D"] = 0.63f, ["E"] = 0.7f, ["Z"] = 0.22f, };
-    public readonly static Dictionary<string, int> tariffMinAge = new Dictionary<string, int>
-        { ["N"] = 0, ["S"] = 19, ["D"] = 4, ["E"] = 60, ["Z"] = 18, };
-    public readonly static Dictionary<string, int> tariffMaxAge = new Dictionary<string, int>
-        { ["N"] = 1000, ["S"] = 26, ["D"] = 18, ["E"] = 1000, ["Z"] = 63, };
+    public readonly static Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float> { ["N"] = 1f, ["S"] = 0.49f, ["D"] = 0.63f, ["E"] = 0.7f, ["Z"] = 0.22f, };
+    public readonly static Dictionary<string, int> tariffMinAge = new Dictionary<string, int> { ["N"] = 0, ["S"] = 19, ["D"] = 4, ["E"] = 60, ["Z"] = 18, };
+    public readonly static Dictionary<string, int> tariffMaxAge = new Dictionary<string, int> { ["N"] = 1000, ["S"] = 26, ["D"] = 18, ["E"] = 1000, ["Z"] = 63, };
 
     // Data varaibles
     public int carNumber, seatNumber;
     public string kasaWydania, klasa, przejazd, liczbaOsob, taryfa, waznyWTam, waznyDoTam, waznyWPowrot, 
         waznyDoPowrot, stacjaOd, stacjaDo, stacjaPrzez, seria, numer, seriaINumer, stacje, PTU, cena;
+}
+
+public class SchoolIDData // Class responsible for storing the data of passenger's schools ID
+{
+    // Constant placeholder elements
+    public const string address = "----------";
+
+    // Elements taken from the passenger
+    public string name, signature, dateOfBirth, pesel; 
+    
+    // Generated elements 
+    public string schoolIDNumber, principalName, schoolIDDate;
+    public string[] expirationYears;
+}
+
+public class UniversityIDData // Class responsible for storing the data of passenger's university ID
+{
+    // Constant placeholder elements
+    public const string address = "----------";
+
+    // Elements taken from the passenger
+    public string name, signature, dateOfBirth;
+    
+    // Generated elements 
+    public string albumNumber, principalName, universityIDDate;
+    public string[] expirationYears;
+}
+
+public class PersonalIDData // Class responsible for storing the data of passenger's personal ID
+{
+    // Reference values
+    public static string[] eveColors = {"NIEBIESKIE", "BRĄZOWE", "ZIELONE", "PIWNE", "SZARE"};
+
+    // Constant placeholder elements
+    public const string address = "----------", issuingAuthority = "----- ----- -----";
+
+    // Elements taken from the passenger
+    public string firstName, lastName, familyName, dateOfBirth, gender, pesel;
+    
+    // Generated elements 
+    public string height, eyeColor, releaseDate, expirationDate, parentsNames;
+}
+
+public class ArmyIDData // Class responsible for storing the data of passenger's army ID
+{
+    // Reference values
+    public static string[] militaryRanks = {"SZEREGOWY", "STARSZY SZEREGOWY", "STARSZY SZEREGOWY SPECJALISTA", "KAPRAL", "STARSZY KAPRAL", "PLUTONOWY", "SIERŻANT", "STARSZY SIERŻANT", "MŁODSZY CHORĄŻY", "CHORĄŻY", "STARSZY CHORĄŻY", "STARSZY CHORĄŻY SZTABOWY", "PODPORUCZNIK", "PORUCZNIK", "KAPITAN", "MAJOR", "PODPUŁKOWNIK", "PUŁKOWNIK", "GENERAŁ BRYGADY", "GENERAŁ DYWIZJI", "GENERAŁ BRONI", "GENERAŁ", "MARYNARZ", "STARSZY MARYNARZ", "STARSZY MARYNARZ SPECJALISTA", "MAT", "STARSZY MAT", "BOSMANMAT", "BOSMAN", "STARSZY BOSNAM", "MŁODSZY CHORĄŻY MARYNARKI", "CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY SZTABOWY MARYNARKI", "PODPORUCZNIK MARYNARKI", "PORUCZNIK MARYNARKI", "KAPITAN MARYNARKI", "KOMANDOR PODPORUCZNIK", "KOMANDOR PORUCZNIK", "KOMANDOR", "KONTRADMIRAŁ", "WICEADMIRAŁ", "ADMIRAŁ FLOTY", "ADMIRAŁ"};
+
+    // Constant placeholder elements
+    public const string address = "----------";
+
+    // Elements taken from the passenger
+    public string firstName, lastName, dateOfBirth, gender, pesel;
+    
+    // Generated elements 
+    public string releaseDate, expirationDate, militaryRank, seriesAndNumber;
+}
+
+public class PensionerIDData // Class responsible for storing the data of passenger's pensioner ID
+{
+    // Elements taken from the passenger
+    public string firstName, lastName;
+    
+    // Generated elements 
+    public string benefitNumber;
 }
