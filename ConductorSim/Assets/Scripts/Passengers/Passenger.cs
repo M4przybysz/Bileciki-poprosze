@@ -352,7 +352,7 @@ public class Passenger : MonoBehaviour
                 break;
             case "E":
                 GeneratePersonalID();
-                GenerateRetiredID();
+                GeneratePensionerID();
                 break;
             case "Z":
                 GenerateArmyID();
@@ -374,7 +374,12 @@ public class Passenger : MonoBehaviour
         schoolIDData.pesel = PESEL;
 
         // Generate new data
+        if(UnityEngine.Random.Range(0, 2) == 0) { schoolIDData.principalName = maleFirstNames[UnityEngine.Random.Range(0, maleFirstNames.Length)] + " " + maleLastNames[UnityEngine.Random.Range(0, maleLastNames.Length)]; }
+        else { schoolIDData.principalName = femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)] + " " + femaleLastNames[UnityEngine.Random.Range(0, femaleLastNames.Length)]; }
 
+        schoolIDData.startYearsAgo = UnityEngine.Random.Range(0, 6);
+        schoolIDData.releaseDate = new DateTime(GameManager.currentDateTime.Year - schoolIDData.startYearsAgo).ToString();
+        schoolIDData.schoolIDNumber = UnityEngine.Random.Range(1000, 5000).ToString() + "/20" + schoolIDData.releaseDate.Substring(8, 2);
     }
 
     void GenerateUniversityID()
@@ -387,7 +392,12 @@ public class Passenger : MonoBehaviour
         universityIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
 
         // Generate new data
+        if(UnityEngine.Random.Range(0, 2) == 0) { universityIDData.releaserName = maleFirstNames[UnityEngine.Random.Range(0, maleFirstNames.Length)] + " " + maleLastNames[UnityEngine.Random.Range(0, maleLastNames.Length)]; }
+        else { universityIDData.releaserName = femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)] + " " + femaleLastNames[UnityEngine.Random.Range(0, femaleLastNames.Length)]; }
 
+        universityIDData.startYearsAgo = UnityEngine.Random.Range(0, 6);
+        universityIDData.universityIDDate = new DateTime(GameManager.currentDateTime.Year - universityIDData.startYearsAgo).ToString();
+        universityIDData.albumNumber = UnityEngine.Random.Range(1000000, 10000000).ToString();
     }
 
     void GeneratePersonalID()
@@ -395,15 +405,24 @@ public class Passenger : MonoBehaviour
         personalIDData = new(); // Create new personal ID data for the passenger
 
         // Set already generated passenger data
-        personalIDData.firstName = FirstName;
-        personalIDData.lastName = LastName;
-        personalIDData.familyName = LastName;
+        personalIDData.firstName = FirstName.ToUpper();
+        personalIDData.lastName = LastName.ToUpper();
+        personalIDData.familyName = LastName.ToUpper();
         personalIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
         personalIDData.gender = Gender.ToString();
         personalIDData.pesel = PESEL;
 
         // Generate new data
+        personalIDData.height = UnityEngine.Random.Range(140, 211).ToString() + " cm";
+        personalIDData.eyeColor = PersonalIDData.eyeColors[UnityEngine.Random.Range(0, PersonalIDData.eyeColors.Length)];
 
+        int releaseYear = UnityEngine.Random.Range(GameManager.currentDateTime.Year - 9, GameManager.startingInGameDate.Year);
+        int releaseMonth = UnityEngine.Random.Range(1, 13);
+        int releaseDay = UnityEngine.Random.Range(1, 29);
+        personalIDData.releaseDate = new DateTime(releaseYear, releaseMonth, releaseDay).ToString("dd.MM.yyyy");
+        personalIDData.expirationDate = new DateTime(releaseYear + 10, releaseMonth, releaseDay).ToString();
+
+        personalIDData.parentsNames = maleFirstNames[UnityEngine.Random.Range(0, maleFirstNames.Length)].ToUpper() + " " + femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)].ToUpper(); 
     }
 
     void GenerateArmyID()
@@ -418,10 +437,17 @@ public class Passenger : MonoBehaviour
         armyIDData.pesel = PESEL;
 
         // Generate new data
+        int releaseYear = UnityEngine.Random.Range(GameManager.currentDateTime.Year - 9, GameManager.startingInGameDate.Year);
+        int releaseMonth = UnityEngine.Random.Range(1, 13);
+        int releaseDay = UnityEngine.Random.Range(1, 29);
+        armyIDData.releaseDate = new DateTime(releaseYear, releaseMonth, releaseDay).ToString("dd.MM.yyyy");
+        armyIDData.expirationDate = new DateTime(releaseYear + 10, releaseMonth, releaseDay).ToString();
 
+        armyIDData.militaryRank = ArmyIDData.militaryRanks[UnityEngine.Random.Range(0, ArmyIDData.militaryRanks.Length)];
+        armyIDData.seriesAndNumber = "WWWW " + UnityEngine.Random.Range(1000, 10000).ToString();
     }
 
-    void GenerateRetiredID()
+    void GeneratePensionerID()
     {
         pensionerIDData = new(); // Create new retired ID data for the passenger
 
@@ -430,7 +456,7 @@ public class Passenger : MonoBehaviour
         pensionerIDData.lastName = LastName;
 
         // Generate new data
-
+        pensionerIDData.benefitNumber = "ABC/" + UnityEngine.Random.Range(1000000, 10000000).ToString() + "/XX";
     }
 
     //=====================================================================================================
@@ -481,37 +507,37 @@ public class TicketData
 
 public class SchoolIDData // Class responsible for storing the data of passenger's schools ID
 {
-    // Constant placeholder elements
-    public const string address = "----------";
+    // Constant and placeholder elements
+    public const string address = "---------- --/--", expirationYear = "06";
 
     // Elements taken from the passenger
     public string name, signature, dateOfBirth, pesel; 
     
     // Generated elements 
-    public string schoolIDNumber, principalName, schoolIDDate;
-    public string[] expirationYears;
+    public int startYearsAgo;
+    public string schoolIDNumber, principalName, releaseDate;
 }
 
 public class UniversityIDData // Class responsible for storing the data of passenger's university ID
 {
-    // Constant placeholder elements
-    public const string address = "----------";
+    // Constant and placeholder elements
+    public const string address = "---------- --/--", expirationYear = "2006";
 
     // Elements taken from the passenger
     public string name, signature, dateOfBirth;
     
     // Generated elements 
-    public string albumNumber, principalName, universityIDDate;
-    public string[] expirationYears;
+    public int startYearsAgo;
+    public string albumNumber, releaserName, universityIDDate;
 }
 
 public class PersonalIDData // Class responsible for storing the data of passenger's personal ID
 {
     // Reference values
-    public static string[] eveColors = {"NIEBIESKIE", "BRĄZOWE", "ZIELONE", "PIWNE", "SZARE"};
+    public static string[] eyeColors = {"NIEBIESKIE", "BRĄZOWE", "ZIELONE", "PIWNE", "SZARE"};
 
-    // Constant placeholder elements
-    public const string address = "----------", issuingAuthority = "----- ----- -----";
+    // Constant and placeholder elements
+    public const string address = "---------- --/--", issuingAuthority = "----- ----- -----";
 
     // Elements taken from the passenger
     public string firstName, lastName, familyName, dateOfBirth, gender, pesel;
@@ -525,8 +551,8 @@ public class ArmyIDData // Class responsible for storing the data of passenger's
     // Reference values
     public static string[] militaryRanks = {"SZEREGOWY", "STARSZY SZEREGOWY", "STARSZY SZEREGOWY SPECJALISTA", "KAPRAL", "STARSZY KAPRAL", "PLUTONOWY", "SIERŻANT", "STARSZY SIERŻANT", "MŁODSZY CHORĄŻY", "CHORĄŻY", "STARSZY CHORĄŻY", "STARSZY CHORĄŻY SZTABOWY", "PODPORUCZNIK", "PORUCZNIK", "KAPITAN", "MAJOR", "PODPUŁKOWNIK", "PUŁKOWNIK", "GENERAŁ BRYGADY", "GENERAŁ DYWIZJI", "GENERAŁ BRONI", "GENERAŁ", "MARYNARZ", "STARSZY MARYNARZ", "STARSZY MARYNARZ SPECJALISTA", "MAT", "STARSZY MAT", "BOSMANMAT", "BOSMAN", "STARSZY BOSNAM", "MŁODSZY CHORĄŻY MARYNARKI", "CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY SZTABOWY MARYNARKI", "PODPORUCZNIK MARYNARKI", "PORUCZNIK MARYNARKI", "KAPITAN MARYNARKI", "KOMANDOR PODPORUCZNIK", "KOMANDOR PORUCZNIK", "KOMANDOR", "KONTRADMIRAŁ", "WICEADMIRAŁ", "ADMIRAŁ FLOTY", "ADMIRAŁ"};
 
-    // Constant placeholder elements
-    public const string address = "----------";
+    // Constant and placeholder elements
+    public const string address = "---------- --/--";
 
     // Elements taken from the passenger
     public string firstName, lastName, dateOfBirth, gender, pesel;
