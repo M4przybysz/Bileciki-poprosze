@@ -480,7 +480,8 @@ public class Passenger : MonoBehaviour
         pensionerIDData.lastName = LastName;
 
         // Generate new data
-        pensionerIDData.benefitNumber = "ABC/" + UnityEngine.Random.Range(1000000, 10000000).ToString() + "/XX";
+        pensionerIDData.benefitNumber = UnityEngine.Random.Range(10000000, 100000000).ToString() + "/XXE";
+        pensionerIDData.PensionerIDNumber = UnityEngine.Random.Range(10, 100).ToString() + "/" + UnityEngine.Random.Range(0, 10).ToString() + "/E/" + UnityEngine.Random.Range(100000, 1000000).ToString() + "/XX";
     }
 
     //=====================================================================================================
@@ -591,5 +592,5 @@ public class PensionerIDData // Class responsible for storing the data of passen
     public string firstName, lastName;
     
     // Generated elements 
-    public string benefitNumber;
+    public string benefitNumber, PensionerIDNumber;
 }
