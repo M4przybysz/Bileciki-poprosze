@@ -214,7 +214,31 @@ public class Passenger : MonoBehaviour
 
     void PrintProfile()
     {
-        print($"Created new Passenger:\n  - Type: {Type};\n  - Character: {Character};\n  - Gender: {Gender};\n  - Name: {FirstName} {LastName};\n  - Date of birth: {DateOfBirth.Date};\n  - Age: {Age};\n  - PESEL: {PESEL}");
+        // Set default output - passenger personal data
+        string output = $"Created new Passenger:\n  - Type: {Type};\n  - Character: {Character};\n  - Gender: {Gender};\n  - Name: {FirstName} {LastName};\n  - Date of birth: {DateOfBirth.Date};\n  - Age: {Age};\n  - PESEL: {PESEL}\n\n";
+        
+        // Add ticket data
+        output += $"Ticket data:\n  - Car and seat: {ticketData.carNumber}/{ticketData.seatNumber}\n  - Ticket office: {ticketData.kasaWydania}\n  - Class and tariff: {ticketData.klasa} --- {ticketData.taryfa}\n  - Ride dates: {ticketData.waznyWTam} --- {ticketData.waznyDoTam}\n  - Stations: {ticketData.stacjaOd} --> {ticketData.stacjaPrzez} --> {ticketData.stacjaDo}\n  - Series and number: {ticketData.seriaINumer}\n  - Number of stations and price: {ticketData.stacje} >>> {ticketData.PTU} >>> {ticketData.cena}\n\n";
+        
+        // Add documents
+        output += "DOCUMENTS:\n\n";
+
+        if(personalIDData != null) { output += $"Personal ID:\n  - Name: {personalIDData.firstName} {personalIDData.lastName}\n  - Family last name and parents names: {personalIDData.familyName} | {personalIDData.parentsNames}\n  - Gender, date of birth and PESEL: {personalIDData.gender} | {personalIDData.dateOfBirth} | {personalIDData.pesel}\n  - Height and eye color: {personalIDData.height} | {personalIDData.eyeColor}\n  - Dates: {personalIDData.releaseDate} --- {personalIDData.expirationDate}\n\n"; }
+        else { output += "Personal ID == NULL\n\n"; }
+
+        if(schoolIDData != null) { output += $"School ID:\n  - Name and signature: {schoolIDData.name} | {schoolIDData.signature}\n  - Date of birth and PESEL: {schoolIDData.dateOfBirth} | {schoolIDData.pesel}\n  - School ID number: {schoolIDData.schoolIDNumber}\n  - Principal's name: {schoolIDData.principalName}\n  - Release date and expiration year: {schoolIDData.releaseDate} | {SchoolIDData.expirationYear}\n\n"; }
+        else { output += "School ID == NULL\n\n"; }
+
+        if(universityIDData != null) { output += $"University ID:\n  - Name and signature: {universityIDData.name} | {universityIDData.signature}\n  - Album number and date of birth: {universityIDData.albumNumber} | {universityIDData.dateOfBirth}\n  - Releaser, release date and expiration date: {universityIDData.releaserName} | {universityIDData.releaseDate} | {UniversityIDData.expirationYear}\n\n"; }
+        else { output += "University ID == NULL\n\n"; }
+
+        if(armyIDData != null) { output += $"Army ID:\n  - Name: {armyIDData.firstName} {armyIDData.lastName}\n  - Gender, date of birth and PESEL: {armyIDData.gender} | {armyIDData.dateOfBirth} | {armyIDData.pesel}\n  - Military rank: {armyIDData.militaryRank}\n  - Series number: {armyIDData.seriesAndNumber}\n  - Dates: {armyIDData.releaseDate} --- {armyIDData.expirationDate}\n\n"; }
+        else { output += "Army ID == NULL\n\n"; }
+
+        if(pensionerIDData != null) { output += $"Pensioner ID:\n  - Name: {pensionerIDData.firstName} {pensionerIDData.lastName}\n  - Benefit number: {pensionerIDData.benefitNumber}\n\n"; }
+        else { output += "Pensioner ID == NULL\n\n"; }
+
+        print(output); // Print the entire generated passenger
     }
 
     void GenerateTicket()
@@ -396,7 +420,7 @@ public class Passenger : MonoBehaviour
         else { universityIDData.releaserName = femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)] + " " + femaleLastNames[UnityEngine.Random.Range(0, femaleLastNames.Length)]; }
 
         universityIDData.startYearsAgo = UnityEngine.Random.Range(0, 6);
-        universityIDData.universityIDDate = new DateTime(GameManager.currentDateTime.Year - universityIDData.startYearsAgo).ToString();
+        universityIDData.releaseDate = new DateTime(GameManager.currentDateTime.Year - universityIDData.startYearsAgo).ToString();
         universityIDData.albumNumber = UnityEngine.Random.Range(1000000, 10000000).ToString();
     }
 
@@ -528,7 +552,7 @@ public class UniversityIDData // Class responsible for storing the data of passe
     
     // Generated elements 
     public int startYearsAgo;
-    public string albumNumber, releaserName, universityIDDate;
+    public string albumNumber, releaserName, releaseDate;
 }
 
 public class PersonalIDData // Class responsible for storing the data of passenger's personal ID
@@ -552,7 +576,7 @@ public class ArmyIDData // Class responsible for storing the data of passenger's
     public static string[] militaryRanks = {"SZEREGOWY", "STARSZY SZEREGOWY", "STARSZY SZEREGOWY SPECJALISTA", "KAPRAL", "STARSZY KAPRAL", "PLUTONOWY", "SIERŻANT", "STARSZY SIERŻANT", "MŁODSZY CHORĄŻY", "CHORĄŻY", "STARSZY CHORĄŻY", "STARSZY CHORĄŻY SZTABOWY", "PODPORUCZNIK", "PORUCZNIK", "KAPITAN", "MAJOR", "PODPUŁKOWNIK", "PUŁKOWNIK", "GENERAŁ BRYGADY", "GENERAŁ DYWIZJI", "GENERAŁ BRONI", "GENERAŁ", "MARYNARZ", "STARSZY MARYNARZ", "STARSZY MARYNARZ SPECJALISTA", "MAT", "STARSZY MAT", "BOSMANMAT", "BOSMAN", "STARSZY BOSNAM", "MŁODSZY CHORĄŻY MARYNARKI", "CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY SZTABOWY MARYNARKI", "PODPORUCZNIK MARYNARKI", "PORUCZNIK MARYNARKI", "KAPITAN MARYNARKI", "KOMANDOR PODPORUCZNIK", "KOMANDOR PORUCZNIK", "KOMANDOR", "KONTRADMIRAŁ", "WICEADMIRAŁ", "ADMIRAŁ FLOTY", "ADMIRAŁ"};
 
     // Constant and placeholder elements
-    public const string address = "---------- --/--";
+    public const string address = "---------- --/--", militaryUnit = "----- ----- -----";
 
     // Elements taken from the passenger
     public string firstName, lastName, dateOfBirth, gender, pesel;
