@@ -8,7 +8,7 @@ public class UiController : MonoBehaviour
 
     void Start()
     {
-        // automatyczne pobranie UIDocument gdy skrypt jest na tym samym GameObject co komponent UIDocument
+
         if (uiDocument == null)
             uiDocument = GetComponent<UIDocument>();
 
@@ -20,8 +20,7 @@ public class UiController : MonoBehaviour
 
         var root = uiDocument.rootVisualElement;
 
-        // Upewnij siê, ¿e w UI Builder elementy maj¹ ustawione pole 'Name' na:
-        // "Open_Book", "Book" i "Resume_Button"
+
         VisualElement openBook = root.Q<VisualElement>("Open_Book");
         Button bookButton = root.Q<Button>("Book");
         Button resumeButton = root.Q<Button>("Resume_Button");
@@ -32,7 +31,7 @@ public class UiController : MonoBehaviour
             return;
         }
 
-        // domyœlnie ukryj okno ksi¹¿ki
+      
         openBook.style.display = DisplayStyle.None;
 
         if (bookButton != null)
