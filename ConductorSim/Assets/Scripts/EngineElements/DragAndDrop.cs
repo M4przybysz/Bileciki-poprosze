@@ -21,8 +21,8 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         Vector2 targetPosition = rectTransform.anchoredPosition + eventData.delta;
         rectTransform.anchoredPosition = new Vector2(
-            Mathf.Clamp(targetPosition.x, leftPositionLimit + rectTransform.rect.width / 2, rightPositionLimit - rectTransform.rect.width / 2), 
-            Mathf.Clamp(targetPosition.y, bottomPositionLimit + rectTransform.rect.height / 2, topPositionLimit - rectTransform.rect.height / 2));
+            Mathf.Clamp(targetPosition.x, leftPositionLimit + rectTransform.rect.width * rectTransform.localScale.x / 2, rightPositionLimit - rectTransform.rect.width * rectTransform.localScale.x / 2), 
+            Mathf.Clamp(targetPosition.y, bottomPositionLimit + rectTransform.rect.height * rectTransform.localScale.y / 2, topPositionLimit - rectTransform.rect.height * rectTransform.localScale.y / 2));
     }
 
     public void OnEndDrag(PointerEventData eventData)
