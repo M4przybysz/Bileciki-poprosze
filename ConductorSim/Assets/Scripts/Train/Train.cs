@@ -8,7 +8,6 @@ public class Train : MonoBehaviour
     //=====================================================================================================
     
     // Serialized elements
-    [SerializeField] PlayerController player;
     [SerializeField] Transform passengerCarsContainer;
     [SerializeField] Transform passengerContainer;
     [SerializeField] GameObject passengerPrefab;
@@ -28,7 +27,7 @@ public class Train : MonoBehaviour
     public static List<GameObject> passengersList = new List<GameObject>();
 
     // Route and rounds variables
-    public string trainState {get; private set;} // either "stop" or "ride"
+    string trainState; // either "stop" or "ride"
     public int currentStationNumber { get; private set; }
     string currentStationName;
     string nextStationName;
@@ -70,7 +69,7 @@ public class Train : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentStationNumber < endStationNumber && !player.isGamePaused)
+        if(currentStationNumber < endStationNumber)
         {
             targetTime -= Time.deltaTime * timeScale;
             // print(targetTime);
@@ -145,10 +144,5 @@ public class Train : MonoBehaviour
                 Destroy(passenger);
             }
         }
-    }
-
-    public void SkipRide()
-    {
-        targetTime = 10; // Skip time to the end of the raid
     }
 }
