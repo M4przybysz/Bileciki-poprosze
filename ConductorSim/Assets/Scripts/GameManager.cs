@@ -12,14 +12,24 @@ public class GameManager : MonoBehaviour
 
     // Constant game data
     public const int startingInGameYear = 2006;
-    public static DateTime startingInGameDate = new DateTime(startingInGameYear, 1, 18);
+    public static DateTime startingInGameDate = new(startingInGameYear, 1, 18);
+    public static float startingPlayerWallet = 84f;
+    public static Vector3 startingPlayerPosition = new(50, 0, 0);
 
     //========================================================================
     // Game save data
     //========================================================================
+
+    // Settings
     public static float SFXVolume;
     public static float musicVolume;
+
+    // General
     public static DateTime currentDateTime;
+
+    // Player
+    public static Vector3 playerPosition;
+    public static float playerWallet; 
 
     //========================================================================
     // Awake, Start and Update
@@ -47,24 +57,42 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public static void SetPlayerDataToSave()
+    {
+        if(GameObject.Find("Player").TryGetComponent<PlayerController>(out var player))
+        {
+            playerPosition = player.transform.position;
+            playerWallet = player.GetWallet();   
+        }
+    }
+
     //========================================================================
     // Managing save data
     //========================================================================
     class SaveData
     {
+        // Settings
         public float SFXVolume;
         public float musicVolume;
+
+        // General
         public long currentDateTime;
+
+        // Player
+        public Vector3 playerPosition;
+        public float playerWallet;
     }
 
     public static void SaveGameData()
     {
-        SaveData data = new();
+        SaveData data = new(); // Create new save data 
 
         // Set save data
         data.SFXVolume = SFXVolume;
         data.musicVolume = musicVolume;
         data.currentDateTime = currentDateTime.ToBinary();
+        data.playerPosition = playerPosition;
+        data.playerWallet = playerWallet;
 
         // Write json save file
         string json = JsonUtility.ToJson(data);
@@ -86,6 +114,8 @@ public class GameManager : MonoBehaviour
             SFXVolume = data.SFXVolume;
             musicVolume = data.musicVolume;
             currentDateTime = DateTime.FromBinary(data.currentDateTime);
+            playerPosition = data.playerPosition;
+            playerWallet = data.playerWallet;
         }
         else
         {
@@ -98,5 +128,7 @@ public class GameManager : MonoBehaviour
         // SFXVolume = 0.5f;
         // musicVolume = 0.5f;
         currentDateTime = startingInGameDate;
+        playerPosition = startingPlayerPosition;
+        playerWallet = startingPlayerWallet;
     }
 }
