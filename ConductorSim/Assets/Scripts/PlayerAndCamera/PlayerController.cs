@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public bool isInConversation = false;
     public bool isGamePaused = false;
 
+    // Player's wallet
+    float wallet;
+
     //=====================================================================================================
     // Start and Update
     //=====================================================================================================
@@ -43,6 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody2D>(); // Get rigidbody
         fatigueScript = GetComponent<PlayerFatigue>(); // Get player fatigue script
+
+        LoadPlayerData();
     }
 
     // Update is called once per frame
@@ -124,5 +129,19 @@ public class PlayerController : MonoBehaviour
         print("Starting converstation with " + targetPassenger.FirstName);
         TicketCheckingScreen.ShowTicketCheckingScreen();
         TicketCheckingScreen.PullPassengerData(targetPassenger);
+    }
+
+    public void AddMoneyToWallet(float moneyToAdd) { wallet += moneyToAdd; }
+
+    public void SetWallet(float moneyToSet) { wallet = moneyToSet; }
+    public float GetWallet() { return wallet; }
+    
+    void LoadPlayerData()
+    {
+        if(GameManager.Instance != null)
+        {
+            transform.position = GameManager.playerPosition;
+            wallet = GameManager.playerWallet;
+        }
     }
 }

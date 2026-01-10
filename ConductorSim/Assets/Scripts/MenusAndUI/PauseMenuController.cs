@@ -50,6 +50,7 @@ public class PauseMenuController : MonoBehaviour
 
     public void SaveAndQuit()
     {
+        GameManager.SetPlayerDataToSave();
         GameManager.SaveGameData();
         SceneManager.LoadScene("TitleScreen");
     }
