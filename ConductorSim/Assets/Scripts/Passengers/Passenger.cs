@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 public enum PassengerType {Special, Normal, Problematic};
@@ -14,12 +15,15 @@ public class Passenger : MonoBehaviour
 
     // Lists of first and last names
     static string[] femaleFirstNames = {"Maja", "Zofia", "Zuzanna", "Hanna", "Laura", "Julia", "Oliwia", "Pola", "Alicja", "Maria", "Aleksandra", "Barbara", "Magda", "Wanda", "Natalia", "Wiktoria", "Adrianna", "Joanna", "Klaudia", "Olga", "Jagoda", "Karolina", "Paulina", "Patrycja", "Katarzyna", "Dominika", "Martyna", "Marta", "Kinga", "Lena", "Małgorzata", "Mariola", "Anna", "Monika", "Gabriela", "Justyna", "Daria", "Angelika", "Izabela", "Emilia", "Sylwia", "Ewelina", "Nikola", "Ewa", "Sara", "Marcelina", "Aneta", "Anita", "Beata", "Dorota", "Dagmara", "Urszula", "Iwona", "Żaneta", "Malwina", "Wioletta", "Jolanta", "Łucja ", "Sonia", "Mariola", "Matylda", "Renata", "Antonina", "Anastazja", "Róża", "Krystyna", "Jadwiga", "Rozalia", "Teresa", "Inga", "Danuta", "Pamela", "Blanka", "Lucyna", "Melania", "Wanessa", "Grażyna"};
-    static string[] femaleLastNames = {"Abramczyk", "Adamiec", "Aleksandrowicz", "Andrzejczak", "Bakuła", "Bęben", "Białecka", "Boguszewska", "Borowska", "Brodka", "Brzezińska", "Ceglińska", "Chmiel", "Cicha", "Cieśla", "Czech", "Czekalska", "Ćwir", "Dąbrowska", "Dobosz", "Dobrzyńska", "Domagała", "Duda", "Fikus", "Frątczak", "Gałecka", "Gawron", "Gołąb", "Godlewska", "Grabarz", "Grochowska", "Jabłońska", "Jagiełło", "Janowska", "Jaskólska", "Jaworska", "Kaczmarek", "Kiełbasa", "Klimczuk", "Kmiecik", "Kołodziej", "Kot", "Kowalska", "Krawczyk", "Kucharczyk", "Kwiatkowska", "Lewandowska", "Lipska", "Łęcka", "Majewska", "Majchrzak", "Małek", "Mazur", "Młynarczyk", "Niewiarowska", "Nowak", "Ochocka", "Okulska", "Orlińska", "Ozorek", "Paliwoda", "Paprocka", "Piwowarczyk", "Pazura", "Piątek", "Piechota", "Puchała", "Rogalska", "Różyczka", "Sarna", "Sikora", "Sławuta", "Stasiuk", "Stępień", "Suta", "Sołtys", "Śliwińska", "Tomczak", "Tyszka", "Walczak", "Wasik", "Wilk", "Wójcik", "Wróblewska", "Zawada", "Zięba", "Żmuda", "Żukowska", "Niedźwiedzka", "Łagoda", "Cychowska"};
+    static string[] femaleLastNames = {"Abramczyk", "Adamiec", "Aleksandrowicz", "Andrzejczak", "Bakuła", "Bęben", "Białecka", "Boguszewska", "Borowska", "Brodka", "Brzezińska", "Ceglińska", "Chmiel", "Cicha", "Cieśla", "Czech", "Czekalska", "Ćwir", "Dąbrowska", "Dobosz", "Dobrzyńska", "Domagała", "Duda", "Fikus", "Frątczak", "Gałecka", "Gawron", "Gołąb", "Godlewska", "Grabarz", "Grochowska", "Jabłońska", "Jagiełło", "Janowska", "Jaskólska", "Jaworska", "Kaczmarek", "Kiełbasa", "Klimczuk", "Kmiecik", "Kołodziej", "Kot", "Kowalska", "Krawczyk", "Kucharczyk", "Kwiatkowska", "Lewandowska", "Lipska", "Łęcka", "Majewska", "Majchrzak", "Małek", "Mazur", "Młynarczyk", "Niewiarowska", "Nowak", "Ochocka", "Okulska", "Orlińska", "Ozorek", "Paliwoda", "Paprocka", "Piwowarczyk", "Pazura", "Piątek", "Piechota", "Puchała", "Rogalska", "Różyczka", "Sarna", "Sikora", "Sławuta", "Stasiuk", "Stępień", "Suta", "Sołtys", "Śliwińska", "Tomczak", "Tyszka", "Walczak", "Wasik", "Wilk", "Wójcik", "Wróblewska", "Zawada", "Zięba", "Żmuda", "Żukowska", "Niedźwiedzka", "Łagoda", "Cychowska", "Maksimczyk"};
     static string[] maleFirstNames = {"Jakub", "Mateusz", "Kacper", "Michał", "Maciej", "Sebastian", "Patryk", "Dawid", "Daniel", "Kamil", "Piotr", "Szymon", "Paweł", "Bartosz", "Bartłomiej", "Damian", "Dominik", "Adrian", "Marcin", "Grzegorz", "Łukasz", "Krzysztof", "Tomasz", "Filip", "Adam", "Karol", "Mikołaj", "Krystian", "Hubert", "Konrad", "Wojciech", "Rafał", "Jan", "Przemysław", "Oskar", "Wiktor", "Arkadiusz", "Aleksander", "Artur", "Robert", "Radosław", "Marek", "Eryk", "Marcel", "Norbert", "Andrzej", "Mariusz", "Maksymilian", "Jacek", "Miłosz", "Dariusz", "Cezary", "Igor", "Błażej", "Gabriel", "Alan", "Stanisław", "Nikodem", "Gracjan", "Albert", "Antoni", "Fabian", "Tobiasz", "Sławomir", "Tymoteusz", "Franciszek", "Kajetan", "Remigiusz", "Kornel", "Julian", "Dorian", "Cyprian", "Witold", "Oliwier", "Beniamin", "Samuel", "Józef", "Tadeusz", "Gerard"};
     static string[] maleLastNames = {"Abramczyk", "Adamiec", "Aleksandrowicz", "Andrzejczak", "Bakuła", "Bober", "Bęben", "Białecki", "Boguszewski", "Borowski", "Brzeziński", "Cegliński", "Chmiel", "Cichy", "Cieśla", "Czech", "Czekalski", "Dąbrowski", "Dobosz", "Dobrzyński", "Domagała", "Fikus", "Frątczak", "Gałecki", "Gawron", "Gołąb", "Grabarz", "Grochowski", "Jabłoński", "Jagiełło", "Janowski", "Jaskólski", "Jaworski", "Kaczmarek", "Klimczuk", "Kmicic", "Kołodziej", "Kot", "Kowalski", "Krawczyk", "Kucharczyk", "Kwiatkowski", "Lewandowski", "Lipski", "Majewski", "Majchrzak", "Małek", "Mazur", "Młynarczyk", "Nowak", "Ochocki", "Okulski", "Orliński", "Ozorek", "Paliwoda", "Paprocki", "Piwowarczyk", "Pazura", "Piątek", "Piechota", "Puchała", "Raskolnikow", "Rogalski", "Rzecki", "Sarna", "Sienkiewicz", "Sikora", "Sławuta", "Stasiuk", "Stępień", "Suta", "Sołtys", "Śliwiński", "Tomczak", "Tyszka", "Walczak", "Wasik", "Wilk", "Wójcik", "Wróblewski", "Zawada", "Zięba", "Żmuda", "Żukowski", "Karpiński", "Wokulski", "Przybył", "Grys", "Kałasa",};
 
     // Train reference
     static Train train;
+
+    // Default date
+    static DateTime defaulDateTime = new DateTime(2006, 1, 18);
 
     // General variables
     [SerializeField] bool doNotGeneratePassenger = false;
@@ -35,6 +39,11 @@ public class Passenger : MonoBehaviour
 
     // Passenger's documents
     public TicketData ticketData = new TicketData();
+    public PersonalIDData personalIDData = null;
+    public SchoolIDData schoolIDData = null;
+    public UniversityIDData universityIDData = null;
+    public ArmyIDData armyIDData = null;
+    public PensionerIDData pensionerIDData = null;
     
     //=====================================================================================================
     // Variable encapsulation
@@ -137,22 +146,21 @@ public class Passenger : MonoBehaviour
             LastName = maleLastNames[UnityEngine.Random.Range(0, maleLastNames.Length)];
         }
 
-        // Randomize date of birth
+        // Randomize date of birth and calculate age
         DateOfBirth = new DateTime(
             UnityEngine.Random.Range(1930, GameManager.startingInGameDate.Year - 12), 
             UnityEngine.Random.Range(1, 13),
-            UnityEngine.Random.Range(1, 29));
+            UnityEngine.Random.Range(1, 29));  
 
-        // Calculate age
         Age = GameManager.startingInGameDate.Year - DateOfBirth.Year;
-        if (dateOfBirth.Date > GameManager.startingInGameDate.AddYears(-Age)) { Age -= 1; }
+        if (dateOfBirth.Date > GameManager.startingInGameDate.AddYears(-Age)) { Age -= 1; } 
 
         // Calculate PESEL
         PESEL = GeneratePesel(DateOfBirth, Gender);
 
-        PrintProfile();
-
         GenerateTicket();
+
+        PrintProfile();
     }
 
     void SetCustomPassenger()
@@ -177,9 +185,9 @@ public class Passenger : MonoBehaviour
         // Calculate PESEL
         PESEL = GeneratePesel(DateOfBirth, Gender);
 
-        PrintProfile();
-
         GenerateTicket();
+
+        PrintProfile();
     }
 
     string GeneratePesel(DateTime date, PassengerGender gender)
@@ -207,7 +215,31 @@ public class Passenger : MonoBehaviour
 
     void PrintProfile()
     {
-        print($"Created new Passenger:\n  - Type: {Type};\n  - Character: {Character};\n  - Gender: {Gender};\n  - Name: {FirstName} {LastName};\n  - Date of birth: {DateOfBirth.Date};\n  - Age: {Age};\n  - PESEL: {PESEL}");
+        // Set default output - passenger personal data
+        string output = $"Created new Passenger:\n  - Type: {Type};\n  - Character: {Character};\n  - Gender: {Gender};\n  - Name: {FirstName} {LastName};\n  - Date of birth: {DateOfBirth.Date};\n  - Age: {Age};\n  - PESEL: {PESEL}\n\n";
+        
+        // Add ticket data
+        output += $"Ticket data:\n  - Car and seat: {ticketData.carNumber}/{ticketData.seatNumber}\n  - Ticket office: {ticketData.kasaWydania}\n  - Class and tariff: {ticketData.klasa} --- {ticketData.taryfa}\n  - Ride dates: {ticketData.waznyWTam} --- {ticketData.waznyDoTam}\n  - Stations: {ticketData.stacjaOd} --> {ticketData.stacjaPrzez} --> {ticketData.stacjaDo}\n  - Series and number: {ticketData.seriaINumer}\n  - Number of stations and price: {ticketData.stacje} >>> {ticketData.PTU} >>> {ticketData.cena}\n\n";
+        
+        // Add documents
+        output += "DOCUMENTS:\n\n";
+
+        if(personalIDData != null) { output += $"Personal ID:\n  - Name: {personalIDData.firstName} {personalIDData.lastName}\n  - Family last name and parents names: {personalIDData.familyName} | {personalIDData.parentsNames}\n  - Gender, date of birth and PESEL: {personalIDData.gender} | {personalIDData.dateOfBirth} | {personalIDData.pesel}\n  - Height and eye color: {personalIDData.height} | {personalIDData.eyeColor}\n  - Dates: {personalIDData.releaseDate} --- {personalIDData.expirationDate}\n\n"; }
+        else { output += "Personal ID == NULL\n\n"; }
+
+        if(schoolIDData != null) { output += $"School ID:\n  - Name and signature: {schoolIDData.name} | {schoolIDData.signature}\n  - Date of birth and PESEL: {schoolIDData.dateOfBirth} | {schoolIDData.pesel}\n  - School ID number: {schoolIDData.schoolIDNumber}\n  - Principal's name: {schoolIDData.principalName}\n  - Release date and expiration year: {schoolIDData.releaseDate} | {SchoolIDData.expirationYear}\n\n"; }
+        else { output += "School ID == NULL\n\n"; }
+
+        if(universityIDData != null) { output += $"University ID:\n  - Name and signature: {universityIDData.name} | {universityIDData.signature}\n  - Album number and date of birth: {universityIDData.albumNumber} | {universityIDData.dateOfBirth}\n  - Releaser, release date and expiration date: {universityIDData.releaserName} | {universityIDData.releaseDate} | {UniversityIDData.expirationYear}\n\n"; }
+        else { output += "University ID == NULL\n\n"; }
+
+        if(armyIDData != null) { output += $"Army ID:\n  - Name: {armyIDData.firstName} {armyIDData.lastName}\n  - Gender, date of birth and PESEL: {armyIDData.gender} | {armyIDData.dateOfBirth} | {armyIDData.pesel}\n  - Military rank: {armyIDData.militaryRank}\n  - Series number: {armyIDData.seriesAndNumber}\n  - Dates: {armyIDData.releaseDate} --- {armyIDData.expirationDate}\n\n"; }
+        else { output += "Army ID == NULL\n\n"; }
+
+        if(pensionerIDData != null) { output += $"Pensioner ID:\n  - Name: {pensionerIDData.firstName} {pensionerIDData.lastName}\n  - Benefit number: {pensionerIDData.benefitNumber}\n\n"; }
+        else { output += "Pensioner ID == NULL\n\n"; }
+
+        print(output); // Print the entire generated passenger
     }
 
     void GenerateTicket()
@@ -230,7 +262,7 @@ public class Passenger : MonoBehaviour
         ticketData.stacje = (to - from).ToString();
 
         // Set travel date
-        DateTime date = GameManager.currentDateTime;
+        DateTime date = (GameManager.currentDateTime.Year != 1) ? GameManager.currentDateTime : defaulDateTime;
         if(UnityEngine.Random.Range(0, 2) == 0)
         {
             // Set the travel date as today and expiration date 1 day later
@@ -330,6 +362,128 @@ public class Passenger : MonoBehaviour
 
         ticketData.numer += controlNumber;
         ticketData.seriaINumer = ticketData.seria + ticketData.numer;
+
+        // Generate documents passenger needs
+        switch(ticketData.taryfa)
+        {
+            case "N":
+                GeneratePersonalID();
+                break;
+            case "S":
+                GenerateUniversityID();
+                break;
+            case "D":
+                GenerateSchoolID();
+                break;
+            case "E":
+                GeneratePersonalID();
+                GeneratePensionerID();
+                break;
+            case "Z":
+                GenerateArmyID();
+                break;
+            default:
+                Debug.LogError($"Unknown tariff: {ticketData.taryfa} - can't generate documents.");
+                break;
+        }
+    }
+
+    void GenerateSchoolID()
+    {
+        schoolIDData = new(); // Create new school ID data for the passenger
+
+        // Set already generated passenger data
+        schoolIDData.name = FirstName + " " + LastName;
+        schoolIDData.signature = schoolIDData.name;
+        schoolIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
+        schoolIDData.pesel = PESEL;
+
+        // Generate new data
+        if(UnityEngine.Random.Range(0, 2) == 0) { schoolIDData.principalName = maleFirstNames[UnityEngine.Random.Range(0, maleFirstNames.Length)] + " " + maleLastNames[UnityEngine.Random.Range(0, maleLastNames.Length)]; }
+        else { schoolIDData.principalName = femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)] + " " + femaleLastNames[UnityEngine.Random.Range(0, femaleLastNames.Length)]; }
+
+        schoolIDData.startYearsAgo = UnityEngine.Random.Range(0, 6);
+        schoolIDData.releaseDate = GameManager.currentDateTime.AddYears(-universityIDData.startYearsAgo).ToString("dd.MM.yyyy");
+        schoolIDData.schoolIDNumber = UnityEngine.Random.Range(1000, 5000).ToString() + "/20" + schoolIDData.releaseDate.Substring(8, 2);
+    }
+
+    void GenerateUniversityID()
+    {
+        universityIDData = new(); // Create new university ID data for the passenger
+
+        // Set already generated passenger data
+        universityIDData.name = FirstName + " " + LastName;
+        universityIDData.signature = universityIDData.name;
+        universityIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
+
+        // Generate new data
+        if(UnityEngine.Random.Range(0, 2) == 0) { universityIDData.releaserName = maleFirstNames[UnityEngine.Random.Range(0, maleFirstNames.Length)] + " " + maleLastNames[UnityEngine.Random.Range(0, maleLastNames.Length)]; }
+        else { universityIDData.releaserName = femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)] + " " + femaleLastNames[UnityEngine.Random.Range(0, femaleLastNames.Length)]; }
+
+        universityIDData.startYearsAgo = UnityEngine.Random.Range(0, 6);
+        universityIDData.releaseDate = GameManager.currentDateTime.AddYears(-universityIDData.startYearsAgo).ToString("dd.MM.yyyy");
+        universityIDData.albumNumber = UnityEngine.Random.Range(1000000, 10000000).ToString();
+    }
+
+    void GeneratePersonalID()
+    {
+        personalIDData = new(); // Create new personal ID data for the passenger
+
+        // Set already generated passenger data
+        personalIDData.firstName = FirstName.ToUpper();
+        personalIDData.lastName = LastName.ToUpper();
+        personalIDData.familyName = LastName.ToUpper();
+        personalIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
+        personalIDData.gender = Gender.ToString();
+        personalIDData.pesel = PESEL;
+
+        // Generate new data
+        personalIDData.height = UnityEngine.Random.Range(140, 211).ToString() + " cm";
+        personalIDData.eyeColor = PersonalIDData.eyeColors[UnityEngine.Random.Range(0, PersonalIDData.eyeColors.Length)];
+
+        int releaseYear = UnityEngine.Random.Range(GameManager.currentDateTime.Year - 9, GameManager.startingInGameDate.Year);
+        int releaseMonth = UnityEngine.Random.Range(1, 13);
+        int releaseDay = UnityEngine.Random.Range(1, 29);
+        personalIDData.releaseDate = new DateTime(releaseYear, releaseMonth, releaseDay).ToString("dd.MM.yyyy");
+        personalIDData.expirationDate = new DateTime(releaseYear + 10, releaseMonth, releaseDay).ToString("dd.MM.yyyy");
+
+        personalIDData.parentsNames = maleFirstNames[UnityEngine.Random.Range(0, maleFirstNames.Length)].ToUpper() + " " + femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)].ToUpper(); 
+    }
+
+    void GenerateArmyID()
+    {
+        armyIDData = new(); // Create new army ID data
+
+        // Set already generated passenger data
+        armyIDData.firstName = FirstName;
+        armyIDData.lastName = LastName;
+        armyIDData.dateOfBirth = DateOfBirth.ToString("dd.MM.yyyy");
+        armyIDData.gender = Gender.ToString();
+        armyIDData.pesel = PESEL;
+
+        // Generate new data
+        int releaseYear = UnityEngine.Random.Range(GameManager.currentDateTime.Year - 9, GameManager.startingInGameDate.Year);
+        int releaseMonth = UnityEngine.Random.Range(1, 13);
+        int releaseDay = UnityEngine.Random.Range(1, 29);
+        armyIDData.releaseDate = new DateTime(releaseYear, releaseMonth, releaseDay).ToString("dd.MM.yyyy");
+        armyIDData.expirationDate = new DateTime(releaseYear + 10, releaseMonth, releaseDay).ToString("dd.MM.yyyy");
+
+        armyIDData.militaryRank = ArmyIDData.militaryRanks[UnityEngine.Random.Range(0, ArmyIDData.militaryRanks.Length)];
+        armyIDData.seriesAndNumber = "WWWW " + UnityEngine.Random.Range(1000, 10000).ToString();
+    }
+
+    void GeneratePensionerID()
+    {
+        pensionerIDData = new(); // Create new retired ID data for the passenger
+
+        // Set already generated passenger data
+        pensionerIDData.firstName = FirstName;
+        pensionerIDData.lastName = LastName;
+        pensionerIDData.pesel = PESEL;
+
+        // Generate new data
+        pensionerIDData.benefitNumber = UnityEngine.Random.Range(10000000, 100000000).ToString() + "/XXE";
+        pensionerIDData.pensionerIDNumber = UnityEngine.Random.Range(10, 100).ToString() + "/" + UnityEngine.Random.Range(0, 10).ToString() + "/E/" + UnityEngine.Random.Range(100000, 1000000).ToString() + "/XX";
     }
 
     //=====================================================================================================
@@ -353,8 +507,7 @@ public class TicketData
     // Reference values
     public const int numberOfStartStations = 9;
     public const float priceForClass2 = 5.5f, priceForClass1 = 9.25f, PTUPriceModifier = 0.07f;
-    public static readonly string[] stations = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", 
-        "Łowicz Główny", "Włocławek", "Toruń Główny", "Bydgoszcz Główna", "Piła Główna", "Kołobrzeg"};
+    public static readonly string[] stations = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", "Łowicz Główny", "Włocławek", "Toruń Główny", "Bydgoszcz Główna", "Piła Główna", "Kołobrzeg"};
     public static Dictionary<string, string> kasyWydania = new Dictionary<string, string>
     {
         ["Rzeszów Główny"] = "Rzeszów\n\n12345789\n",
@@ -369,15 +522,77 @@ public class TicketData
     };
     public static readonly string[] ticketSeries = {"A", "B", "C"};
     public static readonly string[] tariffCodes = {"N", "S", "D", "E", "Z"};
-    public readonly static Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float>
-        { ["N"] = 1f, ["S"] = 0.49f, ["D"] = 0.63f, ["E"] = 0.7f, ["Z"] = 0.22f, };
-    public readonly static Dictionary<string, int> tariffMinAge = new Dictionary<string, int>
-        { ["N"] = 0, ["S"] = 19, ["D"] = 4, ["E"] = 60, ["Z"] = 18, };
-    public readonly static Dictionary<string, int> tariffMaxAge = new Dictionary<string, int>
-        { ["N"] = 1000, ["S"] = 26, ["D"] = 18, ["E"] = 1000, ["Z"] = 63, };
+    public readonly static Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float> { ["N"] = 1f, ["S"] = 0.49f, ["D"] = 0.63f, ["E"] = 0.7f, ["Z"] = 0.22f, };
+    public readonly static Dictionary<string, int> tariffMinAge = new Dictionary<string, int> { ["N"] = 0, ["S"] = 19, ["D"] = 4, ["E"] = 60, ["Z"] = 18, };
+    public readonly static Dictionary<string, int> tariffMaxAge = new Dictionary<string, int> { ["N"] = 1000, ["S"] = 26, ["D"] = 18, ["E"] = 1000, ["Z"] = 63, };
 
     // Data varaibles
     public int carNumber, seatNumber;
     public string kasaWydania, klasa, przejazd, liczbaOsob, taryfa, waznyWTam, waznyDoTam, waznyWPowrot, 
         waznyDoPowrot, stacjaOd, stacjaDo, stacjaPrzez, seria, numer, seriaINumer, stacje, PTU, cena;
+}
+
+public class SchoolIDData // Class responsible for storing the data of passenger's schools ID
+{
+    // Constant and placeholder elements
+    public const string address = "---------- --/--", expirationYear = "06";
+
+    // Elements taken from the passenger
+    public string name, signature, dateOfBirth, pesel; 
+    
+    // Generated elements 
+    public int startYearsAgo;
+    public string schoolIDNumber, principalName, releaseDate;
+}
+
+public class UniversityIDData // Class responsible for storing the data of passenger's university ID
+{
+    // Constant and placeholder elements
+    public const string address = "---------- --/--", expirationYear = "2006";
+
+    // Elements taken from the passenger
+    public string name, signature, dateOfBirth;
+    
+    // Generated elements 
+    public int startYearsAgo;
+    public string albumNumber, releaserName, releaseDate;
+}
+
+public class PersonalIDData // Class responsible for storing the data of passenger's personal ID
+{
+    // Reference values
+    public static string[] eyeColors = {"NIEBIESKIE", "BRĄZOWE", "ZIELONE", "PIWNE", "SZARE"};
+
+    // Constant and placeholder elements
+    public const string address = "---------- --/--", placeOfBirth = "----------", issuingAuthority = "----- ----- -----";
+
+    // Elements taken from the passenger
+    public string firstName, lastName, familyName, dateOfBirth, gender, pesel;
+    
+    // Generated elements 
+    public string height, eyeColor, releaseDate, expirationDate, parentsNames;
+}
+
+public class ArmyIDData // Class responsible for storing the data of passenger's army ID
+{
+    // Reference values
+    public static string[] militaryRanks = {"SZEREGOWY", "STARSZY SZEREGOWY", "STARSZY SZEREGOWY SPECJALISTA", "KAPRAL", "STARSZY KAPRAL", "PLUTONOWY", "SIERŻANT", "STARSZY SIERŻANT", "MŁODSZY CHORĄŻY", "CHORĄŻY", "STARSZY CHORĄŻY", "STARSZY CHORĄŻY SZTABOWY", "PODPORUCZNIK", "PORUCZNIK", "KAPITAN", "MAJOR", "PODPUŁKOWNIK", "PUŁKOWNIK", "GENERAŁ BRYGADY", "GENERAŁ DYWIZJI", "GENERAŁ BRONI", "GENERAŁ", "MARYNARZ", "STARSZY MARYNARZ", "STARSZY MARYNARZ SPECJALISTA", "MAT", "STARSZY MAT", "BOSMANMAT", "BOSMAN", "STARSZY BOSNAM", "MŁODSZY CHORĄŻY MARYNARKI", "CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY SZTABOWY MARYNARKI", "PODPORUCZNIK MARYNARKI", "PORUCZNIK MARYNARKI", "KAPITAN MARYNARKI", "KOMANDOR PODPORUCZNIK", "KOMANDOR PORUCZNIK", "KOMANDOR", "KONTRADMIRAŁ", "WICEADMIRAŁ", "ADMIRAŁ FLOTY", "ADMIRAŁ"};
+
+    // Constant and placeholder elements
+    public const string militaryUnit = "----- ----- -----";
+
+    // Elements taken from the passenger
+    public string firstName, lastName, dateOfBirth, gender, pesel;
+    
+    // Generated elements 
+    public string releaseDate, expirationDate, militaryRank, seriesAndNumber;
+}
+
+public class PensionerIDData // Class responsible for storing the data of passenger's pensioner ID
+{
+    // Elements taken from the passenger
+    public string firstName, lastName, pesel;
+    
+    // Generated elements 
+    public string benefitNumber, pensionerIDNumber;
 }

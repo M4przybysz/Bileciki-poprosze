@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    [SerializeField] PlayerController player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +14,13 @@ public class UIController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ShowUIElement(GameObject UIElement) { 
+        if(!player.isGamePaused) { UIElement.SetActive(true); } 
+    }
+
+    public void HideUIElement(GameObject UIElement) { 
+        if(!player.isGamePaused) { UIElement.SetActive(false); }  
     }
 }
