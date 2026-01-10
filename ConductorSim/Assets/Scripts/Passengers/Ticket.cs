@@ -14,7 +14,13 @@ public class Ticket : DragAndDrop
         base.Start();
     }
 
-    public void SetTicketText(TicketData ticketData)
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void setTicketText(TicketData ticketData)
     {
         kasaWydaniaButton.GetComponentInChildren<TextMeshProUGUI>().text = ticketData.kasaWydania;
         klasaButton.GetComponentInChildren<TextMeshProUGUI>().text = ticketData.klasa;
