@@ -6,9 +6,6 @@ public class PlayerController : MonoBehaviour
     // Variables and constants
     //=====================================================================================================
     // External elements
-    [SerializeField] UIController uiController;
-    [SerializeField] GameObject UseBedConfirm;
-    [SerializeField] Train train;
     [SerializeField] TicketCheckingScreenController TicketCheckingScreen; 
     [SerializeField] SpriteRenderer playerSprite;
     [SerializeField] Animator playerAnimator;
@@ -17,9 +14,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D playerRigidbody;
     private PlayerFatigue fatigueScript; 
     
-    // Passenger and round interaction variables
+    // Passenger interaction variables
     Passenger targetPassenger = null; 
-    bool isByBed = false;
 
     // Movement consts
     const float sprintSpeedModifier = 1.5f;
@@ -27,15 +23,12 @@ public class PlayerController : MonoBehaviour
 
     // Movement variables
     Vector2 input;
-    float speed = 2f;
+    float speed = 3f;
     float speedModifier = defaultSpeedModifier;
 
     // Action limiters
     public bool isInConversation = false;
     public bool isGamePaused = false;
-
-    // Player's wallet
-    float wallet;
 
     //=====================================================================================================
     // Start and Update
@@ -46,8 +39,6 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody2D>(); // Get rigidbody
         fatigueScript = GetComponent<PlayerFatigue>(); // Get player fatigue script
-
-        LoadPlayerData();
     }
 
     // Update is called once per frame
@@ -58,7 +49,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        playerRigidbody.linearVelocity = input * speed * speedModifier;
+        // poprawne ustawianie pr�dko�ci Rigidbody2D
+        if (playerRigidbody != null)
+            playerRigidbody.linearVelocity = input * speed * speedModifier;
     }
 
     //=====================================================================================================
@@ -86,10 +79,9 @@ public class PlayerController : MonoBehaviour
             else {speedModifier = defaultSpeedModifier * fatigueScript.GetSpeedModifier(); }
 
             // Starting conversation 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) && targetPassenger != null)
             {
-                if(isByBed && train.trainState == "ride") { uiController.ShowUIElement(UseBedConfirm); }
-                else if(targetPassenger != null) { StartConverstation(); }
+                StartConverstation();
             }   
         }
     }
@@ -99,26 +91,28 @@ public class PlayerController : MonoBehaviour
     //=====================================================================================================
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Bed")) { isByBed = true; }
-
         if(collision.CompareTag("PassengerTrigger"))
         {
             targetPassenger = collision.transform.parent.GetComponent<Passenger>();
         }
 
-        if(collision.CompareTag("PlayerSpriteTrigger")) { playerSprite.sortingOrder = -2; }
+        if(collision.CompareTag("PlayerSpriteTrigger"))
+        {
+            playerSprite.sortingOrder = -2;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Bed")) { isByBed = false; }
-
         if(collision.CompareTag("PassengerTrigger") && targetPassenger == collision.transform.parent.GetComponent<Passenger>()) 
         { 
             targetPassenger = null; 
         }
 
-        if(collision.CompareTag("PlayerSpriteTrigger")) { playerSprite.sortingOrder = 2; }
+        if(collision.CompareTag("PlayerSpriteTrigger"))
+        {
+            playerSprite.sortingOrder = 2;
+        }
     }
 
     //=====================================================================================================
@@ -128,20 +122,6 @@ public class PlayerController : MonoBehaviour
     {
         print("Starting converstation with " + targetPassenger.FirstName);
         TicketCheckingScreen.ShowTicketCheckingScreen();
-        TicketCheckingScreen.PullPassengerData(targetPassenger);
-    }
-
-    public void AddMoneyToWallet(float moneyToAdd) { wallet += moneyToAdd; }
-
-    public void SetWallet(float moneyToSet) { wallet = moneyToSet; }
-    public float GetWallet() { return wallet; }
-    
-    void LoadPlayerData()
-    {
-        if(GameManager.Instance != null)
-        {
-            transform.position = GameManager.playerPosition;
-            wallet = GameManager.playerWallet;
-        }
+        TicketCheckingScreen.PullTicketData(targetPassenger);
     }
 }

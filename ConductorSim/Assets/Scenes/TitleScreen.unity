@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bileciki poprosz\u0119!"
+  m_text: "Bileciki, poprosz\u0119!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3658,7 +3658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dzi\u0119kujemy za zagranie w <b><i>Bileciki Poprosz\u0119!</i></b>\n\n\r\nGra
+  m_text: "Dzi\u0119kujemy za zagranie w <b><i>Bileciki, Poprosz\u0119!</i></b>\n\n\r\nGra
     zosta\u0142a stworzona przez zesp\xF3\u0142 <b><i>Kanarki</i></b>:\r\n\n<b>Agata
     Cychowska</b> \u2013 Project Manager\r\n<b>Aleksandra Nied\u017Awiedzka</b> \u2013
     Narrative Designer\r\n<b>Natalia \u0141agoda</b> \u2013 Graphic Designer\r\n<b>Sebastian
@@ -5638,7 +5638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bileciki poprosz\u0119!"
+  m_text: "Bileciki, poprosz\u0119!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
