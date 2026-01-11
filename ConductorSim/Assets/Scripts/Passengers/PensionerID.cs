@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PensionerID : DragAndDrop
 {
+    // Data comparator
+    [SerializeField] DataComparator dataComparator;
+
     // All of the buttons
     [SerializeField] GameObject idNumberButton, firstNameButton, lastNameButton, peselButton, benefitNumberButton;
 
