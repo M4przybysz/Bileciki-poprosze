@@ -13255,6 +13255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConductorsBookOpen
       objectReference: {fileID: 0}
+    - target: {fileID: 1062676325573447165, guid: f7bdc7f73963cc54c8f9f239c429f775, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2422288178407223705, guid: f7bdc7f73963cc54c8f9f239c429f775, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
