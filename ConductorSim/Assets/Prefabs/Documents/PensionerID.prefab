@@ -717,7 +717,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4541135251357538924}
   OnLeftClick:
     m_PersistentCalls:
@@ -980,7 +980,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2689497596255148568}
   OnLeftClick:
     m_PersistentCalls:
@@ -1480,6 +1480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35d1f9b168f4a041a4f46241e63d6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataComparator: {fileID: 0}
   idNumberButton: {fileID: 7707471299024621766}
   firstNameButton: {fileID: 1702412126976003706}
   lastNameButton: {fileID: 4276103728579972580}
