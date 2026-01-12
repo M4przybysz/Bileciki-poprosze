@@ -406,7 +406,7 @@ public class Passenger : MonoBehaviour
         else { schoolIDData.principalName = femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)] + " " + femaleLastNames[UnityEngine.Random.Range(0, femaleLastNames.Length)]; }
 
         schoolIDData.startYearsAgo = UnityEngine.Random.Range(0, 6);
-        schoolIDData.releaseDate = GameManager.currentDateTime.AddYears(-universityIDData.startYearsAgo).ToString("dd.MM.yyyy");
+        schoolIDData.releaseDate = GameManager.currentDateTime.AddYears(-schoolIDData.startYearsAgo).ToString("dd.MM.yyyy");
         schoolIDData.schoolIDNumber = UnityEngine.Random.Range(1000, 5000).ToString() + "/20" + schoolIDData.releaseDate.Substring(8, 2);
     }
 

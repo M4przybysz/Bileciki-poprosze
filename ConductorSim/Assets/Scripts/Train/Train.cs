@@ -8,6 +8,7 @@ public class Train : MonoBehaviour
     //=====================================================================================================
     
     // Serialized elements
+    [SerializeField] Whistle whistle;
     [SerializeField] PlayerController player;
     [SerializeField] Transform passengerCarsContainer;
     [SerializeField] Transform passengerContainer;
@@ -84,12 +85,14 @@ public class Train : MonoBehaviour
             {
                 if(trainState == "stop") // End of station stop time
                 {
+                    whistle.PlayRideWhistle();
                     targetTime = minutesPerRide[currentStationNumber] * 60;
                     trainState = "ride";
                     print($"Starting ride from {currentStationName} to {nextStationName}. Passneger count: {passengersList.Count}");
                 }
                 else if(trainState == "ride") // End of ride time
                 {
+                    whistle.PlayStationWhistle();
                     print($"Stopped on station {currentStationName}");
 
                     currentStationNumber += 1;

@@ -11536,7 +11536,7 @@ Transform:
   m_GameObject: {fileID: 1960402597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 884.7411, y: 370.8632, z: -29.98904}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13300,6 +13300,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 306779562577080102, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
+      propertyPath: m_Pitch
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2025082216793729294, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
       propertyPath: cam
       value: 
@@ -13348,14 +13352,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 35676737}
-    - target: {fileID: 7188882082289386801, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
-      propertyPath: uiController
-      value: 
-      objectReference: {fileID: 1105893265}
-    - target: {fileID: 7188882082289386801, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
-      propertyPath: UseBedConfirm
-      value: 
-      objectReference: {fileID: 366873315}
     - target: {fileID: 8606854155041997855, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
       propertyPath: m_Name
       value: Train
