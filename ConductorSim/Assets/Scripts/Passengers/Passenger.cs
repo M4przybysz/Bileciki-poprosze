@@ -44,6 +44,9 @@ public class Passenger : MonoBehaviour
     public UniversityIDData universityIDData = null;
     public ArmyIDData armyIDData = null;
     public PensionerIDData pensionerIDData = null;
+
+    // Ticket checking info
+    public bool isChecked = false; 
     
     //=====================================================================================================
     // Variable encapsulation

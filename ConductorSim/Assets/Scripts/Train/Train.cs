@@ -21,7 +21,7 @@ public class Train : MonoBehaviour
     const int maxPassengersNumber = 174;
     const int startStationNumber = 0;
     const int endStationNumber = 9;
-    const int timeScale = 3; // How many times faster does in-game time flow
+    const int timeScale = 500; // How many times faster does in-game time flow
 
     // Train elements
     public static TrainCar[] passengerCars;
@@ -35,6 +35,11 @@ public class Train : MonoBehaviour
 
     // Timer
     float targetTime;
+
+    // Passenger info
+    int passengersCounter = 0;
+    public int checkedPassengersCounter = 0;
+    public int mistakesCounter = 0;
 
     //=====================================================================================================
     // Start and Update
@@ -91,7 +96,11 @@ public class Train : MonoBehaviour
                     currentStationName = stationNames[currentStationNumber];
                     CheckPassengerLeave();
 
-                    if(currentStationNumber == endStationNumber) { nextStationName = "Koniec trasy"; }
+                    if(currentStationNumber == endStationNumber) 
+                    { 
+                        nextStationName = "Koniec trasy"; 
+                        PrintStatistics();
+                    }
                     else 
                     { 
                         nextStationName = stationNames[currentStationNumber + 1]; 
@@ -126,6 +135,7 @@ public class Train : MonoBehaviour
             for(int i = 0; i < numberOfPassengers; i++)
                 {
                     passengersList.Add(Instantiate(passengerPrefab, passengerContainer));
+                    passengersCounter += 1;
                 }   
         }
         else { print($"Reached passenger limit: {maxPassengersNumber} \nLast passenger: {passengersList[passengersList.Count - 1].GetComponent<Passenger>().FirstName}"); }
@@ -150,5 +160,10 @@ public class Train : MonoBehaviour
     public void SkipRide()
     {
         targetTime = 10; // Skip time to the end of the raid
+    }
+
+    void PrintStatistics()
+    {
+        print($"Koniec trasy. Statystyki:\n  - Ilość pasażerów: {passengersCounter}\n  - Ilość sprawdzonych pasażerów: {checkedPassengersCounter}\n  - Ilość poprawnie sprawdzonych pasażerów: {checkedPassengersCounter - mistakesCounter}\n  - Ilość błędnie sprawdzonych pasażerów: {mistakesCounter}");
     }
 }
