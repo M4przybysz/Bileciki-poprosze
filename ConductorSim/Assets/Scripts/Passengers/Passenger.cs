@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using UnityEngine;
 
 public enum PassengerType {Special, Normal, Problematic};
@@ -123,6 +122,8 @@ public class Passenger : MonoBehaviour
     //=====================================================================================================
     void OnDestroy()
     {
+        if(Type == PassengerType.Problematic && !isChecked) { train.uncheckedFakersCounter += 1; }
+
         print($"Passenger {firstName} {lastName} leaves the train, route: {ticketData.stacjaOd} -> {ticketData.stacjaDo}");
         if(train != null) { train.RemovePassenger(gameObject); }
     }
@@ -193,7 +194,7 @@ public class Passenger : MonoBehaviour
         PrintProfile();
     }
 
-    string GeneratePesel(DateTime date, PassengerGender gender)
+    static string GeneratePesel(DateTime date, PassengerGender gender)
     {
         // Set year, month and day of birth
         string peselYear = (date.Year % 100).ToString();
@@ -389,6 +390,44 @@ public class Passenger : MonoBehaviour
                 Debug.LogError($"Unknown tariff: {ticketData.taryfa} - can't generate documents.");
                 break;
         }
+
+        if(Type == PassengerType.Problematic) { FakeTicketData(UnityEngine.Random.Range(0, 13)); }
+    }
+
+    void FakeTicketData(int dataToFake)
+    {
+        switch (dataToFake)
+        {
+            case 0: { ticketData.kasaWydania = RandomString(10); break; }
+            case 1: { ticketData.klasa = RandomString(2); break; }
+            case 2: { ticketData.taryfa = RandomString(2); break; }
+            case 3: { ticketData.waznyWTam = RandomString(11); break; }
+            case 4: { ticketData.waznyDoTam = RandomString(11); break; }
+            case 5: { ticketData.stacjaOd = RandomString(15); break; }
+            case 6: { ticketData.stacjaPrzez = RandomString(15); break; }
+            case 7: { ticketData.stacjaDo = RandomString(15); break; }
+            case 8: { ticketData.seria = RandomString(2); break; }
+            case 9: { ticketData.numer = RandomString(8); break; }
+            case 10: { ticketData.stacje = RandomString(2); break; }
+            case 11: { ticketData.PTU = RandomString(6); break; }
+            case 12: { ticketData.cena = RandomString(8); break; }
+            default:
+                print("Unknown ticket data number to fake");
+                break;
+        }
+    }
+
+    static string RandomString(int length)
+    {
+        // Characters for randomization
+        const string allowedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz!@$?_-";
+
+        string randomString = "";
+
+        // Rndomization
+        for(int i = 0; i < length; i++) { randomString += allowedCharacters[UnityEngine.Random.Range(0, allowedCharacters.Length)]; }
+
+        return randomString;
     }
 
     void GenerateSchoolID()

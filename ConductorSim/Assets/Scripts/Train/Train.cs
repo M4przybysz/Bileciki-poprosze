@@ -22,7 +22,7 @@ public class Train : MonoBehaviour
     const int maxPassengersNumber = 174;
     const int startStationNumber = 0;
     const int endStationNumber = 9;
-    const int timeScale = 3; // How many times faster does in-game time flow (default is x3)
+    const int timeScale = 500; // How many times faster does in-game time flow (default is x3)
 
     // Train elements
     public static TrainCar[] passengerCars;
@@ -41,6 +41,7 @@ public class Train : MonoBehaviour
     int passengersCounter = 0;
     public int checkedPassengersCounter = 0;
     public int mistakesCounter = 0;
+    public int uncheckedFakersCounter = 0;
 
     //=====================================================================================================
     // Start and Update
@@ -167,6 +168,10 @@ public class Train : MonoBehaviour
 
     void PrintStatistics()
     {
-        print($"Koniec trasy. Statystyki:\n  - Ilość pasażerów: {passengersCounter}\n  - Ilość sprawdzonych pasażerów: {checkedPassengersCounter}\n  - Ilość poprawnie sprawdzonych pasażerów: {checkedPassengersCounter - mistakesCounter}\n  - Ilość błędnie sprawdzonych pasażerów: {mistakesCounter}");
+        // Get salary, pay rent and pay for mistakes
+        int mistakesCost = (uncheckedFakersCounter + mistakesCounter) * 8;
+        player.AddMoneyToWallet(PlayerController.salary - 40 - mistakesCost);
+
+        print($"Koniec trasy. Statystyki:\n  - Ilość pasażerów: {passengersCounter}\n  - Ilość niesprawdzonych pasażerów: {passengersCounter - checkedPassengersCounter}\n  - Ilość niesprawdzonych oszustów: {uncheckedFakersCounter}\n  - Ilość sprawdzonych pasażerów: {checkedPassengersCounter}\n  - Ilość poprawnie sprawdzonych pasażerów: {checkedPassengersCounter - mistakesCounter}\n  - Ilość błędnie sprawdzonych pasażerów: {mistakesCounter}\n\n  - Wypłata: {PlayerController.salary} zł\n  - Opłata za mieszkanie w wagonie: 40 zł\n  - Wypłata potrącona za błędy i niezłapanych oszustów: {mistakesCost} zł\n  - Zawartość portfela na koniec dnia: {player.GetWallet()} zł");
     }
 }

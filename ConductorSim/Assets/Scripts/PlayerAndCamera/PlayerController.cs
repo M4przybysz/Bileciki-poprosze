@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public bool isGamePaused = false;
 
     // Player's wallet
+    public const float salary = 84f;
     float wallet;
 
     //=====================================================================================================
