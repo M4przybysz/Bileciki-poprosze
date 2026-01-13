@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     // Constant game data
     public const int startingInGameYear = 2006;
-    public static DateTime startingInGameDate = new(startingInGameYear, 1, 18);
+    public static DateTime startingInGameDate = new(startingInGameYear, 1, 18, 9, 6, 0);
     public static float startingPlayerWallet = 84f;
     public static Vector3 startingPlayerPosition = new(50, 0, 0);
 

@@ -1243,6 +1243,30 @@ MonoBehaviour:
           m_StringArgument: Date
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetDocumentInfoString
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 992503985524579053}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetDocumentInfoType
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TicketDate
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2159785589098898361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,6 +2555,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Date
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetDocumentInfoString
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4838534138824708913}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetDocumentInfoType
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TicketDate
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &4235207014255827295
@@ -4957,7 +5005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae1ab7b0772770438952d88e2f42221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataComparator: {fileID: 0}
   kasaWydaniaButton: {fileID: 2159785589098898361}
   klasaButton: {fileID: 6835107115600872331}
   przejazdButton: {fileID: 1036147078514230475}

@@ -721,7 +721,31 @@ MonoBehaviour:
       m_Calls: []
   OnRightClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetDocumentInfoString
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4472149178220185678}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetDocumentInfoType
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ExpirationDate
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3626992491031330026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,7 +1433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &415025776617945636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1444,7 +1468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdf4dde3e8a7b34eb554a26c1d43600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataComparator: {fileID: 0}
   front: {fileID: 8131674469272699323}
   back: {fileID: 1204147456072606877}
   militaryRankButton: {fileID: 676949437574861942}

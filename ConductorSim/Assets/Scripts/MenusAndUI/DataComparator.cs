@@ -4,7 +4,9 @@ using TMPro;
 using UnityEngine;
 
 public enum TargetBookInfo {None, TrainRoute, Class, Tariff, Date, Series, Number, PriceAndPTU};
+public enum TargetUIInfo {None, Date} // Add more 
 public enum TicketInfoType {None, TicketOffice, SingleStation, NumberOfStations, Class, Tariff, Date, Series, Number, PTU, Price}
+public enum DocumentInfoType {None, ExpirationDate, UniversityExpirationYear, SchoolExpirationYear, TicketDate} // Add more
 
 public class DataComparator : MonoBehaviour
 {
@@ -22,7 +24,9 @@ public class DataComparator : MonoBehaviour
 
     // Comparison variables
     TicketInfoType ticketInfoType = TicketInfoType.None;
-    string ticketInfoString;
+    string ticketInfoString = "";
+    DocumentInfoType documentInfoType = DocumentInfoType.None;
+    string documentInfoString = "";
 
     // Textbox timer
     float textBoxTimer = 0; // Time in seconds
@@ -54,22 +58,32 @@ public class DataComparator : MonoBehaviour
 
     public void SetTicketInfoType(string ticketInfo) { ticketInfoType = Enum.Parse<TicketInfoType>(ticketInfo); }
 
+    public void SetDocumentInfoString(TextMeshProUGUI documentInfoTMP) { documentInfoString = documentInfoTMP.text; }
+
+    public void SetDocumentInfoType(string documentInfo) { documentInfoType = Enum.Parse<DocumentInfoType>(documentInfo); }
+
     public void SetTargetBookInfo(string bookInfo)
     {
         if(ticketInfoType == TicketInfoType.None) { SayComparisonOutcome(possibleComparisonOutcomes[0]); }
-        else { CompareData(ticketInfoString, ticketInfoType, Enum.Parse<TargetBookInfo>(bookInfo)); }
+        else { CompareTicketData(ticketInfoString, ticketInfoType, Enum.Parse<TargetBookInfo>(bookInfo)); }
     }
 
-     void CompareData(string dataToCheck, TicketInfoType ticketInfo, TargetBookInfo bookInfo)
+    public void SetTargetUIInfo(string uiInfo)
+    {
+        if(documentInfoType == DocumentInfoType.None) { SayComparisonOutcome(possibleComparisonOutcomes[0]); }
+        else { CompareDocumentData(documentInfoString, documentInfoType, Enum.Parse<TargetUIInfo>(uiInfo)); }
+    }
+
+    void CompareTicketData(string dataToCheck, TicketInfoType ticketInfo, TargetBookInfo bookInfo)
     {
         int outcome; // Documents are: 0 == idk, 1 == fine, 2 == not fine
 
         switch(bookInfo)
         {
-            case TargetBookInfo.TrainRoute: { outcome = CheckStation(dataToCheck, ticketInfo); break; }
-            case TargetBookInfo.Class: { outcome = CheckClass(dataToCheck, ticketInfo); break; }
-            case TargetBookInfo.Tariff: { outcome = CheckTariff(dataToCheck, ticketInfo); break; }
-            case TargetBookInfo.Date: { outcome = CheckDate(dataToCheck, ticketInfo); break; }
+            case TargetBookInfo.TrainRoute: { outcome = CheckTicketStation(dataToCheck, ticketInfo); break; }
+            case TargetBookInfo.Class: { outcome = CheckTicketClass(dataToCheck, ticketInfo); break; }
+            case TargetBookInfo.Tariff: { outcome = CheckTicketTariff(dataToCheck, ticketInfo); break; }
+            case TargetBookInfo.Date: { outcome = CheckTicketDate(dataToCheck, ticketInfo); break; }
             case TargetBookInfo.Series: { outcome = CheckTicketSeries(dataToCheck, ticketInfo); break; }
             case TargetBookInfo.Number: { outcome = CheckTicketNumber(dataToCheck, ticketInfo); break; }
             case TargetBookInfo.PriceAndPTU: { outcome = CheckPriceAndPTU(dataToCheck, ticketInfo); break; }
@@ -83,7 +97,23 @@ public class DataComparator : MonoBehaviour
         SayComparisonOutcome(possibleComparisonOutcomes[outcome]);
     }
 
-    static int CheckStation(string dataToCheck, TicketInfoType ticketInfo)
+    void CompareDocumentData(string dataToCheck, DocumentInfoType documentInfo, TargetUIInfo uiInfo)
+    {
+        int outcome; // Documents are: 0 == idk, 1 == fine, 2 == not fine
+
+        switch(uiInfo)
+        {
+            case TargetUIInfo.Date: { outcome = CheckDocumentDate(dataToCheck, documentInfo); break; }
+            case TargetUIInfo.None: { outcome = 0; break; }
+            default: { outcome = 0; break; }
+        }
+
+        documentInfoString = "";
+        documentInfoType = DocumentInfoType.None;
+
+        SayComparisonOutcome(possibleComparisonOutcomes[outcome]);
+    }
+    static int CheckTicketStation(string dataToCheck, TicketInfoType ticketInfo)
     {
         switch (ticketInfo)
         {
@@ -117,7 +147,7 @@ public class DataComparator : MonoBehaviour
         }
     }
 
-    static int CheckClass(string dataToCheck, TicketInfoType ticketInfo)
+    static int CheckTicketClass(string dataToCheck, TicketInfoType ticketInfo)
     {
         if(ticketInfo != TicketInfoType.Class) { return 0; }
         else
@@ -127,7 +157,7 @@ public class DataComparator : MonoBehaviour
         }
     }
 
-    static int CheckTariff(string dataToCheck, TicketInfoType ticketInfo)
+    static int CheckTicketTariff(string dataToCheck, TicketInfoType ticketInfo)
     {
         if(ticketInfo != TicketInfoType.Tariff) { return 0; }
         else
@@ -137,7 +167,7 @@ public class DataComparator : MonoBehaviour
         }
     }
 
-    static int CheckDate(string dataToCheck, TicketInfoType ticketInfo)
+    static int CheckTicketDate(string dataToCheck, TicketInfoType ticketInfo)
     {
         if(ticketInfo != TicketInfoType.Date) { return 0; }
         else
@@ -193,6 +223,34 @@ public class DataComparator : MonoBehaviour
                 else { calculatedPrice = 0; }
 
                 if(calculatedPrice.ToString() + " zł" == dataToCheck) { return 1; }
+                else { return 2; }
+            }
+            default: { return 0; }
+        }
+    }
+
+    static int CheckDocumentDate(string dataToCheck, DocumentInfoType documentInfo)
+    {
+        switch (documentInfo)
+        {
+            case DocumentInfoType.ExpirationDate:
+            {
+                if(DateTime.Compare(GameManager.currentDateTime, new DateTime(int.Parse(dataToCheck.Substring(6, 4)), int.Parse(dataToCheck.Substring(3, 2)), int.Parse(dataToCheck.Substring(0, 2)))) < 0) { return 1; }
+                else { return 2; }
+            }
+            case DocumentInfoType.UniversityExpirationYear:
+            {
+                if(DateTime.Compare(GameManager.currentDateTime, new DateTime(int.Parse(dataToCheck), 3, 31)) < 0) { return 1; }
+                else { return 2; }
+            }
+            case DocumentInfoType.SchoolExpirationYear:
+            {
+                if(DateTime.Compare(GameManager.currentDateTime, new DateTime(int.Parse("20" + dataToCheck), 9, 30)) < 0) { return 1; }
+                else { return 2; }
+            }
+            case DocumentInfoType.TicketDate:
+            {
+                if(GameManager.currentDateTime.ToString("dd.MM.yyyy") == dataToCheck || GameManager.currentDateTime.AddDays(1).ToString("dd.MM.yyyy") == dataToCheck || GameManager.currentDateTime.AddDays(-1).ToString("dd.MM.yyyy") == dataToCheck) { return 1; }
                 else { return 2; }
             }
             default: { return 0; }
