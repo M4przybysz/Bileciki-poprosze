@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class Ticket : DragAndDrop
 {
-    // Data comparator
-    [SerializeField] DataComparator dataComparator;
-
     // All of the buttons
     [SerializeField] GameObject kasaWydaniaButton, klasaButton, przejazdButton, liczbaOsobButton, taryfaButton, waznyWTamButton, 
         waznyDoTamButton, waznyWPowrotButton, waznyDoPowrotButton, stacjaOdButton, stacjaDoButton, stacjaPrzezButton, seriaButton, numerButton, 

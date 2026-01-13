@@ -22,7 +22,7 @@ public class Train : MonoBehaviour
     const int maxPassengersNumber = 174;
     const int startStationNumber = 0;
     const int endStationNumber = 9;
-    const int timeScale = 500; // How many times faster does in-game time flow (default is x3)
+    const int timeScale = 3; // How many times faster does in-game time flow (default is x3)
 
     // Train elements
     public static TrainCar[] passengerCars;

@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class UniversityID : DragAndDrop
 {
-    // Data comparator
-    [SerializeField] DataComparator dataComparator;
-
     // Front and back
     [SerializeField] GameObject front, back;
 

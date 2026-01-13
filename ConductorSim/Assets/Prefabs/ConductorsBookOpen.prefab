@@ -916,7 +916,19 @@ MonoBehaviour:
       m_Calls: []
   OnRightClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetTargetBookInfo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Date
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &961271542386194129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +1055,19 @@ MonoBehaviour:
       m_Calls: []
   OnRightClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetTargetBookInfo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PriceAndPTU
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1053354763644926636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,7 +1671,19 @@ MonoBehaviour:
       m_Calls: []
   OnRightClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetTargetBookInfo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TrainRoute
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1760848478576184326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2526,7 +2562,19 @@ MonoBehaviour:
       m_Calls: []
   OnRightClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetTargetBookInfo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Number
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2991423291224492930
 GameObject:
   m_ObjectHideFlags: 0
@@ -3654,7 +3702,19 @@ MonoBehaviour:
       m_Calls: []
   OnRightClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetTargetBookInfo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Tariff
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4415106610296641738
 GameObject:
   m_ObjectHideFlags: 0
@@ -7936,7 +7996,19 @@ MonoBehaviour:
       m_Calls: []
   OnRightClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetTargetBookInfo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Class
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8471545964796319498
 GameObject:
   m_ObjectHideFlags: 0
@@ -8552,7 +8624,19 @@ MonoBehaviour:
       m_Calls: []
   OnRightClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataComparator, Assembly-CSharp
+        m_MethodName: SetTargetBookInfo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Series
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8914011976489390245
 GameObject:
   m_ObjectHideFlags: 0
