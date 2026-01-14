@@ -6,8 +6,8 @@ using UnityEngine;
 public class TicketCheckingScreenController : MonoBehaviour
 {
     // Dialogue variables and constants
-    const float textSpeed = 0.025f;
-    bool isTicketChecking = false;
+    const float textSpeed = 0.025f; // Time between each char of the dialogue string
+    bool isTicketChecking = false; // Is conductor currently checking ticket and/or documents?
     float randomDialogueTime = 15;
 
     IEnumerator lastPrinting = null;
