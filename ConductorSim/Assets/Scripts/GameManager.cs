@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     // General variables
     public static bool doesSaveExist {get; private set;}
+    public static bool showCreditsOnTitle = false;
 
     // Constant game data
     public const int startingInGameYear = 2006;

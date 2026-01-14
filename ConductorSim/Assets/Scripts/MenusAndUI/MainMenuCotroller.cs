@@ -20,7 +20,8 @@ public class MainMenuCotroller : MonoBehaviour
     {
         // Hide subpages
         HideUIElement(newGameConfirm);
-        HideUIElement(credits);
+        if(!GameManager.showCreditsOnTitle) { HideUIElement(credits); }
+        else { ShowUIElement(credits); }
         HideUIElement(options);
 
         // Allow player to continue playing saved game

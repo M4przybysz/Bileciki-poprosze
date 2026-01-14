@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] PlayerController player;
+    [SerializeField] GameObject gameEndScreenContainer;
     [SerializeField] GameObject pauseMenuContainer;
     [SerializeField] GameObject settingsMenu;
 
@@ -40,7 +41,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void HideUIElement(GameObject UIElement) { 
-        if(UIElement == pauseMenuContainer) 
+        if(UIElement == pauseMenuContainer && !gameEndScreenContainer.activeSelf) 
         { 
             Time.timeScale = 1;
             player.isGamePaused = false; 

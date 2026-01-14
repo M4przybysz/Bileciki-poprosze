@@ -10,6 +10,7 @@ public class Train : MonoBehaviour
     // Serialized elements
     [SerializeField] Whistle whistle;
     [SerializeField] PlayerController player;
+    [SerializeField] GameEndScreenController gameEndScreen;
     [SerializeField] Transform passengerCarsContainer;
     [SerializeField] Transform passengerContainer;
     [SerializeField] GameObject passengerPrefab;
@@ -172,6 +173,9 @@ public class Train : MonoBehaviour
         int mistakesCost = (uncheckedFakersCounter + mistakesCounter) * 8;
         player.AddMoneyToWallet(PlayerController.salary - 40 - mistakesCost);
 
-        print($"Koniec trasy. Statystyki:\n  - Ilość pasażerów: {passengersCounter}\n  - Ilość niesprawdzonych pasażerów: {passengersCounter - checkedPassengersCounter}\n  - Ilość niesprawdzonych oszustów: {uncheckedFakersCounter}\n  - Ilość sprawdzonych pasażerów: {checkedPassengersCounter}\n  - Ilość poprawnie sprawdzonych pasażerów: {checkedPassengersCounter - mistakesCounter}\n  - Ilość błędnie sprawdzonych pasażerów: {mistakesCounter}\n\n  - Wypłata: {PlayerController.salary} zł\n  - Opłata za mieszkanie w wagonie: 40 zł\n  - Wypłata potrącona za błędy i niezłapanych oszustów: {mistakesCost} zł\n  - Zawartość portfela na koniec dnia: {player.GetWallet()} zł");
+        print($"Statystyki:\n  - Ilość pasażerów: {passengersCounter}\n  - Ilość niesprawdzonych pasażerów: {passengersCounter - checkedPassengersCounter}\n  - Ilość niesprawdzonych oszustów: {uncheckedFakersCounter}\n  - Ilość sprawdzonych pasażerów: {checkedPassengersCounter}\n  - Ilość poprawnie sprawdzonych pasażerów: {checkedPassengersCounter - mistakesCounter}\n  - Ilość błędnie sprawdzonych pasażerów: {mistakesCounter}\n\n  - Wypłata: {PlayerController.salary} zł\n  - Opłata za mieszkanie w wagonie: 40 zł\n  - Wypłata potrącona za błędy i niezłapanych oszustów: {mistakesCost} zł\n  - Zawartość portfela na koniec dnia: {player.GetWallet()} zł");
+        
+        string stats = $"Podsumowanie dzisiejszego dnia:\n  - Ilość pasażerów: {passengersCounter}\n  - Ilość niesprawdzonych pasażerów: {passengersCounter - checkedPassengersCounter}\n  - Ilość niesprawdzonych oszustów: {uncheckedFakersCounter}\n  - Ilość sprawdzonych pasażerów: {checkedPassengersCounter}\n  - Ilość poprawnie sprawdzonych pasażerów: {checkedPassengersCounter - mistakesCounter}\n  - Ilość błędnie sprawdzonych pasażerów: {mistakesCounter}\n\n  - Wypłata: {PlayerController.salary} zł\n  - Opłata za mieszkanie w wagonie: 40 zł\n  - Wypłata potrącona za błędy i niezłapanych oszustów: {mistakesCost} zł\n  - Zawartość portfela na koniec dnia: {player.GetWallet()} zł";
+        gameEndScreen.ShowEndScreen(stats);
     }
 }
