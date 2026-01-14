@@ -3,12 +3,14 @@ using UnityEngine;
 public class TicketCheckingScreenController : MonoBehaviour
 {
     // External elements
+    [SerializeField] Train train;
     [SerializeField] PlayerController player;
     [SerializeField] GameObject ticketCheckingScreenContainer;
     [SerializeField] GameObject ticket, schoolID, universityID, personalID, armyID, pensionerID;
     [SerializeField] GameObject[] documentButtons;
 
-    // Passenger's documents data
+    // Passenger and their documents data
+    static Passenger targetPassenger;
     public static TicketData ticketData;
     public static SchoolIDData schoolIDData;
     public static UniversityIDData universityIDData;
@@ -20,7 +22,6 @@ public class TicketCheckingScreenController : MonoBehaviour
     void Start()
     {
         HideTicketCheckingScreen();
-
         HideDocuments();
     }
 
@@ -30,12 +31,16 @@ public class TicketCheckingScreenController : MonoBehaviour
         
     }
 
-    public void ShowTicketCheckingScreen() { 
+    public void ShowTicketCheckingScreen() 
+    { 
         ticketCheckingScreenContainer.SetActive(true); 
         player.isInConversation = true;
     }
 
-    public void HideTicketCheckingScreen() { 
+    public void HideTicketCheckingScreen() 
+    {
+        
+
         HideDocuments();
         ticketCheckingScreenContainer.SetActive(false); 
         player.isInConversation = false;
@@ -46,6 +51,8 @@ public class TicketCheckingScreenController : MonoBehaviour
 
     public void PullPassengerData(Passenger passenger)
     {
+        targetPassenger = passenger;
+
         ticketData = passenger.ticketData;
         schoolIDData = passenger.schoolIDData;
         universityIDData = passenger.universityIDData;
@@ -69,5 +76,19 @@ public class TicketCheckingScreenController : MonoBehaviour
         personalID.SetActive(false); 
         armyID.SetActive(false);
         pensionerID.SetActive(false);
+    }
+
+    public void DocumentsAreFine()
+    {
+        targetPassenger.isChecked = true;
+        train.checkedPassengersCounter += 1;
+        if(targetPassenger.Type == PassengerType.Problematic) { train.mistakesCounter += 1; }
+    }
+
+    public void DocumentsAreFake()
+    {
+        targetPassenger.isChecked = true;
+        train.checkedPassengersCounter += 1;
+        if(targetPassenger.Type == PassengerType.Normal) { train.mistakesCounter += 1; }
     }
 }

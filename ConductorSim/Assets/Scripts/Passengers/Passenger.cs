@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using UnityEngine;
 
 public enum PassengerType {Special, Normal, Problematic};
@@ -14,10 +13,10 @@ public class Passenger : MonoBehaviour
     //=====================================================================================================
 
     // Lists of first and last names
-    static string[] femaleFirstNames = {"Maja", "Zofia", "Zuzanna", "Hanna", "Laura", "Julia", "Oliwia", "Pola", "Alicja", "Maria", "Aleksandra", "Barbara", "Magda", "Wanda", "Natalia", "Wiktoria", "Adrianna", "Joanna", "Klaudia", "Olga", "Jagoda", "Karolina", "Paulina", "Patrycja", "Katarzyna", "Dominika", "Martyna", "Marta", "Kinga", "Lena", "Małgorzata", "Mariola", "Anna", "Monika", "Gabriela", "Justyna", "Daria", "Angelika", "Izabela", "Emilia", "Sylwia", "Ewelina", "Nikola", "Ewa", "Sara", "Marcelina", "Aneta", "Anita", "Beata", "Dorota", "Dagmara", "Urszula", "Iwona", "Żaneta", "Malwina", "Wioletta", "Jolanta", "Łucja ", "Sonia", "Mariola", "Matylda", "Renata", "Antonina", "Anastazja", "Róża", "Krystyna", "Jadwiga", "Rozalia", "Teresa", "Inga", "Danuta", "Pamela", "Blanka", "Lucyna", "Melania", "Wanessa", "Grażyna"};
-    static string[] femaleLastNames = {"Abramczyk", "Adamiec", "Aleksandrowicz", "Andrzejczak", "Bakuła", "Bęben", "Białecka", "Boguszewska", "Borowska", "Brodka", "Brzezińska", "Ceglińska", "Chmiel", "Cicha", "Cieśla", "Czech", "Czekalska", "Ćwir", "Dąbrowska", "Dobosz", "Dobrzyńska", "Domagała", "Duda", "Fikus", "Frątczak", "Gałecka", "Gawron", "Gołąb", "Godlewska", "Grabarz", "Grochowska", "Jabłońska", "Jagiełło", "Janowska", "Jaskólska", "Jaworska", "Kaczmarek", "Kiełbasa", "Klimczuk", "Kmiecik", "Kołodziej", "Kot", "Kowalska", "Krawczyk", "Kucharczyk", "Kwiatkowska", "Lewandowska", "Lipska", "Łęcka", "Majewska", "Majchrzak", "Małek", "Mazur", "Młynarczyk", "Niewiarowska", "Nowak", "Ochocka", "Okulska", "Orlińska", "Ozorek", "Paliwoda", "Paprocka", "Piwowarczyk", "Pazura", "Piątek", "Piechota", "Puchała", "Rogalska", "Różyczka", "Sarna", "Sikora", "Sławuta", "Stasiuk", "Stępień", "Suta", "Sołtys", "Śliwińska", "Tomczak", "Tyszka", "Walczak", "Wasik", "Wilk", "Wójcik", "Wróblewska", "Zawada", "Zięba", "Żmuda", "Żukowska", "Niedźwiedzka", "Łagoda", "Cychowska", "Maksimczyk"};
-    static string[] maleFirstNames = {"Jakub", "Mateusz", "Kacper", "Michał", "Maciej", "Sebastian", "Patryk", "Dawid", "Daniel", "Kamil", "Piotr", "Szymon", "Paweł", "Bartosz", "Bartłomiej", "Damian", "Dominik", "Adrian", "Marcin", "Grzegorz", "Łukasz", "Krzysztof", "Tomasz", "Filip", "Adam", "Karol", "Mikołaj", "Krystian", "Hubert", "Konrad", "Wojciech", "Rafał", "Jan", "Przemysław", "Oskar", "Wiktor", "Arkadiusz", "Aleksander", "Artur", "Robert", "Radosław", "Marek", "Eryk", "Marcel", "Norbert", "Andrzej", "Mariusz", "Maksymilian", "Jacek", "Miłosz", "Dariusz", "Cezary", "Igor", "Błażej", "Gabriel", "Alan", "Stanisław", "Nikodem", "Gracjan", "Albert", "Antoni", "Fabian", "Tobiasz", "Sławomir", "Tymoteusz", "Franciszek", "Kajetan", "Remigiusz", "Kornel", "Julian", "Dorian", "Cyprian", "Witold", "Oliwier", "Beniamin", "Samuel", "Józef", "Tadeusz", "Gerard"};
-    static string[] maleLastNames = {"Abramczyk", "Adamiec", "Aleksandrowicz", "Andrzejczak", "Bakuła", "Bober", "Bęben", "Białecki", "Boguszewski", "Borowski", "Brzeziński", "Cegliński", "Chmiel", "Cichy", "Cieśla", "Czech", "Czekalski", "Dąbrowski", "Dobosz", "Dobrzyński", "Domagała", "Fikus", "Frątczak", "Gałecki", "Gawron", "Gołąb", "Grabarz", "Grochowski", "Jabłoński", "Jagiełło", "Janowski", "Jaskólski", "Jaworski", "Kaczmarek", "Klimczuk", "Kmicic", "Kołodziej", "Kot", "Kowalski", "Krawczyk", "Kucharczyk", "Kwiatkowski", "Lewandowski", "Lipski", "Majewski", "Majchrzak", "Małek", "Mazur", "Młynarczyk", "Nowak", "Ochocki", "Okulski", "Orliński", "Ozorek", "Paliwoda", "Paprocki", "Piwowarczyk", "Pazura", "Piątek", "Piechota", "Puchała", "Raskolnikow", "Rogalski", "Rzecki", "Sarna", "Sienkiewicz", "Sikora", "Sławuta", "Stasiuk", "Stępień", "Suta", "Sołtys", "Śliwiński", "Tomczak", "Tyszka", "Walczak", "Wasik", "Wilk", "Wójcik", "Wróblewski", "Zawada", "Zięba", "Żmuda", "Żukowski", "Karpiński", "Wokulski", "Przybył", "Grys", "Kałasa",};
+    static readonly string[] femaleFirstNames = {"Maja", "Zofia", "Zuzanna", "Hanna", "Laura", "Julia", "Oliwia", "Pola", "Alicja", "Maria", "Aleksandra", "Barbara", "Magda", "Wanda", "Natalia", "Wiktoria", "Adrianna", "Joanna", "Klaudia", "Olga", "Jagoda", "Karolina", "Paulina", "Patrycja", "Katarzyna", "Dominika", "Martyna", "Marta", "Kinga", "Lena", "Małgorzata", "Mariola", "Anna", "Monika", "Gabriela", "Justyna", "Daria", "Angelika", "Izabela", "Emilia", "Sylwia", "Ewelina", "Nikola", "Ewa", "Sara", "Marcelina", "Aneta", "Anita", "Beata", "Dorota", "Dagmara", "Urszula", "Iwona", "Żaneta", "Malwina", "Wioletta", "Jolanta", "Łucja ", "Sonia", "Mariola", "Matylda", "Renata", "Antonina", "Anastazja", "Róża", "Krystyna", "Jadwiga", "Rozalia", "Teresa", "Inga", "Danuta", "Pamela", "Blanka", "Lucyna", "Melania", "Wanessa", "Grażyna"};
+    static readonly string[] femaleLastNames = {"Abramczyk", "Adamiec", "Aleksandrowicz", "Andrzejczak", "Bakuła", "Bęben", "Białecka", "Boguszewska", "Borowska", "Brodka", "Brzezińska", "Ceglińska", "Chmiel", "Cicha", "Cieśla", "Czech", "Czekalska", "Ćwir", "Dąbrowska", "Dobosz", "Dobrzyńska", "Domagała", "Duda", "Fikus", "Frątczak", "Gałecka", "Gawron", "Gołąb", "Godlewska", "Grabarz", "Grochowska", "Jabłońska", "Jagiełło", "Janowska", "Jaskólska", "Jaworska", "Kaczmarek", "Kiełbasa", "Klimczuk", "Kmiecik", "Kołodziej", "Kot", "Kowalska", "Krawczyk", "Kucharczyk", "Kwiatkowska", "Lewandowska", "Lipska", "Łęcka", "Majewska", "Majchrzak", "Małek", "Mazur", "Młynarczyk", "Niewiarowska", "Nowak", "Ochocka", "Okulska", "Orlińska", "Ozorek", "Paliwoda", "Paprocka", "Piwowarczyk", "Pazura", "Piątek", "Piechota", "Puchała", "Rogalska", "Różyczka", "Sarna", "Sikora", "Sławuta", "Stasiuk", "Stępień", "Suta", "Sołtys", "Śliwińska", "Tomczak", "Tyszka", "Walczak", "Wasik", "Wilk", "Wójcik", "Wróblewska", "Zawada", "Zięba", "Żmuda", "Żukowska", "Niedźwiedzka", "Łagoda", "Cychowska", "Maksimczyk"};
+    static readonly string[] maleFirstNames = {"Jakub", "Mateusz", "Kacper", "Michał", "Maciej", "Sebastian", "Patryk", "Dawid", "Daniel", "Kamil", "Piotr", "Szymon", "Paweł", "Bartosz", "Bartłomiej", "Damian", "Dominik", "Adrian", "Marcin", "Grzegorz", "Łukasz", "Krzysztof", "Tomasz", "Filip", "Adam", "Karol", "Mikołaj", "Krystian", "Hubert", "Konrad", "Wojciech", "Rafał", "Jan", "Przemysław", "Oskar", "Wiktor", "Arkadiusz", "Aleksander", "Artur", "Robert", "Radosław", "Marek", "Eryk", "Marcel", "Norbert", "Andrzej", "Mariusz", "Maksymilian", "Jacek", "Miłosz", "Dariusz", "Cezary", "Igor", "Błażej", "Gabriel", "Alan", "Stanisław", "Nikodem", "Gracjan", "Albert", "Antoni", "Fabian", "Tobiasz", "Sławomir", "Tymoteusz", "Franciszek", "Kajetan", "Remigiusz", "Kornel", "Julian", "Dorian", "Cyprian", "Witold", "Oliwier", "Beniamin", "Samuel", "Józef", "Tadeusz", "Gerard"};
+    static readonly string[] maleLastNames = {"Abramczyk", "Adamiec", "Aleksandrowicz", "Andrzejczak", "Bakuła", "Bober", "Bęben", "Białecki", "Boguszewski", "Borowski", "Brzeziński", "Cegliński", "Chmiel", "Cichy", "Cieśla", "Czech", "Czekalski", "Dąbrowski", "Dobosz", "Dobrzyński", "Domagała", "Fikus", "Frątczak", "Gałecki", "Gawron", "Gołąb", "Grabarz", "Grochowski", "Jabłoński", "Jagiełło", "Janowski", "Jaskólski", "Jaworski", "Kaczmarek", "Klimczuk", "Kmicic", "Kołodziej", "Kot", "Kowalski", "Krawczyk", "Kucharczyk", "Kwiatkowski", "Lewandowski", "Lipski", "Majewski", "Majchrzak", "Małek", "Mazur", "Młynarczyk", "Nowak", "Ochocki", "Okulski", "Orliński", "Ozorek", "Paliwoda", "Paprocki", "Piwowarczyk", "Pazura", "Piątek", "Piechota", "Puchała", "Raskolnikow", "Rogalski", "Rzecki", "Sarna", "Sienkiewicz", "Sikora", "Sławuta", "Stasiuk", "Stępień", "Suta", "Sołtys", "Śliwiński", "Tomczak", "Tyszka", "Walczak", "Wasik", "Wilk", "Wójcik", "Wróblewski", "Zawada", "Zięba", "Żmuda", "Żukowski", "Karpiński", "Wokulski", "Przybył", "Grys", "Kałasa",};
 
     // Train reference
     static Train train;
@@ -44,6 +43,9 @@ public class Passenger : MonoBehaviour
     public UniversityIDData universityIDData = null;
     public ArmyIDData armyIDData = null;
     public PensionerIDData pensionerIDData = null;
+
+    // Ticket checking info
+    public bool isChecked = false; 
     
     //=====================================================================================================
     // Variable encapsulation
@@ -120,6 +122,8 @@ public class Passenger : MonoBehaviour
     //=====================================================================================================
     void OnDestroy()
     {
+        if(Type == PassengerType.Problematic && !isChecked) { train.uncheckedFakersCounter += 1; }
+
         print($"Passenger {firstName} {lastName} leaves the train, route: {ticketData.stacjaOd} -> {ticketData.stacjaDo}");
         if(train != null) { train.RemovePassenger(gameObject); }
     }
@@ -190,7 +194,7 @@ public class Passenger : MonoBehaviour
         PrintProfile();
     }
 
-    string GeneratePesel(DateTime date, PassengerGender gender)
+    static string GeneratePesel(DateTime date, PassengerGender gender)
     {
         // Set year, month and day of birth
         string peselYear = (date.Year % 100).ToString();
@@ -386,6 +390,44 @@ public class Passenger : MonoBehaviour
                 Debug.LogError($"Unknown tariff: {ticketData.taryfa} - can't generate documents.");
                 break;
         }
+
+        if(Type == PassengerType.Problematic) { FakeTicketData(UnityEngine.Random.Range(0, 13)); }
+    }
+
+    void FakeTicketData(int dataToFake)
+    {
+        switch (dataToFake)
+        {
+            case 0: { ticketData.kasaWydania = RandomString(10); break; }
+            case 1: { ticketData.klasa = RandomString(2); break; }
+            case 2: { ticketData.taryfa = RandomString(2); break; }
+            case 3: { ticketData.waznyWTam = RandomString(11); break; }
+            case 4: { ticketData.waznyDoTam = RandomString(11); break; }
+            case 5: { ticketData.stacjaOd = RandomString(15); break; }
+            case 6: { ticketData.stacjaPrzez = RandomString(15); break; }
+            case 7: { ticketData.stacjaDo = RandomString(15); break; }
+            case 8: { ticketData.seria = RandomString(2); break; }
+            case 9: { ticketData.numer = RandomString(8); break; }
+            case 10: { ticketData.stacje = RandomString(2); break; }
+            case 11: { ticketData.PTU = RandomString(6); break; }
+            case 12: { ticketData.cena = RandomString(8); break; }
+            default:
+                print("Unknown ticket data number to fake");
+                break;
+        }
+    }
+
+    static string RandomString(int length)
+    {
+        // Characters for randomization
+        const string allowedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz!@$?_-";
+
+        string randomString = "";
+
+        // Rndomization
+        for(int i = 0; i < length; i++) { randomString += allowedCharacters[UnityEngine.Random.Range(0, allowedCharacters.Length)]; }
+
+        return randomString;
     }
 
     void GenerateSchoolID()
@@ -403,7 +445,7 @@ public class Passenger : MonoBehaviour
         else { schoolIDData.principalName = femaleFirstNames[UnityEngine.Random.Range(0, femaleFirstNames.Length)] + " " + femaleLastNames[UnityEngine.Random.Range(0, femaleLastNames.Length)]; }
 
         schoolIDData.startYearsAgo = UnityEngine.Random.Range(0, 6);
-        schoolIDData.releaseDate = GameManager.currentDateTime.AddYears(-universityIDData.startYearsAgo).ToString("dd.MM.yyyy");
+        schoolIDData.releaseDate = GameManager.currentDateTime.AddYears(-schoolIDData.startYearsAgo).ToString("dd.MM.yyyy");
         schoolIDData.schoolIDNumber = UnityEngine.Random.Range(1000, 5000).ToString() + "/20" + schoolIDData.releaseDate.Substring(8, 2);
     }
 
@@ -522,9 +564,9 @@ public class TicketData
     };
     public static readonly string[] ticketSeries = {"A", "B", "C"};
     public static readonly string[] tariffCodes = {"N", "S", "D", "E", "Z"};
-    public readonly static Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float> { ["N"] = 1f, ["S"] = 0.49f, ["D"] = 0.63f, ["E"] = 0.7f, ["Z"] = 0.22f, };
-    public readonly static Dictionary<string, int> tariffMinAge = new Dictionary<string, int> { ["N"] = 0, ["S"] = 19, ["D"] = 4, ["E"] = 60, ["Z"] = 18, };
-    public readonly static Dictionary<string, int> tariffMaxAge = new Dictionary<string, int> { ["N"] = 1000, ["S"] = 26, ["D"] = 18, ["E"] = 1000, ["Z"] = 63, };
+    public static readonly Dictionary<string, float> tariffPriceModifier = new Dictionary<string, float> { ["N"] = 1f, ["S"] = 0.49f, ["D"] = 0.63f, ["E"] = 0.7f, ["Z"] = 0.22f, };
+    public static readonly Dictionary<string, int> tariffMinAge = new Dictionary<string, int> { ["N"] = 0, ["S"] = 19, ["D"] = 4, ["E"] = 60, ["Z"] = 18, };
+    public static readonly Dictionary<string, int> tariffMaxAge = new Dictionary<string, int> { ["N"] = 1000, ["S"] = 26, ["D"] = 18, ["E"] = 1000, ["Z"] = 63, };
 
     // Data varaibles
     public int carNumber, seatNumber;
