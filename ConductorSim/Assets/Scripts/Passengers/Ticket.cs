@@ -8,11 +8,10 @@ public class Ticket : DragAndDrop
         waznyDoTamButton, waznyWPowrotButton, waznyDoPowrotButton, stacjaOdButton, stacjaDoButton, stacjaPrzezButton, seriaButton, numerButton, 
         seriaINumerBotton, StacjeButton, PTUButton, CenaButton;
 
+    static readonly Vector2 startPosition = new(0, -170);
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public override void Start()
-    {
-        base.Start();
-    }
+    public override void Start() { base.Start(); }
 
     public void SetTicketText(TicketData ticketData)
     {
@@ -35,4 +34,6 @@ public class Ticket : DragAndDrop
         PTUButton.GetComponentInChildren<TextMeshProUGUI>().text = ticketData.PTU;
         CenaButton.GetComponentInChildren<TextMeshProUGUI>().text = ticketData.cena;
     }
+
+    public void ResetPosition() { GetComponent<RectTransform>().anchoredPosition = startPosition; }
 }

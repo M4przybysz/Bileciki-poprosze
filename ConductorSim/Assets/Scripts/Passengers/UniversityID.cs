@@ -10,6 +10,8 @@ public class UniversityID : DragAndDrop
     [SerializeField] GameObject albumNumberButton, signatureButton, studentNameButton, dateOfBirthButton, addressButton, releaseDateButton, releaserNameButton;
     [SerializeField] GameObject[] yearButtons;
 
+    static readonly Vector2 startPosition = new(300, -170);
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
@@ -25,7 +27,7 @@ public class UniversityID : DragAndDrop
         back.SetActive(!back.activeSelf);
     }
 
-    public void SetUniversityID(UniversityIDData universityIDData)
+    public void SetUniversityIDText(UniversityIDData universityIDData)
     {
         if(universityIDData != null)
         {
@@ -55,4 +57,6 @@ public class UniversityID : DragAndDrop
         }
         // else { print("There's no data to load!"); }
     }
+
+    public void ResetPosition() { GetComponent<RectTransform>().anchoredPosition = startPosition; }
 }
