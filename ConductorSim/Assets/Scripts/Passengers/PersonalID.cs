@@ -10,6 +10,8 @@ public class PersonalID : DragAndDrop
     [SerializeField] GameObject lastNameButton, firstNameButton, familyNameButton, parentsNamesButton, dateOfBirthButton, genderButton, 
         expirationDateButton, addressButton, peselButton, placeOfBirthButton, heightButton, eyeColorButton, releaseDateButton, issuingAuthorityButton;
     
+    static readonly Vector2 startPosition = new(0, -170);
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
@@ -25,7 +27,7 @@ public class PersonalID : DragAndDrop
         back.SetActive(!back.activeSelf);
     }
 
-    public void SetPersonalID(PersonalIDData personalIDData)
+    public void SetPersonalIDText(PersonalIDData personalIDData)
     {
         if(personalIDData != null)
         {
@@ -46,4 +48,6 @@ public class PersonalID : DragAndDrop
         }
         // else { print("There's no data to load!"); }
     }
+
+    public void ResetPosition() { GetComponent<RectTransform>().anchoredPosition = startPosition; }
 }

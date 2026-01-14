@@ -6,13 +6,12 @@ public class PensionerID : DragAndDrop
     // All of the buttons
     [SerializeField] GameObject idNumberButton, firstNameButton, lastNameButton, peselButton, benefitNumberButton;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public override void Start()
-    {
-        base.Start();
-    }
+    static readonly Vector2 startPosition = new(500, -170);
 
-    public void SetPensionerID(PensionerIDData pensionerIDData)
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public override void Start() { base.Start(); }
+
+    public void SetPensionerIDText(PensionerIDData pensionerIDData)
     {
         if(pensionerIDData != null)
         {
@@ -24,4 +23,6 @@ public class PensionerID : DragAndDrop
         }
         // else { print("There's no data to load!"); }
     }
+
+    public void ResetPosition() { GetComponent<RectTransform>().anchoredPosition = startPosition; }
 }
