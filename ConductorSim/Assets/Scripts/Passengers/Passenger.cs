@@ -531,7 +531,7 @@ public class Passenger : MonoBehaviour
     //=====================================================================================================
     // Custom classes
     //=====================================================================================================
-    [Serializable] class PassengerData
+    class PassengerData
     {
         public PassengerCharacter character; 
         public PassengerGender gender;
@@ -544,7 +544,7 @@ public class Passenger : MonoBehaviour
 }
 
 // Class responsible for storing the data of each ticket and static information used to generate tickets
-public class TicketData 
+[Serializable] public class TicketData 
 {
     // Reference values
     public const int numberOfStartStations = 9;
@@ -574,7 +574,7 @@ public class TicketData
         waznyDoPowrot, stacjaOd, stacjaDo, stacjaPrzez, seria, numer, seriaINumer, stacje, PTU, cena;
 }
 
-public class SchoolIDData // Class responsible for storing the data of passenger's schools ID
+[Serializable] public class SchoolIDData // Class responsible for storing the data of passenger's schools ID
 {
     // Constant and placeholder elements
     public const string address = "---------- --/--", expirationYear = "06";
@@ -587,7 +587,7 @@ public class SchoolIDData // Class responsible for storing the data of passenger
     public string schoolIDNumber, principalName, releaseDate;
 }
 
-public class UniversityIDData // Class responsible for storing the data of passenger's university ID
+[Serializable] public class UniversityIDData // Class responsible for storing the data of passenger's university ID
 {
     // Constant and placeholder elements
     public const string address = "---------- --/--", expirationYear = "2006";
@@ -600,7 +600,7 @@ public class UniversityIDData // Class responsible for storing the data of passe
     public string albumNumber, releaserName, releaseDate;
 }
 
-public class PersonalIDData // Class responsible for storing the data of passenger's personal ID
+[Serializable] public class PersonalIDData // Class responsible for storing the data of passenger's personal ID
 {
     // Reference values
     public static string[] eyeColors = {"NIEBIESKIE", "BRĄZOWE", "ZIELONE", "PIWNE", "SZARE"};
@@ -615,7 +615,7 @@ public class PersonalIDData // Class responsible for storing the data of passeng
     public string height, eyeColor, releaseDate, expirationDate, parentsNames;
 }
 
-public class ArmyIDData // Class responsible for storing the data of passenger's army ID
+[Serializable] public class ArmyIDData // Class responsible for storing the data of passenger's army ID
 {
     // Reference values
     public static string[] militaryRanks = {"SZEREGOWY", "STARSZY SZEREGOWY", "STARSZY SZEREGOWY SPECJALISTA", "KAPRAL", "STARSZY KAPRAL", "PLUTONOWY", "SIERŻANT", "STARSZY SIERŻANT", "MŁODSZY CHORĄŻY", "CHORĄŻY", "STARSZY CHORĄŻY", "STARSZY CHORĄŻY SZTABOWY", "PODPORUCZNIK", "PORUCZNIK", "KAPITAN", "MAJOR", "PODPUŁKOWNIK", "PUŁKOWNIK", "GENERAŁ BRYGADY", "GENERAŁ DYWIZJI", "GENERAŁ BRONI", "GENERAŁ", "MARYNARZ", "STARSZY MARYNARZ", "STARSZY MARYNARZ SPECJALISTA", "MAT", "STARSZY MAT", "BOSMANMAT", "BOSMAN", "STARSZY BOSNAM", "MŁODSZY CHORĄŻY MARYNARKI", "CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY MARYNARKI", "STARSZY CHORĄŻY SZTABOWY MARYNARKI", "PODPORUCZNIK MARYNARKI", "PORUCZNIK MARYNARKI", "KAPITAN MARYNARKI", "KOMANDOR PODPORUCZNIK", "KOMANDOR PORUCZNIK", "KOMANDOR", "KONTRADMIRAŁ", "WICEADMIRAŁ", "ADMIRAŁ FLOTY", "ADMIRAŁ"};
@@ -630,7 +630,7 @@ public class ArmyIDData // Class responsible for storing the data of passenger's
     public string releaseDate, expirationDate, militaryRank, seriesAndNumber;
 }
 
-public class PensionerIDData // Class responsible for storing the data of passenger's pensioner ID
+[Serializable] public class PensionerIDData // Class responsible for storing the data of passenger's pensioner ID
 {
     // Elements taken from the passenger
     public string firstName, lastName, pesel;

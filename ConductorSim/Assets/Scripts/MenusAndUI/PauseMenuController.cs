@@ -41,7 +41,7 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void HideUIElement(GameObject UIElement) { 
-        if(UIElement == pauseMenuContainer && !gameEndScreenContainer.activeSelf) 
+        if(UIElement == pauseMenuContainer) 
         { 
             Time.timeScale = 1;
             player.isGamePaused = false; 
@@ -52,6 +52,7 @@ public class PauseMenuController : MonoBehaviour
     public void SaveAndQuit()
     {
         GameManager.SetPlayerDataToSave();
+        GameManager.SetTrainDataToSave();
         GameManager.SaveGameData();
         SceneManager.LoadScene("TitleScreen");
     }

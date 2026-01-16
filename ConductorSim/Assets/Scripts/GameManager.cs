@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     // General variables
     public static bool doesSaveExist {get; private set;}
     public static bool showCreditsOnTitle = false;
+    public static bool loadTrain = false;
 
     // Constant game data
     public const int startingInGameYear = 2006;
@@ -32,6 +33,15 @@ public class GameManager : MonoBehaviour
     public static Vector3 playerPosition;
     public static float playerWallet; 
 
+    // Train
+    public static string trainState, currentStationName, nextStationName;
+    public static int currentStationNumber;
+    public static float targetTime;
+    public static int[] trainCounters = {0, 0, 0, 0};
+
+    // Passengers
+    public static PassnegerSaveData[] passnegerSaveDatas = {};
+
     //========================================================================
     // Awake, Start and Update
     //========================================================================
@@ -52,18 +62,48 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public static void SetPlayerDataToSave()
     {
         if(GameObject.Find("Player").TryGetComponent<PlayerController>(out var player))
         {
             playerPosition = player.transform.position;
             playerWallet = player.GetWallet();   
+        }
+    }
+
+    public static void SetTrainDataToSave()
+    {
+        if(GameObject.Find("Train").TryGetComponent<Train>(out var train))
+        {
+            trainState = train.trainState;
+            currentStationName = train.currentStationName;
+            nextStationName = train.nextStationName;
+            currentStationNumber = train.currentStationNumber;
+            targetTime = train.targetTime;
+            trainCounters = new int[4] {train.passengersCounter, train.checkedPassengersCounter, train.mistakesCounter, train.uncheckedFakersCounter};
+
+            passnegerSaveDatas = new PassnegerSaveData[Train.passengersList.Count];
+
+            for(int i = 0; i < passnegerSaveDatas.Length; i++)
+            {
+                passnegerSaveDatas[i] = new()
+                {
+                    isChecked = Train.passengersList[i].GetComponent<Passenger>().isChecked,
+                    type = Train.passengersList[i].GetComponent<Passenger>().Type,
+                    character = Train.passengersList[i].GetComponent<Passenger>().Character,
+                    gender = Train.passengersList[i].GetComponent<Passenger>().Gender,
+                    firstName = Train.passengersList[i].GetComponent<Passenger>().FirstName,
+                    lastName = Train.passengersList[i].GetComponent<Passenger>().LastName,
+                    pesel = Train.passengersList[i].GetComponent<Passenger>().PESEL,
+                    dateOfBirth = Train.passengersList[i].GetComponent<Passenger>().DateOfBirth.ToString("dd.MM.yyyy"),
+                    ticketData = Train.passengersList[i].GetComponent<Passenger>().ticketData,
+                    personalIDData = Train.passengersList[i].GetComponent<Passenger>().personalIDData ?? null,
+                    schoolIDData = Train.passengersList[i].GetComponent<Passenger>().schoolIDData ?? null,
+                    universityIDData = Train.passengersList[i].GetComponent<Passenger>().universityIDData ?? null,
+                    armyIDData = Train.passengersList[i].GetComponent<Passenger>().armyIDData ?? null,
+                    pensionerIDData = Train.passengersList[i].GetComponent<Passenger>().pensionerIDData ?? null
+                };
+            }
         }
     }
 
@@ -82,6 +122,15 @@ public class GameManager : MonoBehaviour
         // Player
         public Vector3 playerPosition;
         public float playerWallet;
+
+        // Train
+        public string trainState, currentStationName, nextStationName;
+        public int currentStationNumber;
+        public float targetTime;
+        public int[] trainCounters;
+
+        // Passengers
+        public PassnegerSaveData[] passnegerSaveDatas;
     }
 
     public static void SaveGameData()
@@ -92,8 +141,18 @@ public class GameManager : MonoBehaviour
         data.SFXVolume = SFXVolume;
         data.musicVolume = musicVolume;
         data.currentDateTime = currentDateTime.ToBinary();
+
         data.playerPosition = playerPosition;
         data.playerWallet = playerWallet;
+
+        data.trainState = trainState;
+        data.currentStationName = currentStationName;
+        data.nextStationName = nextStationName;
+        data.currentStationNumber = currentStationNumber;
+        data.targetTime = targetTime;
+        data.trainCounters = trainCounters;
+
+        data.passnegerSaveDatas = passnegerSaveDatas;
 
         // Write json save file
         string json = JsonUtility.ToJson(data);
@@ -115,13 +174,20 @@ public class GameManager : MonoBehaviour
             SFXVolume = data.SFXVolume;
             musicVolume = data.musicVolume;
             currentDateTime = DateTime.FromBinary(data.currentDateTime);
+
             playerPosition = data.playerPosition;
             playerWallet = data.playerWallet;
+
+            trainState = data.trainState;
+            currentStationName = data.currentStationName;
+            nextStationName = data.nextStationName;
+            currentStationNumber = data.currentStationNumber;
+            targetTime = data.targetTime;
+            trainCounters = data.trainCounters;
+
+            passnegerSaveDatas = data.passnegerSaveDatas;
         }
-        else
-        {
-            SetDefaultData();
-        }
+        else { SetDefaultData(); }
     }
 
     public static void SetDefaultData()
@@ -133,3 +199,23 @@ public class GameManager : MonoBehaviour
         playerWallet = startingPlayerWallet;
     }
 }
+
+[Serializable] public class PassnegerSaveData
+    {
+        // Passenger personal info
+        public bool isChecked;
+        public PassengerType type;
+        public PassengerCharacter character;
+        public PassengerGender gender;
+        public string firstName, lastName, pesel, dateOfBirth;
+
+        // Ticket
+        public TicketData ticketData;
+
+        // Documents
+        public PersonalIDData personalIDData = null;
+        public SchoolIDData schoolIDData = null;
+        public UniversityIDData universityIDData = null;
+        public ArmyIDData armyIDData = null;
+        public PensionerIDData pensionerIDData = null;
+    }

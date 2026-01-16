@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Train : MonoBehaviour
+[Serializable] public class Train : MonoBehaviour
 {
     //=====================================================================================================
     // Variables and constants
@@ -32,14 +33,14 @@ public class Train : MonoBehaviour
     // Route and rounds variables
     public string trainState {get; private set;} // either "stop" or "ride"
     public int currentStationNumber { get; private set; }
-    string currentStationName;
-    string nextStationName;
+    public string currentStationName { get; private set; }
+    public string nextStationName { get; private set; }
 
     // Timer
-    float targetTime;
+    public float targetTime { get; private set; }
 
     // Passenger info
-    int passengersCounter = 0;
+    public int passengersCounter = 0;
     public int checkedPassengersCounter = 0;
     public int mistakesCounter = 0;
     public int uncheckedFakersCounter = 0;
@@ -62,17 +63,33 @@ public class Train : MonoBehaviour
         }
         print(debugInfo);
 
-        // Set up start of the route
-        trainState = "stop";
-        currentStationNumber = startStationNumber;
-        currentStationName = stationNames[currentStationNumber];
-        nextStationName = stationNames[currentStationNumber + 1];
+        if(GameManager.loadTrain) 
+        { 
+            trainState = GameManager.trainState;
+            currentStationName = GameManager.currentStationName;
+            nextStationName = GameManager.nextStationName;
+            currentStationNumber = GameManager.currentStationNumber;
+            targetTime = GameManager.targetTime;
 
-        // Set first staton stop timer
-        targetTime = minutesPerStationStop[currentStationNumber] * 60;
+            passengersCounter = GameManager.trainCounters[0];
+            checkedPassengersCounter  = GameManager.trainCounters[1];
+            mistakesCounter = GameManager.trainCounters[2];
+            uncheckedFakersCounter = GameManager.trainCounters[3];
+        }
+        else
+        {
+            // Set up start of the route
+            trainState = "stop";
+            currentStationNumber = startStationNumber;
+            currentStationName = stationNames[currentStationNumber];
+            nextStationName = stationNames[currentStationNumber + 1];
 
-        // Spawn first passengers
-        SpawnPassengers(Random.Range(5, 16));
+            // Set first staton stop timer
+            targetTime = minutesPerStationStop[currentStationNumber] * 60;
+
+            // Spawn first passengers
+            SpawnPassengers(UnityEngine.Random.Range(5, 16));
+        }
     }
 
     // Update is called once per frame
@@ -110,7 +127,7 @@ public class Train : MonoBehaviour
                     { 
                         nextStationName = stationNames[currentStationNumber + 1]; 
                         targetTime = minutesPerStationStop[currentStationNumber] * 60;
-                        SpawnPassengers(Random.Range(5, 16));
+                        SpawnPassengers(UnityEngine.Random.Range(5, 16));
                     }
 
                     trainState = "stop";
