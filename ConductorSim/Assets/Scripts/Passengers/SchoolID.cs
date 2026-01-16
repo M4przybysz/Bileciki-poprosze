@@ -11,6 +11,8 @@ public class SchoolID : DragAndDrop
         releaseDateButton, principalNameButton;
     [SerializeField] GameObject[] yearButtons;
 
+    static readonly Vector2 startPosition = new(-300, -170);
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
@@ -26,7 +28,7 @@ public class SchoolID : DragAndDrop
         back.SetActive(!back.activeSelf);
     }
 
-    public void SetSchoolID(SchoolIDData schoolIDData)
+    public void SetSchoolIDText(SchoolIDData schoolIDData)
     {
         if(schoolIDData != null)
         {
@@ -56,4 +58,6 @@ public class SchoolID : DragAndDrop
         }
         // else { print("There's no data to load!"); }
     }
+
+    public void ResetPosition() { GetComponent<RectTransform>().anchoredPosition = startPosition; }
 }

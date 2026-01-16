@@ -128,8 +128,7 @@ public class PlayerController : MonoBehaviour
     void StartConverstation()
     {
         print("Starting converstation with " + targetPassenger.FirstName);
-        TicketCheckingScreen.ShowTicketCheckingScreen();
-        TicketCheckingScreen.PullPassengerData(targetPassenger);
+        TicketCheckingScreen.ShowTicketCheckingScreen(targetPassenger);
     }
 
     public void AddMoneyToWallet(float moneyToAdd) { wallet += moneyToAdd; }

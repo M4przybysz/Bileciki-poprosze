@@ -9,6 +9,8 @@ public class ArmyID : DragAndDrop
     // All of the buttons
     [SerializeField] GameObject militaryRankButton, lastNameButton, firstNameButton, dateOfBirthButton, peselButton, releaseDateButton, 
         genderButton, seriesAndNumberButton, expirationDateButton, militaryUnitButton;
+
+    static readonly Vector2 startPosition = new(-500, -170);
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
@@ -25,7 +27,7 @@ public class ArmyID : DragAndDrop
         back.SetActive(!back.activeSelf);
     }
 
-    public void SetArmyID(ArmyIDData armyIDData)
+    public void SetArmyIDText(ArmyIDData armyIDData)
     {
         if(armyIDData != null)
         {
@@ -42,4 +44,6 @@ public class ArmyID : DragAndDrop
         }
         // else { print("There's no data to load!"); }
     }
+
+    public void ResetPosition() { GetComponent<RectTransform>().anchoredPosition = startPosition; }
 }
