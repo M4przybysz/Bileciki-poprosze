@@ -107,7 +107,8 @@ public class Passenger : MonoBehaviour
     {   
         train = GameObject.Find("Train").GetComponent<Train>();
 
-        if (doNotGeneratePassenger) { SetCustomPassenger(); } 
+        if(GameManager.loadTrainAndPassengers) { LoadPassengerFromSave(GameManager.passengerIndex); }
+        else if(doNotGeneratePassenger) { SetCustomPassenger(); } 
         else { RandomizePassengerProfile(); }
     }
 
@@ -131,6 +132,40 @@ public class Passenger : MonoBehaviour
     //=====================================================================================================
     // Custom methods
     //=====================================================================================================
+    void LoadPassengerFromSave(int index)
+    {
+        if(index >= GameManager.passnegerSaveDatas.Length)
+        {
+            GameManager.loadTrainAndPassengers = false;
+            return;
+        }
+
+        PassnegerSaveData loadedPassneger = GameManager.passnegerSaveDatas[index];
+        isChecked = loadedPassneger.isChecked;
+        Type = loadedPassneger.type;
+        Character = loadedPassneger.character;
+        Gender = loadedPassneger.gender;
+        FirstName = loadedPassneger.firstName;
+        LastName = loadedPassneger.lastName;
+        PESEL = loadedPassneger.pesel;
+        DateOfBirth = DateTime.Parse(loadedPassneger.dateOfBirth);
+        Age = loadedPassneger.age;
+
+        ticketData = loadedPassneger.ticketData;
+        PassengerSeat seat = train.FindTrainCar(ticketData.carNumber).FindSeat(ticketData.seatNumber);
+        seat.isTaken = true;
+        transform.position = seat.seatPosition;
+
+        if(loadedPassneger.schoolIDData.name != "") { schoolIDData = loadedPassneger.schoolIDData; }
+        if(loadedPassneger.universityIDData.name != "") { universityIDData = loadedPassneger.universityIDData; }
+        if(loadedPassneger.personalIDData.firstName != "") { personalIDData = loadedPassneger.personalIDData; }
+        if(loadedPassneger.armyIDData.firstName != "") { armyIDData = loadedPassneger.armyIDData; }
+        if(loadedPassneger.pensionerIDData.firstName != "") { pensionerIDData = loadedPassneger.pensionerIDData; }
+
+        GameManager.passengerIndex += 1;
+        PrintProfile();
+    }
+
     void RandomizePassengerProfile()
     {
         // Randomize basic data
@@ -220,7 +255,10 @@ public class Passenger : MonoBehaviour
     void PrintProfile()
     {
         // Set default output - passenger personal data
-        string output = $"Created new Passenger:\n  - Type: {Type};\n  - Character: {Character};\n  - Gender: {Gender};\n  - Name: {FirstName} {LastName};\n  - Date of birth: {DateOfBirth.Date};\n  - Age: {Age};\n  - PESEL: {PESEL}\n\n";
+        string output = $"Created new Passenger:\n";
+        if(GameManager.loadTrainAndPassengers) { output = $"Loaded Passenger from save:\n"; }
+        
+        output += $"- Type: {Type};\n  - Character: {Character};\n  - Gender: {Gender};\n  - Name: {FirstName} {LastName};\n  - Date of birth: {DateOfBirth.Date};\n  - Age: {Age};\n  - PESEL: {PESEL}\n\n";
         
         // Add ticket data
         output += $"Ticket data:\n  - Car and seat: {ticketData.carNumber}/{ticketData.seatNumber}\n  - Ticket office: {ticketData.kasaWydania}\n  - Class and tariff: {ticketData.klasa} --- {ticketData.taryfa}\n  - Ride dates: {ticketData.waznyWTam} --- {ticketData.waznyDoTam}\n  - Stations: {ticketData.stacjaOd} --> {ticketData.stacjaPrzez} --> {ticketData.stacjaDo}\n  - Series and number: {ticketData.seriaINumer}\n  - Number of stations and price: {ticketData.stacje} >>> {ticketData.PTU} >>> {ticketData.cena}\n\n";

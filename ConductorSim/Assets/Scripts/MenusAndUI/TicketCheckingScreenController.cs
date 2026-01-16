@@ -136,7 +136,7 @@ public class TicketCheckingScreenController : MonoBehaviour
         GetTicketsButton.SetActive(false);
         ticket.SetActive(true); 
 
-        if(targetPassenger.armyIDData != null || targetPassenger.pensionerIDData != null || targetPassenger.schoolIDData != null || targetPassenger.universityIDData != null)
+        if(targetPassenger.armyIDData.firstName != "" || targetPassenger.pensionerIDData.firstName != "" || targetPassenger.schoolIDData.name != "" || targetPassenger.universityIDData.name != "")
         {
             GetDocumentsButton.SetActive(true);
         }
@@ -157,10 +157,10 @@ public class TicketCheckingScreenController : MonoBehaviour
         GoodDocumentsButton.SetActive(true);
         BadDocumentsButton.SetActive(true);
 
-        if(targetPassenger.armyIDData != null) { ShowDocument(armyID); }
-        if(targetPassenger.pensionerIDData != null) { ShowDocument(pensionerID); ShowDocument(personalID); }
-        if(targetPassenger.schoolIDData != null) { ShowDocument(schoolID); }
-        if(targetPassenger.universityIDData != null) { ShowDocument(universityID); }
+        if(targetPassenger.armyIDData.firstName != "") { ShowDocument(armyID); }
+        if(targetPassenger.pensionerIDData.firstName != "") { ShowDocument(pensionerID); ShowDocument(personalID); }
+        if(targetPassenger.schoolIDData.name != "") { ShowDocument(schoolID); }
+        if(targetPassenger.universityIDData.name != "") { ShowDocument(universityID); }
     }
 
     static public void ShowDocument(GameObject document) { document.SetActive(true); }

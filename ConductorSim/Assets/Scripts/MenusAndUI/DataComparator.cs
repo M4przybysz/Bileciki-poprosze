@@ -235,7 +235,7 @@ public class DataComparator : MonoBehaviour
         {
             case DocumentInfoType.ExpirationDate:
             {
-                if(DateTime.Compare(GameManager.currentDateTime, new DateTime(int.Parse(dataToCheck.Substring(6, 4)), int.Parse(dataToCheck.Substring(3, 2)), int.Parse(dataToCheck.Substring(0, 2)))) < 0) { return 1; }
+                if(DateTime.Compare(GameManager.currentDateTime, DateTime.Parse(dataToCheck)) < 0) { return 1; }
                 else { return 2; }
             }
             case DocumentInfoType.UniversityExpirationYear:

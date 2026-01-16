@@ -11,6 +11,7 @@ using UnityEngine;
     // Serialized elements
     [SerializeField] Whistle whistle;
     [SerializeField] PlayerController player;
+    [SerializeField] UIController ui;
     [SerializeField] GameEndScreenController gameEndScreen;
     [SerializeField] Transform passengerCarsContainer;
     [SerializeField] Transform passengerContainer;
@@ -63,7 +64,7 @@ using UnityEngine;
         }
         print(debugInfo);
 
-        if(GameManager.loadTrain) 
+        if(GameManager.loadTrainAndPassengers) 
         { 
             trainState = GameManager.trainState;
             currentStationName = GameManager.currentStationName;
@@ -75,6 +76,8 @@ using UnityEngine;
             checkedPassengersCounter  = GameManager.trainCounters[1];
             mistakesCounter = GameManager.trainCounters[2];
             uncheckedFakersCounter = GameManager.trainCounters[3];
+
+            LoadPassengers();
         }
         else
         {
@@ -155,12 +158,20 @@ using UnityEngine;
         if(passengersList.Count < maxPassengersNumber)
         {
             for(int i = 0; i < numberOfPassengers; i++)
-                {
-                    passengersList.Add(Instantiate(passengerPrefab, passengerContainer));
-                    passengersCounter += 1;
-                }   
+            {
+                passengersList.Add(Instantiate(passengerPrefab, passengerContainer));
+                passengersCounter += 1;
+            }   
         }
         else { print($"Reached passenger limit: {maxPassengersNumber} \nLast passenger: {passengersList[passengersList.Count - 1].GetComponent<Passenger>().FirstName}"); }
+    }
+
+    void LoadPassengers()
+    {
+        for(int i = 0; i < GameManager.passnegerSaveDatas.Length; i++)
+        {
+            passengersList.Add(Instantiate(passengerPrefab, passengerContainer));
+        }  
     }
 
     public void RemovePassenger(GameObject passenger)
@@ -181,7 +192,9 @@ using UnityEngine;
 
     public void SkipRide()
     {
-        targetTime = 10; // Skip time to the end of the raid
+        ui.SkipRide(targetTime - 10);
+        targetTime = 10; // Skip time to the end of the ride
+
     }
 
     void PrintStatistics()

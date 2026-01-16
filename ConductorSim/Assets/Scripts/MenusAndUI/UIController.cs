@@ -34,4 +34,6 @@ public class UIController : MonoBehaviour
     public void HideUIElement(GameObject UIElement) { 
         if(!player.isGamePaused) { UIElement.SetActive(false); }  
     }
+
+    public void SkipRide(float time) { minutesCounter += time; }
 }

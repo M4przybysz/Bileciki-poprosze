@@ -38,7 +38,7 @@ public class MainMenuCotroller : MonoBehaviour
 
     public void ContinueGame()
     {
-        GameManager.loadTrain = true;
+        GameManager.loadTrainAndPassengers = true;
         SceneManager.LoadScene("GameScene");
     }
 

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // General variables
     public static bool doesSaveExist {get; private set;}
     public static bool showCreditsOnTitle = false;
-    public static bool loadTrain = false;
+    public static bool loadTrainAndPassengers = false;
 
     // Constant game data
     public const int startingInGameYear = 2006;
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public static int[] trainCounters = {0, 0, 0, 0};
 
     // Passengers
+    public static int passengerIndex = 0;
     public static PassnegerSaveData[] passnegerSaveDatas = {};
 
     //========================================================================
@@ -86,22 +87,25 @@ public class GameManager : MonoBehaviour
 
             for(int i = 0; i < passnegerSaveDatas.Length; i++)
             {
+                Passenger targetPassenger = Train.passengersList[i].GetComponent<Passenger>();
+
                 passnegerSaveDatas[i] = new()
                 {
-                    isChecked = Train.passengersList[i].GetComponent<Passenger>().isChecked,
-                    type = Train.passengersList[i].GetComponent<Passenger>().Type,
-                    character = Train.passengersList[i].GetComponent<Passenger>().Character,
-                    gender = Train.passengersList[i].GetComponent<Passenger>().Gender,
-                    firstName = Train.passengersList[i].GetComponent<Passenger>().FirstName,
-                    lastName = Train.passengersList[i].GetComponent<Passenger>().LastName,
-                    pesel = Train.passengersList[i].GetComponent<Passenger>().PESEL,
-                    dateOfBirth = Train.passengersList[i].GetComponent<Passenger>().DateOfBirth.ToString("dd.MM.yyyy"),
-                    ticketData = Train.passengersList[i].GetComponent<Passenger>().ticketData,
-                    personalIDData = Train.passengersList[i].GetComponent<Passenger>().personalIDData ?? null,
-                    schoolIDData = Train.passengersList[i].GetComponent<Passenger>().schoolIDData ?? null,
-                    universityIDData = Train.passengersList[i].GetComponent<Passenger>().universityIDData ?? null,
-                    armyIDData = Train.passengersList[i].GetComponent<Passenger>().armyIDData ?? null,
-                    pensionerIDData = Train.passengersList[i].GetComponent<Passenger>().pensionerIDData ?? null
+                    isChecked = targetPassenger.isChecked,
+                    type = targetPassenger.Type,
+                    character = targetPassenger.Character,
+                    gender = targetPassenger.Gender,
+                    firstName = targetPassenger.FirstName,
+                    lastName = targetPassenger.LastName,
+                    pesel = targetPassenger.PESEL,
+                    dateOfBirth = targetPassenger.DateOfBirth.ToString("dd.MM.yyyy"),
+                    age = targetPassenger.Age,
+                    ticketData = targetPassenger.ticketData,
+                    personalIDData = targetPassenger.personalIDData ?? null,
+                    schoolIDData = targetPassenger.schoolIDData ?? null,
+                    universityIDData = targetPassenger.universityIDData ?? null,
+                    armyIDData = targetPassenger.armyIDData ?? null,
+                    pensionerIDData = targetPassenger.pensionerIDData ?? null
                 };
             }
         }
@@ -186,6 +190,7 @@ public class GameManager : MonoBehaviour
             trainCounters = data.trainCounters;
 
             passnegerSaveDatas = data.passnegerSaveDatas;
+            passengerIndex = 0;
         }
         else { SetDefaultData(); }
     }
@@ -208,6 +213,7 @@ public class GameManager : MonoBehaviour
         public PassengerCharacter character;
         public PassengerGender gender;
         public string firstName, lastName, pesel, dateOfBirth;
+        public int age;
 
         // Ticket
         public TicketData ticketData;

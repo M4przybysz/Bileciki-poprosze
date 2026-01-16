@@ -5419,14 +5419,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doNotGeneratePassenger: 0
-  customPassengerData:
-    character: 0
-    gender: 0
+  ticketData:
+    carNumber: 0
+    seatNumber: 0
+    kasaWydania: 
+    klasa: 
+    przejazd: 
+    liczbaOsob: 
+    taryfa: 
+    waznyWTam: 
+    waznyDoTam: 
+    waznyWPowrot: 
+    waznyDoPowrot: 
+    stacjaOd: 
+    stacjaDo: 
+    stacjaPrzez: 
+    seria: 
+    numer: 
+    seriaINumer: 
+    stacje: 
+    PTU: 
+    cena: 
+  personalIDData:
     firstName: 
     lastName: 
-    yearOfBirth: 1930
-    monthOfBirth: 1
-    dayOfBirth: 1
+    familyName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    height: 
+    eyeColor: 
+    releaseDate: 
+    expirationDate: 
+    parentsNames: 
+  schoolIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    pesel: 
+    startYearsAgo: 0
+    schoolIDNumber: 
+    principalName: 
+    releaseDate: 
+  universityIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    startYearsAgo: 0
+    albumNumber: 
+    releaserName: 
+    releaseDate: 
+  armyIDData:
+    firstName: 
+    lastName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    releaseDate: 
+    expirationDate: 
+    militaryRank: 
+    seriesAndNumber: 
+  pensionerIDData:
+    firstName: 
+    lastName: 
+    pesel: 
+    benefitNumber: 
+    pensionerIDNumber: 
   isChecked: 0
 --- !u!58 &742140349
 CircleCollider2D:
@@ -9826,14 +9884,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doNotGeneratePassenger: 1
-  customPassengerData:
-    character: 2
-    gender: 0
-    firstName: XXX
-    lastName: YYY
-    yearOfBirth: 1980
-    monthOfBirth: 6
-    dayOfBirth: 20
+  ticketData:
+    carNumber: 0
+    seatNumber: 0
+    kasaWydania: 
+    klasa: 
+    przejazd: 
+    liczbaOsob: 
+    taryfa: 
+    waznyWTam: 
+    waznyDoTam: 
+    waznyWPowrot: 
+    waznyDoPowrot: 
+    stacjaOd: 
+    stacjaDo: 
+    stacjaPrzez: 
+    seria: 
+    numer: 
+    seriaINumer: 
+    stacje: 
+    PTU: 
+    cena: 
+  personalIDData:
+    firstName: 
+    lastName: 
+    familyName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    height: 
+    eyeColor: 
+    releaseDate: 
+    expirationDate: 
+    parentsNames: 
+  schoolIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    pesel: 
+    startYearsAgo: 0
+    schoolIDNumber: 
+    principalName: 
+    releaseDate: 
+  universityIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    startYearsAgo: 0
+    albumNumber: 
+    releaserName: 
+    releaseDate: 
+  armyIDData:
+    firstName: 
+    lastName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    releaseDate: 
+    expirationDate: 
+    militaryRank: 
+    seriesAndNumber: 
+  pensionerIDData:
+    firstName: 
+    lastName: 
+    pesel: 
+    benefitNumber: 
+    pensionerIDNumber: 
   isChecked: 0
 --- !u!1 &1323102785
 GameObject:
@@ -14917,14 +15033,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doNotGeneratePassenger: 0
-  customPassengerData:
-    character: 0
-    gender: 0
+  ticketData:
+    carNumber: 0
+    seatNumber: 0
+    kasaWydania: 
+    klasa: 
+    przejazd: 
+    liczbaOsob: 
+    taryfa: 
+    waznyWTam: 
+    waznyDoTam: 
+    waznyWPowrot: 
+    waznyDoPowrot: 
+    stacjaOd: 
+    stacjaDo: 
+    stacjaPrzez: 
+    seria: 
+    numer: 
+    seriaINumer: 
+    stacje: 
+    PTU: 
+    cena: 
+  personalIDData:
     firstName: 
     lastName: 
-    yearOfBirth: 1930
-    monthOfBirth: 1
-    dayOfBirth: 1
+    familyName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    height: 
+    eyeColor: 
+    releaseDate: 
+    expirationDate: 
+    parentsNames: 
+  schoolIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    pesel: 
+    startYearsAgo: 0
+    schoolIDNumber: 
+    principalName: 
+    releaseDate: 
+  universityIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    startYearsAgo: 0
+    albumNumber: 
+    releaserName: 
+    releaseDate: 
+  armyIDData:
+    firstName: 
+    lastName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    releaseDate: 
+    expirationDate: 
+    militaryRank: 
+    seriesAndNumber: 
+  pensionerIDData:
+    firstName: 
+    lastName: 
+    pesel: 
+    benefitNumber: 
+    pensionerIDNumber: 
   isChecked: 0
 --- !u!58 &2080906851
 CircleCollider2D:
@@ -15361,14 +15535,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doNotGeneratePassenger: 0
-  customPassengerData:
-    character: 0
-    gender: 0
+  ticketData:
+    carNumber: 0
+    seatNumber: 0
+    kasaWydania: 
+    klasa: 
+    przejazd: 
+    liczbaOsob: 
+    taryfa: 
+    waznyWTam: 
+    waznyDoTam: 
+    waznyWPowrot: 
+    waznyDoPowrot: 
+    stacjaOd: 
+    stacjaDo: 
+    stacjaPrzez: 
+    seria: 
+    numer: 
+    seriaINumer: 
+    stacje: 
+    PTU: 
+    cena: 
+  personalIDData:
     firstName: 
     lastName: 
-    yearOfBirth: 1930
-    monthOfBirth: 1
-    dayOfBirth: 1
+    familyName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    height: 
+    eyeColor: 
+    releaseDate: 
+    expirationDate: 
+    parentsNames: 
+  schoolIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    pesel: 
+    startYearsAgo: 0
+    schoolIDNumber: 
+    principalName: 
+    releaseDate: 
+  universityIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    startYearsAgo: 0
+    albumNumber: 
+    releaserName: 
+    releaseDate: 
+  armyIDData:
+    firstName: 
+    lastName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    releaseDate: 
+    expirationDate: 
+    militaryRank: 
+    seriesAndNumber: 
+  pensionerIDData:
+    firstName: 
+    lastName: 
+    pesel: 
+    benefitNumber: 
+    pensionerIDNumber: 
   isChecked: 0
 --- !u!58 &2140225900
 CircleCollider2D:
@@ -15592,6 +15824,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7188882082289386801, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 1105893265}
     - target: {fileID: 7188882082289386801, guid: 2a9bdc5aac751bb4e8031e15585920e9, type: 3}
       propertyPath: player
       value: 
