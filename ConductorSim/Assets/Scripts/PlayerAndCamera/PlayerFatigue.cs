@@ -56,13 +56,12 @@ public class PlayerFatigue : MonoBehaviour
 
     [Header("Screen Effects")]
     [SerializeField] Volume postProcessVolume;
-    [SerializeField] Canvas blackScreenCanvas;
-    [Tooltip("Maksymalna wartoœæ alpha nak³adki przy 100% zmêczenia (0..1)")]
+    [SerializeField] Image blackScreen;
+    [Tooltip("Maksymalna wartoï¿½ï¿½ alpha nakï¿½adki przy 100% zmï¿½czenia (0..1)")]
     [SerializeField] [Range(0f, 1f)] float maxDarkness = 0.8f;
-    [Tooltip("Szybkoœæ wyg³adzenia alpha nak³adki (wiêksza = szybsze przejœcie)")]
+    [Tooltip("Szybkoï¿½ï¿½ wygï¿½adzenia alpha nakï¿½adki (wiï¿½ksza = szybsze przejï¿½cie)")]
     [SerializeField] float blackFadeSpeed = 2f;
     Vignette vignette;
-    Image blackScreenImage;
 
     // ====================================================================
     // Unity
@@ -91,18 +90,7 @@ public class PlayerFatigue : MonoBehaviour
         UpdatePhaseImmediate();
         previousPhase = currentPhase;
 
-        if (blackScreenCanvas != null)
-        {
-            blackScreenImage = blackScreenCanvas.GetComponentInChildren<Image>();
-            if (blackScreenImage == null)
-            {
-                Debug.LogWarning("PlayerFatigue: blackScreenCanvas nie zawiera Image (pe³noekranowego czarnego obrazu).");
-            }
-            else
-            {
-                SetBlackAlpha(Mathf.Lerp(0f, maxDarkness, fatigue / 100f));
-            }
-        }
+        if (blackScreen != null) { SetBlackAlpha(Mathf.Lerp(0f, maxDarkness, fatigue / 100f)); }
     }
 
     void Update()
@@ -198,14 +186,14 @@ public class PlayerFatigue : MonoBehaviour
         PlayPassOut();
         SetVignette(0.4f);
 
-        if (blackScreenImage != null)
+        if (blackScreen != null)
             yield return FadeBlackScreen(1f, 0.5f);
         else
             yield return new WaitForSeconds(0.5f);
 
         yield return new WaitForSeconds(2f);
 
-        if (blackScreenImage != null)
+        if (blackScreen != null)
             yield return FadeBlackScreen(Mathf.Lerp(0f, maxDarkness, 90f / 100f), 0.5f);
         else
             yield return new WaitForSeconds(0.5f);
@@ -230,7 +218,7 @@ public class PlayerFatigue : MonoBehaviour
     {
         if (audioSource == null)
         {
-            Debug.LogWarning("PlayerFatigue: brak AudioSource — nie odtworzono yawnClip.");
+            Debug.LogWarning("PlayerFatigue: brak AudioSource ï¿½ nie odtworzono yawnClip.");
             return;
         }
 
@@ -247,11 +235,11 @@ public class PlayerFatigue : MonoBehaviour
     {
         if (audioSource == null)
         {
-            Debug.Log("PlayerFatigue: PlayPassOut wywo³ane, lecz nie ma AudioSource.");
+            Debug.Log("PlayerFatigue: PlayPassOut wywoï¿½ane, lecz nie ma AudioSource.");
             return;
         }
 
-        Debug.Log("PlayerFatigue: pass-out audio usuniête z kodu (brak clipa).");
+        Debug.Log("PlayerFatigue: pass-out audio usuniï¿½te z kodu (brak clipa).");
     }
 
     void SetVignette(float intensity)
@@ -262,9 +250,9 @@ public class PlayerFatigue : MonoBehaviour
 
     IEnumerator FadeBlackScreen(float targetAlpha, float duration)
     {
-        if (blackScreenImage == null) { yield break; }
+        if (blackScreen == null) { yield break; }
 
-        Color start = blackScreenImage.color;
+        Color start = blackScreen.color;
         float time = 0f;
 
         while (time < duration)
@@ -280,20 +268,20 @@ public class PlayerFatigue : MonoBehaviour
 
     void UpdateBlackScreen()
     {
-        if (blackScreenImage == null) return;
+        if (blackScreen == null) return;
 
         float target = Mathf.Lerp(0f, maxDarkness, fatigue / 100f);
-        float currentA = blackScreenImage.color.a;
+        float currentA = blackScreen.color.a;
         float nextA = Mathf.MoveTowards(currentA, target, Time.deltaTime * blackFadeSpeed);
         SetBlackAlpha(nextA);
     }
 
     void SetBlackAlpha(float a)
     {
-        if (blackScreenImage == null) return;
-        Color c = blackScreenImage.color;
+        if (blackScreen == null) return;
+        Color c = blackScreen.color;
         c.a = Mathf.Clamp01(a);
-        blackScreenImage.color = c;
+        blackScreen.color = c;
     }
 
     // ====================================================================
