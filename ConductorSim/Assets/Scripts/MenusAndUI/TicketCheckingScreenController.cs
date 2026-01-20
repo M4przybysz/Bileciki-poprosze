@@ -8,7 +8,7 @@ public class TicketCheckingScreenController : MonoBehaviour
     // Dialogue variables and constants
     const float textSpeed = 0.025f; // Time between each char of the dialogue string
     bool isTicketChecking = false; // Is conductor currently checking ticket and/or documents?
-    float randomDialogueTime = 15;
+    float timeToNextDialogue = 15;
 
     IEnumerator lastPrinting = null;
     static readonly List<List<string>> startingDialogues = new List<List<string>>()
@@ -68,9 +68,9 @@ public class TicketCheckingScreenController : MonoBehaviour
     {
         if(isTicketChecking)
         {
-            randomDialogueTime -= Time.deltaTime;
+            timeToNextDialogue -= Time.deltaTime;
 
-            if(randomDialogueTime <= 0)
+            if(timeToNextDialogue <= 0)
             {
                 switch(targetPassenger.Character)
                 {
@@ -83,7 +83,7 @@ public class TicketCheckingScreenController : MonoBehaviour
                     default: { PrintLine(randomDialogues[(int)targetPassenger.Character][Random.Range(0, randomDialogues[(int)targetPassenger.Character].Count)]); break; }
                 }
 
-                randomDialogueTime = Random.Range(10, 30);
+                timeToNextDialogue = Random.Range(10, 30);
             }
         }
     }
@@ -104,11 +104,15 @@ public class TicketCheckingScreenController : MonoBehaviour
         {
             NPCTextBox.text = ""; 
             GetTicketsButton.SetActive(true); 
+            timeToNextDialogue = Random.Range(10, 30);
         }
     }
 
     public void HideTicketCheckingScreen() 
     {
+        if(lastPrinting != null) { StopCoroutine(lastPrinting); }
+        NPCTextBox.text = "";
+
         GoodbyeButton.SetActive(false);
         HideDocuments();
         ticketCheckingScreenContainer.SetActive(false); 
