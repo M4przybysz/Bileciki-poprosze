@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
         {
             GameManager.currentDateTime = GameManager.currentDateTime.AddMinutes(minutesCounter / 60);
             WatchHandTMP.text = GameManager.currentDateTime.ToString("HH:mm\n------\ndd.MM\nyyyy");
-            minutesCounter = 0;
+            minutesCounter %= 60;
         }
     }
 
@@ -35,5 +35,5 @@ public class UIController : MonoBehaviour
         if(!player.isGamePaused) { UIElement.SetActive(false); }  
     }
 
-    public void SkipRide(float time) { minutesCounter += time; }
+    public void SkipTime(float time) { minutesCounter += time; }
 }

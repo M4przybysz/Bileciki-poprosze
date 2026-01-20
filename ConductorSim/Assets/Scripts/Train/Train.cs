@@ -21,11 +21,11 @@ using UnityEngine;
     static readonly string[] stationNames = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", 
         "Łowicz Główny", "Włocławek", "Toruń Główny", "Bydgoszcz Główna", "Piła Główna", "Kołobrzeg"};
     static readonly int[] minutesPerStationStop = {10, 10, 15, 10, 10, 15, 10, 15, 15};
-    static readonly int[] minutesPerRide = {54, 60, 123, 44, 41, 18, 32, 60, 150};
+    static readonly int[] minutesPerRide = {96, 60, 123, 44, 41, 18, 32, 60, 150};
     const int maxPassengersNumber = 174;
     const int startStationNumber = 0;
     const int endStationNumber = 9;
-    public const int timeScale = 3; // How many times faster does in-game time flow (default is x3)
+    public const int timeScale = 5; // How many times faster does in-game time flow (default is x5)
 
     // Train elements
     public static TrainCar[] passengerCars;
@@ -192,9 +192,8 @@ using UnityEngine;
 
     public void SkipRide()
     {
-        ui.SkipRide(targetTime - 10);
+        ui.SkipTime(targetTime);
         targetTime = 10; // Skip time to the end of the ride
-
     }
 
     void PrintStatistics()

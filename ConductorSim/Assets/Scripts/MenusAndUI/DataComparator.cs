@@ -192,7 +192,12 @@ public class DataComparator : MonoBehaviour
         if(ticketInfo != TicketInfoType.Number) { return 0; }
         else
         {
-            if(train.FindTrainCar(int.Parse(dataToCheck[..2])).FindSeat(int.Parse(dataToCheck.Substring(2, 2)))) { return 1; }
+            bool doesSeatExist = true;
+
+            try { train.FindTrainCar(int.Parse(dataToCheck[..2])).FindSeat(int.Parse(dataToCheck.Substring(2, 2))); }
+            catch { doesSeatExist = false; }
+
+            if(doesSeatExist) { return 1; }
             else { return 2; }
         }
     }

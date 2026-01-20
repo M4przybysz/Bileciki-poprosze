@@ -2323,9 +2323,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>4. Legitymacja studencka </b>\n    <b>- Imi\u0119 i nazwisko:</b> Por\xF3wna\u0107
-    z imieniem i nazwiskiem na dowodzie\n    <b>- PESEL:</b> Por\xF3wna\u0107 z dat\u0105
-    urodzenia i przedstawionym schematem\n\n<b>5. Legitymacja \u017Co\u0142nierza
+  m_text: "<b>4. Legitymacja emeryta-rencisty </b>\n    <b>- Imi\u0119 i nazwisko:</b>
+    Por\xF3wna\u0107 z imieniem i nazwiskiem na dowodzie\n    <b>- PESEL:</b> Por\xF3wna\u0107
+    z dat\u0105 urodzenia i przedstawionym schematem\n\n<b>5. Legitymacja \u017Co\u0142nierza
     zawodowego </b>\n    <b>- Zdj\u0119cie:</b> Por\xF3wna\u0107 z wygl\u0105dem
     pasa\u017Cera\n    <b>- Data urodzenia:</b> Zweryfikowa\u0107 w przypadku obowi\u0105zuj\u0105cej
     ulgi\n    <b>- PESEL:</b> Por\xF3wna\u0107 z dat\u0105 urodzenia i przedstawionym
