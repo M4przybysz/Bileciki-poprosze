@@ -13,6 +13,7 @@ public class AdvancedButton : Selectable, IPointerClickHandler
 
     private Coroutine resetRoutine;
 
+#if UNITY_EDITOR
     protected override void Reset()
     {
         base.Reset();
@@ -25,6 +26,7 @@ public class AdvancedButton : Selectable, IPointerClickHandler
 
         targetGraphic = imageComponent;
     }
+#endif
 
     public void OnPointerClick(PointerEventData eventData)
     {
