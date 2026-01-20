@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public bool isGamePaused = false;
 
     // Player's wallet
+    public const float salary = 84f;
     float wallet;
 
     //=====================================================================================================
@@ -142,8 +143,7 @@ public class PlayerController : MonoBehaviour
     void StartConverstation()
     {
         print("Starting converstation with " + targetPassenger.FirstName);
-        TicketCheckingScreen.ShowTicketCheckingScreen();
-        TicketCheckingScreen.PullPassengerData(targetPassenger);
+        TicketCheckingScreen.ShowTicketCheckingScreen(targetPassenger);
     }
 
     public void AddMoneyToWallet(float moneyToAdd) { wallet += moneyToAdd; }

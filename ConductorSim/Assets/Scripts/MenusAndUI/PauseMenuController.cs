@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] PlayerController player;
+    [SerializeField] GameObject gameEndScreenContainer;
     [SerializeField] GameObject pauseMenuContainer;
     [SerializeField] GameObject settingsMenu;
 
@@ -51,6 +52,7 @@ public class PauseMenuController : MonoBehaviour
     public void SaveAndQuit()
     {
         GameManager.SetPlayerDataToSave();
+        GameManager.SetTrainDataToSave();
         GameManager.SaveGameData();
         SceneManager.LoadScene("TitleScreen");
     }
