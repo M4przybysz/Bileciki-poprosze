@@ -59,6 +59,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (fatigueScript != null && fatigueScript.IsImmobilized)
+        {
+            if (playerRigidbody != null)
+                playerRigidbody.linearVelocity = Vector2.zero;
+            return;
+        }
+
         playerRigidbody.linearVelocity = input * speed * speedModifier;
     }
 
@@ -69,6 +76,14 @@ public class PlayerController : MonoBehaviour
     {
         if(!isInConversation && !isGamePaused)
         {
+            if (fatigueScript != null && fatigueScript.IsImmobilized)
+            {
+                input = Vector2.zero;
+                speedModifier = 0f;
+                fatigueScript.SetSprinting(false);
+                return;
+            }
+
             // Movement inputs
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
