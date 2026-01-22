@@ -2731,6 +2731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320900753}
   - component: {fileID: 320900754}
+  - component: {fileID: 320900755}
   m_Layer: 5
   m_Name: TicketCheckingScreen
   m_TagString: Untagged
@@ -2785,6 +2786,127 @@ MonoBehaviour:
   GoodDocumentsButton: {fileID: 1594956614}
   BadDocumentsButton: {fileID: 1435854625}
   GoodbyeButton: {fileID: 1873839514}
+  passengerSound: {fileID: 320900755}
+  allSounds:
+  - {fileID: 8300000, guid: f06749588f6a33242a5ff5e848419cb5, type: 3}
+  - {fileID: 8300000, guid: 8f1dad0eae659fd4ab0e5374530a167d, type: 3}
+  - {fileID: 8300000, guid: a4782c5ab12222843aa9bcf71faf3de0, type: 3}
+  - {fileID: 8300000, guid: 776d103126e7a5045b74d74e66fc4760, type: 3}
+  - {fileID: 8300000, guid: 355ba341b1281b14796b38a1b067305e, type: 3}
+  - {fileID: 8300000, guid: 3c9f1b33043a0834d92feed7b8030dcc, type: 3}
+  - {fileID: 8300000, guid: bdf9d9323bd4bb543a02b5cbaf099ed2, type: 3}
+  - {fileID: 8300000, guid: 07d82630c1051704fbbd07b411c86322, type: 3}
+  - {fileID: 8300000, guid: 0bbc3a119c99a2544b27086b79c4c384, type: 3}
+  - {fileID: 8300000, guid: 2d6a7750456fe9c478d330872c3d12ae, type: 3}
+  - {fileID: 8300000, guid: 9af1b81c250801d43a149d9a451a8d34, type: 3}
+  - {fileID: 8300000, guid: 22e73a567ace21d4ca0c4b6d12bbe387, type: 3}
+  - {fileID: 8300000, guid: bab849d2106d96a43b17faf04343e315, type: 3}
+  - {fileID: 8300000, guid: e2a6d7b0b007f9b4487437f0fccc2a82, type: 3}
+  - {fileID: 8300000, guid: 770b6701041d1ad45bf5667c95d20b27, type: 3}
+  - {fileID: 8300000, guid: da43e3dd6e02eb841931457fab5e85d0, type: 3}
+  - {fileID: 8300000, guid: 6390a535a22958847a05252fd406debf, type: 3}
+  - {fileID: 8300000, guid: 725807879fbab48408663155daa67bc0, type: 3}
+  - {fileID: 8300000, guid: baad354afc5285241938d21c82de3ee4, type: 3}
+  - {fileID: 8300000, guid: 11456d261d933ac4a9939d3cbfdce1b7, type: 3}
+  - {fileID: 8300000, guid: 2fc6485b975d6da49a92ac5fa00e244c, type: 3}
+  - {fileID: 8300000, guid: 3c83c8a8657788a4aa369d08b85d3ebb, type: 3}
+--- !u!82 &320900755
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320900752}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -8952493669717342389, guid: 3c96de26e8d4d4f42a9532f431f2fec2, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &324585930
 GameObject:
   m_ObjectHideFlags: 0

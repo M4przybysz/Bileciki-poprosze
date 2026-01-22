@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class TicketCheckingScreenController : MonoBehaviour
 {
@@ -99,6 +101,61 @@ public class TicketCheckingScreenController : MonoBehaviour
         player.isInConversation = true;
 
         PullPassengerData(passenger);
+
+        // Passenger voices
+        switch (targetPassenger.Gender)
+        {
+            case PassengerGender.M:
+                {
+                    switch (targetPassenger.Character)
+                    {
+                        case PassengerCharacter.Talkative:
+                            {
+                                theSound = allSounds[Random.Range(0, 3)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Nice:
+                            {
+                                theSound = allSounds[Random.Range(4, 9)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Rude:
+                            {
+                                theSound = allSounds[Random.Range(10, 12)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                    }
+                    break;
+                }
+            case PassengerGender.F:
+                {
+                    switch (targetPassenger.Character)
+                    {
+                        case PassengerCharacter.Talkative:
+                            {
+                                theSound = allSounds[Random.Range(13, 15)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Nice:
+                            {
+                                theSound = allSounds[Random.Range(16, 19)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Rude:
+                            {
+                                theSound = allSounds[Random.Range(20, 21)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                    }
+                    break;
+                }
+        }
 
         if (targetPassenger.isChecked) 
         {

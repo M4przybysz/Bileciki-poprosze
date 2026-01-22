@@ -41,23 +41,25 @@ public class MainMenuCotroller : MonoBehaviour
 
     public void ContinueGame()
     {
-        uiSound.Play();
         GameManager.loadTrainAndPassengers = true;
         SceneManager.LoadScene("GameScene");
     }
 
     public void NewGame()
     {
-        uiSound.Play();
         GameManager.SetDefaultData();
         SceneManager.LoadScene("GameScene");     
     }
 
     public void NewGameConfirmation()
     {
-        uiSound.Play();
         if (!GameManager.doesSaveExist) { NewGame(); } // Start new game without confirmation if there's no savefile
         else { ShowUIElement(newGameConfirm); } // Require confirmation if save file exists 
+    }
+
+    public void PlayClickSound()
+    {
+        uiSound.Play();
     }
 
     public void QuitGame()
