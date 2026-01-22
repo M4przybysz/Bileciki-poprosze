@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Windows;
+
 
 
 #if UNITY_EDITOR
@@ -14,6 +16,7 @@ public class MainMenuCotroller : MonoBehaviour
     [SerializeField] GameObject options;
     [SerializeField] Button continueButton;
     [SerializeField] Button newGameButton;
+    [SerializeField] AudioSource uiSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,19 +41,22 @@ public class MainMenuCotroller : MonoBehaviour
 
     public void ContinueGame()
     {
+        uiSound.Play();
         GameManager.loadTrainAndPassengers = true;
         SceneManager.LoadScene("GameScene");
     }
 
     public void NewGame()
     {
+        uiSound.Play();
         GameManager.SetDefaultData();
         SceneManager.LoadScene("GameScene");     
     }
 
     public void NewGameConfirmation()
     {
-        if(!GameManager.doesSaveExist) { NewGame(); } // Start new game without confirmation if there's no savefile
+        uiSound.Play();
+        if (!GameManager.doesSaveExist) { NewGame(); } // Start new game without confirmation if there's no savefile
         else { ShowUIElement(newGameConfirm); } // Require confirmation if save file exists 
     }
 

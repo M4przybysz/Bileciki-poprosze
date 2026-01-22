@@ -51,6 +51,11 @@ public class TicketCheckingScreenController : MonoBehaviour
     [SerializeField] GameObject ticket, schoolID, universityID, personalID, armyID, pensionerID;
     [SerializeField] GameObject GetTicketsButton, GetDocumentsButton, GoodDocumentsButton, BadDocumentsButton, GoodbyeButton;
 
+    // Passenger sounds
+    public AudioSource passengerSound;
+    public AudioClip[] allSounds;
+    private AudioClip theSound;
+
     // Passenger and their documents data
     static Passenger targetPassenger;
     public static TicketData ticketData;
@@ -84,7 +89,7 @@ public class TicketCheckingScreenController : MonoBehaviour
                 }
 
                 timeToNextDialogue = Random.Range(10, 30);
-            }
+            }   
         }
     }
 
@@ -94,8 +99,8 @@ public class TicketCheckingScreenController : MonoBehaviour
         player.isInConversation = true;
 
         PullPassengerData(passenger);
-        
-        if(targetPassenger.isChecked) 
+
+        if (targetPassenger.isChecked) 
         {
             PrintLine("Tak?"); 
             GoodbyeButton.SetActive(true); 

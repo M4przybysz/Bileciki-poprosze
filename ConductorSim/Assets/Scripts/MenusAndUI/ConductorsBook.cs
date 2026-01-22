@@ -1,9 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class ConductorsBook : MonoBehaviour
 {
     [SerializeField] DataComparator dataComparator;
     [SerializeField] GameObject[] pages;
+    public AudioSource flipPage;
+    public AudioClip[] pageSounds;
+    private AudioClip activeSound;
     int pageCounter = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,5 +32,14 @@ public class ConductorsBook : MonoBehaviour
         foreach(GameObject page in pages) { page.SetActive(false); }
 
         pages[pageCounter].SetActive(true);
+
+        //Flip Page Sound
+
+            if (!flipPage.isPlaying)
+            {
+                activeSound = pageSounds[Random.Range(0, pageSounds.Length)];
+                flipPage.PlayOneShot(activeSound);
+            }
+
     }
 }
