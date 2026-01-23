@@ -6181,7 +6181,7 @@ RectTransform:
   m_GameObject: {fileID: 853689582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1105893264}
@@ -16188,11 +16188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2041420031097650169, guid: f4fecd3b43c97b74e8827984161c09aa, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 500
+      value: -230
       objectReference: {fileID: 0}
     - target: {fileID: 2041420031097650169, guid: f4fecd3b43c97b74e8827984161c09aa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -170
+      value: -310
       objectReference: {fileID: 0}
     - target: {fileID: 2041420031097650169, guid: f4fecd3b43c97b74e8827984161c09aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16290,7 +16290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3896087850737430230, guid: 2c4e8e4ca716afc4aa21fd3cf9a2c508, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 3896087850737430230, guid: 2c4e8e4ca716afc4aa21fd3cf9a2c508, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -16726,6 +16726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConductorsBookOpen
       objectReference: {fileID: 0}
+    - target: {fileID: 1062676325573447165, guid: f7bdc7f73963cc54c8f9f239c429f775, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2422288178407223705, guid: f7bdc7f73963cc54c8f9f239c429f775, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -16957,7 +16961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6134523996519684550, guid: ac17bddb37f991f45b154f23c28930ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -300
+      value: -470
       objectReference: {fileID: 0}
     - target: {fileID: 6134523996519684550, guid: ac17bddb37f991f45b154f23c28930ea, type: 3}
       propertyPath: m_AnchoredPosition.y
