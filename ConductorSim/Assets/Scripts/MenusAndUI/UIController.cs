@@ -36,4 +36,6 @@ public class UIController : MonoBehaviour
     }
 
     public void SkipTime(float time) { minutesCounter += time; }
+
+    public void StartGame() { Time.timeScale = 1; }
 }

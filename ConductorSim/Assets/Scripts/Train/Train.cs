@@ -13,6 +13,7 @@ using UnityEngine;
     [SerializeField] PlayerController player;
     [SerializeField] UIController ui;
     [SerializeField] GameEndScreenController gameEndScreen;
+    [SerializeField] GameObject startLetter;
     [SerializeField] Transform passengerCarsContainer;
     [SerializeField] Transform passengerContainer;
     [SerializeField] GameObject passengerPrefab;
@@ -92,6 +93,10 @@ using UnityEngine;
 
             // Spawn first passengers
             SpawnPassengers(UnityEngine.Random.Range(5, 16));
+
+            // Pause the game and show story intro
+            Time.timeScale = 0;
+            ui.ShowUIElement(startLetter);
         }
     }
 
