@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6f875ce4969b6ca45b800c4901c9c3d3
+guid: d835d56af172f8344b9494331d57cdcd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 855313390924086564
-    second: "wagon_przedzia\u0142owy_\u015Bciany_0"
+      213: -2229318673924693518
+    second: car_walls_v2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "wagon_przedzia\u0142owy_\u015Bciany_0"
+      name: car_walls_v2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42d3aa55ffeaedb00800000000000000
-      internalID: 855313390924086564
+      spriteID: 2f1e29d3a7edf01e0800000000000000
+      internalID: -2229318673924693518
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "wagon_przedzia\u0142owy_\u015Bciany_0": 855313390924086564
+      car_walls_v2_0: -2229318673924693518
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

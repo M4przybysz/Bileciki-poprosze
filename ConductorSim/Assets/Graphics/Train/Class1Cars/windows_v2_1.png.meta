@@ -1,58 +1,58 @@
 fileFormatVersion: 2
-guid: 91d497337386e924cb495ebb3a326a57
+guid: a3224ad13e704f64386eb19c7aa842f3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2336552466809588854
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_0"
+      213: 6724050544244342512
+    second: windows_v2_1_0
   - first:
-      213: -8016757992760410293
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_1"
+      213: -7517945076551696714
+    second: windows_v2_1_1
   - first:
-      213: 8811216332861141578
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_2"
+      213: 8961278866798732233
+    second: windows_v2_1_2
   - first:
-      213: 4779116413777878840
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_3"
+      213: -6112264723557235929
+    second: windows_v2_1_3
   - first:
-      213: 3848053432917961761
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_4"
+      213: -7330657620657023989
+    second: windows_v2_1_4
   - first:
-      213: -4108750082555061707
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_5"
+      213: -4106312030962036626
+    second: windows_v2_1_5
   - first:
-      213: -6310277903411645750
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_6"
+      213: -3789608872561685311
+    second: windows_v2_1_6
   - first:
-      213: -8074045639237794808
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_7"
+      213: 1328555009817449070
+    second: windows_v2_1_7
   - first:
-      213: 2441147088340414609
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_8"
+      213: 887408638874606410
+    second: windows_v2_1_8
   - first:
-      213: 1062631844564588232
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_9"
+      213: -6775829954069653854
+    second: windows_v2_1_9
   - first:
-      213: -1054378850994917974
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_10"
+      213: 3117169179991087618
+    second: windows_v2_1_10
   - first:
-      213: -9039823575710520677
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_11"
+      213: 1843943462816313889
+    second: windows_v2_1_11
   - first:
-      213: -1810959086344353745
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_12"
+      213: 5296735520713571536
+    second: windows_v2_1_12
   - first:
-      213: -5863449238227837300
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_13"
+      213: -7850691083175696100
+    second: windows_v2_1_13
   - first:
-      213: -4698328341066374684
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_14"
+      213: -2929881869031066850
+    second: windows_v2_1_14
   - first:
-      213: 11570650125473945
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_15"
+      213: -3458365080405578028
+    second: windows_v2_1_15
   - first:
-      213: 2783964445530025200
-    second: "\u015Bciany_przedzia\u0142\xF3w i okna_16"
+      213: 3411683796155988595
+    second: windows_v2_1_16
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -148,13 +148,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_0"
+      name: windows_v2_1_0
       rect:
         serializedVersion: 2
-        x: 208
-        y: 778
-        width: 3749
-        height: 625
+        x: 43
+        y: 1243
+        width: 3914
+        height: 138
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,14 +163,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8370c839e5e29fd0800000000000000
-      internalID: -2336552466809588854
+      spriteID: 0feb47d2850a05d50800000000000000
+      internalID: 6724050544244342512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_1"
+      name: windows_v2_1_1
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 1273
+        width: 73
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be3d3fd8c4eaa790800000000000000
+      internalID: -7517945076551696714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: windows_v2_1_2
       rect:
         serializedVersion: 2
         x: 408
@@ -185,14 +207,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4ffd378411ceb090800000000000000
-      internalID: -8016757992760410293
+      spriteID: 9c3e0c486abdc5c70800000000000000
+      internalID: 8961278866798732233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_2"
+      name: windows_v2_1_3
       rect:
         serializedVersion: 2
         x: 677
@@ -207,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a42fe47229ab74a70800000000000000
-      internalID: 8811216332861141578
+      spriteID: 723483b3e9fdc2ba0800000000000000
+      internalID: -6112264723557235929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_3"
+      name: windows_v2_1_4
       rect:
         serializedVersion: 2
-        x: 678
-        y: 778
-        width: 500
-        height: 625
+        x: 1072
+        y: 1273
+        width: 73
+        height: 103
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,14 +251,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 83f1877be05d25240800000000000000
-      internalID: 4779116413777878840
+      spriteID: b045ab6cbb5444a90800000000000000
+      internalID: -7330657620657023989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_4"
+      name: windows_v2_1_5
       rect:
         serializedVersion: 2
         x: 1118
@@ -251,14 +273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12c2cc99538076530800000000000000
-      internalID: 3848053432917961761
+      spriteID: e605899c6f27307c0800000000000000
+      internalID: -4106312030962036626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_5"
+      name: windows_v2_1_6
       rect:
         serializedVersion: 2
         x: 1387
@@ -273,20 +295,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53ad27aa199caf6c0800000000000000
-      internalID: -4108750082555061707
+      spriteID: 1ccca410fca986bc0800000000000000
+      internalID: -3789608872561685311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_6"
+      name: windows_v2_1_7
       rect:
         serializedVersion: 2
-        x: 1388
-        y: 778
-        width: 500
-        height: 625
+        x: 1782
+        y: 1273
+        width: 73
+        height: 103
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac2f62d1ea36d68a0800000000000000
-      internalID: -6310277903411645750
+      spriteID: e621cb01eb9ff6210800000000000000
+      internalID: 1328555009817449070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_7"
+      name: windows_v2_1_8
       rect:
         serializedVersion: 2
         x: 1828
@@ -317,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80480fce44a33ff80800000000000000
-      internalID: -8074045639237794808
+      spriteID: a4bdbb29475b05c00800000000000000
+      internalID: 887408638874606410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_8"
+      name: windows_v2_1_9
       rect:
         serializedVersion: 2
         x: 2097
@@ -339,20 +361,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1907205d752b0e120800000000000000
-      internalID: 2441147088340414609
+      spriteID: 2a61a318e8a67f1a0800000000000000
+      internalID: -6775829954069653854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_9"
+      name: windows_v2_1_10
       rect:
         serializedVersion: 2
-        x: 2098
-        y: 778
-        width: 500
-        height: 625
+        x: 2492
+        y: 1273
+        width: 73
+        height: 103
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,14 +383,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c65a46580a3fbe00800000000000000
-      internalID: 1062631844564588232
+      spriteID: 20a1a2e8ad8624b20800000000000000
+      internalID: 3117169179991087618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_10"
+      name: windows_v2_1_11
       rect:
         serializedVersion: 2
         x: 2538
@@ -383,14 +405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aad63c775081e51f0800000000000000
-      internalID: -1054378850994917974
+      spriteID: 122f11f4fc0079910800000000000000
+      internalID: 1843943462816313889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_11"
+      name: windows_v2_1_12
       rect:
         serializedVersion: 2
         x: 2807
@@ -405,20 +427,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b9aa2995a581c8280800000000000000
-      internalID: -9039823575710520677
+      spriteID: 0dc735d84e8c18940800000000000000
+      internalID: 5296735520713571536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_12"
+      name: windows_v2_1_13
       rect:
         serializedVersion: 2
-        x: 2808
-        y: 778
-        width: 500
-        height: 623
+        x: 3202
+        y: 1273
+        width: 73
+        height: 103
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -427,14 +449,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f28cdab4e4e2ed6e0800000000000000
-      internalID: -1810959086344353745
+      spriteID: c196cf9fd0ebc0390800000000000000
+      internalID: -7850691083175696100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_13"
+      name: windows_v2_1_14
       rect:
         serializedVersion: 2
         x: 3248
@@ -449,14 +471,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c8e15e4dbf7d0aea0800000000000000
-      internalID: -5863449238227837300
+      spriteID: e13bb8a96f7f657d0800000000000000
+      internalID: -2929881869031066850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_14"
+      name: windows_v2_1_15
       rect:
         serializedVersion: 2
         x: 3517
@@ -471,36 +493,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e1a690444f2cceb0800000000000000
-      internalID: -4698328341066374684
+      spriteID: 4de6fc6584b6100d0800000000000000
+      internalID: -3458365080405578028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_15"
-      rect:
-        serializedVersion: 2
-        x: 3518
-        y: 778
-        width: 253
-        height: 627
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9989c8ae17b192000800000000000000
-      internalID: 11570650125473945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u015Bciany_przedzia\u0142\xF3w i okna_16"
+      name: windows_v2_1_16
       rect:
         serializedVersion: 2
         x: 3820
@@ -515,8 +515,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0fc6223c9e0a2a620800000000000000
-      internalID: 2783964445530025200
+      spriteID: 37a75d3365cb85f20800000000000000
+      internalID: 3411683796155988595
       vertices: []
       indices: 
       edges: []
@@ -525,7 +525,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3494fd8825c59d64aab8b376c1b5c947
+    spriteID: c66e3d08bd2cf294ca032d9e96662cc7
     internalID: 0
     vertices: []
     indices: 
@@ -535,23 +535,23 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u015Bciany_przedzia\u0142\xF3w i okna_0": -2336552466809588854
-      "\u015Bciany_przedzia\u0142\xF3w i okna_1": -8016757992760410293
-      "\u015Bciany_przedzia\u0142\xF3w i okna_10": -1054378850994917974
-      "\u015Bciany_przedzia\u0142\xF3w i okna_11": -9039823575710520677
-      "\u015Bciany_przedzia\u0142\xF3w i okna_12": -1810959086344353745
-      "\u015Bciany_przedzia\u0142\xF3w i okna_13": -5863449238227837300
-      "\u015Bciany_przedzia\u0142\xF3w i okna_14": -4698328341066374684
-      "\u015Bciany_przedzia\u0142\xF3w i okna_15": 11570650125473945
-      "\u015Bciany_przedzia\u0142\xF3w i okna_16": 2783964445530025200
-      "\u015Bciany_przedzia\u0142\xF3w i okna_2": 8811216332861141578
-      "\u015Bciany_przedzia\u0142\xF3w i okna_3": 4779116413777878840
-      "\u015Bciany_przedzia\u0142\xF3w i okna_4": 3848053432917961761
-      "\u015Bciany_przedzia\u0142\xF3w i okna_5": -4108750082555061707
-      "\u015Bciany_przedzia\u0142\xF3w i okna_6": -6310277903411645750
-      "\u015Bciany_przedzia\u0142\xF3w i okna_7": -8074045639237794808
-      "\u015Bciany_przedzia\u0142\xF3w i okna_8": 2441147088340414609
-      "\u015Bciany_przedzia\u0142\xF3w i okna_9": 1062631844564588232
+      windows_v2_1_0: 6724050544244342512
+      windows_v2_1_1: -7517945076551696714
+      windows_v2_1_10: 3117169179991087618
+      windows_v2_1_11: 1843943462816313889
+      windows_v2_1_12: 5296735520713571536
+      windows_v2_1_13: -7850691083175696100
+      windows_v2_1_14: -2929881869031066850
+      windows_v2_1_15: -3458365080405578028
+      windows_v2_1_16: 3411683796155988595
+      windows_v2_1_2: 8961278866798732233
+      windows_v2_1_3: -6112264723557235929
+      windows_v2_1_4: -7330657620657023989
+      windows_v2_1_5: -4106312030962036626
+      windows_v2_1_6: -3789608872561685311
+      windows_v2_1_7: 1328555009817449070
+      windows_v2_1_8: 887408638874606410
+      windows_v2_1_9: -6775829954069653854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
