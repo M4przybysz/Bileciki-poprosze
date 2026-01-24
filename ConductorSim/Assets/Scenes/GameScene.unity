@@ -389,8 +389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fatigue: 0
-  baseFatigueGain: 1
-  sprintFatigueMultiplier: 1.15
+  baseFatigueGain: 0.01
+  sprintFatigueMultiplier: 2
   currentPhase: 0
   tiredLines: []
   veryTiredLines: []
@@ -11020,7 +11020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1388401661
 MonoBehaviour:
   m_ObjectHideFlags: 0
