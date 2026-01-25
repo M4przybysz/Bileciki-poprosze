@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 534317621336419431}
   - component: {fileID: 8472812754362430110}
   - component: {fileID: 9055818076836802377}
+  - component: {fileID: -2919866959406226900}
   m_Layer: 0
   m_Name: Passenger
   m_TagString: Passenger
@@ -83,14 +84,130 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doNotGeneratePassenger: 0
-  customPassengerData:
-    character: 0
-    gender: 0
+  ticketData:
+    carNumber: 0
+    seatNumber: 0
+    kasaWydania: 
+    klasa: 
+    przejazd: 
+    liczbaOsob: 
+    taryfa: 
+    waznyWTam: 
+    waznyDoTam: 
+    waznyWPowrot: 
+    waznyDoPowrot: 
+    stacjaOd: 
+    stacjaDo: 
+    stacjaPrzez: 
+    seria: 
+    numer: 
+    seriaINumer: 
+    stacje: 
+    PTU: 
+    cena: 
+  personalIDData:
     firstName: 
     lastName: 
-    yearOfBirth: 1930
-    monthOfBirth: 1
-    dayOfBirth: 1
+    familyName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    height: 
+    eyeColor: 
+    releaseDate: 
+    expirationDate: 
+    parentsNames: 
+  schoolIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    pesel: 
+    startYearsAgo: 0
+    schoolIDNumber: 
+    principalName: 
+    releaseDate: 
+  universityIDData:
+    name: 
+    signature: 
+    dateOfBirth: 
+    startYearsAgo: 0
+    albumNumber: 
+    releaserName: 
+    releaseDate: 
+  armyIDData:
+    firstName: 
+    lastName: 
+    dateOfBirth: 
+    gender: 
+    pesel: 
+    releaseDate: 
+    expirationDate: 
+    militaryRank: 
+    seriesAndNumber: 
+  pensionerIDData:
+    firstName: 
+    lastName: 
+    pesel: 
+    benefitNumber: 
+    pensionerIDNumber: 
+  isChecked: 0
+--- !u!114 &-2919866959406226900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703133001968469398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc6d7a188d438943b6d4f79154981d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 97300791242187513}
+  defaultMaleSprites:
+  - {fileID: 5539386937988430445, guid: b0a7db0d0bef60e4fa5939a9bced431c, type: 3}
+  - {fileID: 5539386937988430445, guid: b0a7db0d0bef60e4fa5939a9bced431c, type: 3}
+  - {fileID: 5539386937988430445, guid: b0a7db0d0bef60e4fa5939a9bced431c, type: 3}
+  - {fileID: 5539386937988430445, guid: b0a7db0d0bef60e4fa5939a9bced431c, type: 3}
+  defaultFemaleSprites:
+  - {fileID: -3692280719743934981, guid: d9eeccdb57c8d9b4f93b55e096788451, type: 3}
+  - {fileID: -3692280719743934981, guid: d9eeccdb57c8d9b4f93b55e096788451, type: 3}
+  - {fileID: -3692280719743934981, guid: d9eeccdb57c8d9b4f93b55e096788451, type: 3}
+  - {fileID: -3692280719743934981, guid: d9eeccdb57c8d9b4f93b55e096788451, type: 3}
+  childMaleSprites:
+  - {fileID: 4120901811166270815, guid: c2e31be59b979484dbe2d572f8055fc5, type: 3}
+  - {fileID: 2714453574471835212, guid: ea02df76db6b5c949ae241e2c479e80b, type: 3}
+  - {fileID: -345340437227008910, guid: bb74ca1719c3c7840b14b8fabfc23b6a, type: 3}
+  - {fileID: 3326971659086699885, guid: 1f8a53f51cd9ddf4d88f37a4623e373b, type: 3}
+  childFemaleSprites:
+  - {fileID: -855298285791758126, guid: 36a8428fc1b53ff4db633f8c798cfefa, type: 3}
+  - {fileID: 6937817954938267909, guid: 929a1e49505fe0e4bbea1a5254c6adea, type: 3}
+  - {fileID: -6470460504253458178, guid: 12d4a75874d56ac4ca57624530a3b30b, type: 3}
+  - {fileID: -4178046375966092550, guid: 13346a28828f9994daeb949b8161351d, type: 3}
+  seniorMaleSprites:
+  - {fileID: -855298285791758126, guid: 7f90d3d63785fc1419412b768d045df5, type: 3}
+  - {fileID: 6937817954938267909, guid: 266df42e350f9ee4b9201ffadd162caa, type: 3}
+  - {fileID: -6470460504253458178, guid: ae3676a1cc0582f46b63850b26f6f5bd, type: 3}
+  - {fileID: -4178046375966092550, guid: 7509475e7a34c6146bec5481a2fbbe64, type: 3}
+  seniorFemaleSprites:
+  - {fileID: -855298285791758126, guid: e47b3548fb39eca4f9cf88cb1c581d07, type: 3}
+  - {fileID: 6937817954938267909, guid: 9cf37b10e71bbac4baa7236f1a98c409, type: 3}
+  - {fileID: -6470460504253458178, guid: 2af4cd75b9eee5540828d36d0f8bb137, type: 3}
+  - {fileID: -4178046375966092550, guid: f100a16766aaeab4ea543c7883ebffde, type: 3}
+  pensionerMaleSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  pensionerFemaleSprites:
+  - {fileID: -855298285791758126, guid: 1149556f856eede47bc587af70cf2c7d, type: 3}
+  - {fileID: 6937817954938267909, guid: f05310bce3b191e48abdc80fd613a3b0, type: 3}
+  - {fileID: -6470460504253458178, guid: f331485c40613d84baa0b8ad55de7162, type: 3}
+  - {fileID: -4178046375966092550, guid: d9de205cc31855045b149541577b5fbc, type: 3}
+  characterSets: []
+  problematicMaleSprites: []
+  problematicFemaleSprites: []
+  randomizeVariant: 1
 --- !u!1 &8823253749225675867
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +286,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

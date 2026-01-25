@@ -45,7 +45,10 @@ public class Passenger : MonoBehaviour
     public PensionerIDData pensionerIDData = null;
 
     // Ticket checking info
-    public bool isChecked = false; 
+    public bool isChecked = false;
+
+    // Event fired when passenger profile (name/gender/age/ticket) is ready
+    public event Action ProfileReady;
     
     //=====================================================================================================
     // Variable encapsulation
@@ -164,6 +167,9 @@ public class Passenger : MonoBehaviour
 
         GameManager.passengerIndex += 1;
         PrintProfile();
+
+        // Notify listeners that profile is ready
+        ProfileReady?.Invoke();
     }
 
     void RandomizePassengerProfile()
@@ -200,6 +206,9 @@ public class Passenger : MonoBehaviour
         GenerateTicket();
 
         PrintProfile();
+
+        // Notify listeners that profile is ready
+        ProfileReady?.Invoke();
     }
 
     void SetCustomPassenger()
@@ -227,6 +236,9 @@ public class Passenger : MonoBehaviour
         GenerateTicket();
 
         PrintProfile();
+
+        // Notify listeners that profile is ready
+        ProfileReady?.Invoke();
     }
 
     static string GeneratePesel(DateTime date, PassengerGender gender)

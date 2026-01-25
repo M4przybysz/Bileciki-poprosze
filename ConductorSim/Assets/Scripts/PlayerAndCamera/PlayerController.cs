@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class PlayerController : MonoBehaviour
     public const float salary = 84f;
     float wallet;
 
+    // dodane pola do buffu prêdkoœci (zmiana: zarz¹dzanie bez korutyn)
+    float speedBuffMultiplier = 1f;
+    bool speedBuffActive = false;
+    float speedBuffEndTimeUnscaled = 0f;
+
     //=====================================================================================================
     // Start and Update
     //=====================================================================================================
@@ -55,6 +61,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInputs();
+
+        // Zarz¹dzanie buffem prêdkoœci (u¿ywamy czasu nie-skalowanego, wiêc dzia³a w pauzie)
+        if (speedBuffActive && Time.unscaledTime >= speedBuffEndTimeUnscaled)
+        {
+            speedBuffMultiplier = 1f;
+            speedBuffActive = false;
+        }
     }
 
     void FixedUpdate()
@@ -66,7 +79,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        playerRigidbody.linearVelocity = input * speed * speedModifier;
+        // Uwaga: speedBuffMultiplier wp³ywa multiplicatively na koñcow¹ prêdkoœæ
+        playerRigidbody.linearVelocity = input * speed * speedModifier * speedBuffMultiplier;
     }
 
     //=====================================================================================================
@@ -158,5 +172,26 @@ public class PlayerController : MonoBehaviour
             transform.position = GameManager.playerPosition;
             wallet = GameManager.playerWallet;
         }
+    }
+
+    // publiczna metoda wywo³ywana przez sklep
+    // percent akceptuje wartoœci w formacie u³amkowym (0.25) lub procentowym (25).
+    // duration w sekundach.
+    public void ApplySpeedBuffPercent(float percent, float duration)
+    {
+        // obs³u¿ przypadek gdy projektant poda 25 zamiast 0.25
+        if (percent > 2f) percent = percent / 100f;
+
+        // ogranicz rozs¹dnie multiplier (np. max +200%)
+        percent = Mathf.Clamp(percent, -0.9f, 2f); // -90% do +200%
+
+        float multiplier = 1f + percent;
+
+        // ustaw buff
+        speedBuffMultiplier = multiplier;
+        speedBuffActive = true;
+        speedBuffEndTimeUnscaled = Time.unscaledTime + Mathf.Max(0.01f, duration);
+
+        Debug.Log($"PlayerController: speed buff applied x{multiplier} for {duration}s (unscaled).");
     }
 }
