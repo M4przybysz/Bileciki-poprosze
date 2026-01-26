@@ -111,19 +111,25 @@ public class TicketCheckingScreenController : MonoBehaviour
                     {
                         case PassengerCharacter.Talkative:
                             {
-                                theSound = allSounds[Random.Range(0, 3)];
+                                theSound = allSounds[Random.Range(0, 4)];
                                 passengerSound.PlayOneShot(theSound);
                                 break;
                             }
                         case PassengerCharacter.Nice:
                             {
-                                theSound = allSounds[Random.Range(4, 9)];
+                                theSound = allSounds[Random.Range(5, 9)];
                                 passengerSound.PlayOneShot(theSound);
                                 break;
                             }
                         case PassengerCharacter.Rude:
                             {
-                                theSound = allSounds[Random.Range(10, 12)];
+                                theSound = allSounds[Random.Range(10, 15)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Quiet:
+                            {
+                                theSound = allSounds[Random.Range(16, 18)];
                                 passengerSound.PlayOneShot(theSound);
                                 break;
                             }
@@ -136,19 +142,25 @@ public class TicketCheckingScreenController : MonoBehaviour
                     {
                         case PassengerCharacter.Talkative:
                             {
-                                theSound = allSounds[Random.Range(13, 15)];
+                                theSound = allSounds[Random.Range(19, 25)];
                                 passengerSound.PlayOneShot(theSound);
                                 break;
                             }
                         case PassengerCharacter.Nice:
                             {
-                                theSound = allSounds[Random.Range(16, 19)];
+                                theSound = allSounds[Random.Range(26, 31)];
                                 passengerSound.PlayOneShot(theSound);
                                 break;
                             }
                         case PassengerCharacter.Rude:
                             {
-                                theSound = allSounds[Random.Range(20, 21)];
+                                theSound = allSounds[Random.Range(32, 35)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Quiet:
+                            {
+                                theSound = allSounds[Random.Range(36, 39)];
                                 passengerSound.PlayOneShot(theSound);
                                 break;
                             }
