@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class TicketCheckingScreenController : MonoBehaviour
 {
+    //=====================================================================================================
+    // Variables and constants
+    //=====================================================================================================
+
     // Dialogue variables and constants
     const float textSpeed = 0.025f; // Time between each char of the dialogue string
     bool isTicketChecking = false; // Is conductor currently checking ticket and/or documents?
@@ -53,19 +55,24 @@ public class TicketCheckingScreenController : MonoBehaviour
     [SerializeField] GameObject ticket, schoolID, universityID, personalID, armyID, pensionerID;
     [SerializeField] GameObject GetTicketsButton, GetDocumentsButton, GoodDocumentsButton, BadDocumentsButton, GoodbyeButton;
 
-    // Passenger sounds
-    public AudioSource passengerSound;
-    public AudioClip[] allSounds;
-    private AudioClip theSound;
+    // Passenger and documents sounds
+    [SerializeField] AudioSource passengerAudioSource;
+    [SerializeField] AudioSource documentsAudioSource;
+    [SerializeField] AudioClip[] passengerSounds; // 0-18 == male (0-4 == talkative, 5-9 == nice, 10-15 == rude, 16-18 == quiet), 19-39 == female (18-25 == talkative, 26-31 == nice, 32-35 == rude, 36-39 == quiet)
+    [SerializeField] AudioClip[] documentsSounds; 
 
     // Passenger and their documents data
     static Passenger targetPassenger;
     public static TicketData ticketData;
 
+    //=====================================================================================================
+    // Start and Update
+    //=====================================================================================================
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        HideDocuments();
+        HideAllDocuments();
         HideTicketCheckingScreen();
         NPCTextBox.text = "";
     }
@@ -95,6 +102,10 @@ public class TicketCheckingScreenController : MonoBehaviour
         }
     }
 
+    //=====================================================================================================
+    // Custom methods
+    //=====================================================================================================
+
     public void ShowTicketCheckingScreen(Passenger passenger) 
     { 
         ticketCheckingScreenContainer.SetActive(true); 
@@ -102,72 +113,8 @@ public class TicketCheckingScreenController : MonoBehaviour
 
         PullPassengerData(passenger);
 
-        // Passenger voices
-        switch (targetPassenger.Gender)
-        {
-            case PassengerGender.M:
-                {
-                    switch (targetPassenger.Character)
-                    {
-                        case PassengerCharacter.Talkative:
-                            {
-                                theSound = allSounds[Random.Range(0, 4)];
-                                passengerSound.PlayOneShot(theSound);
-                                break;
-                            }
-                        case PassengerCharacter.Nice:
-                            {
-                                theSound = allSounds[Random.Range(5, 9)];
-                                passengerSound.PlayOneShot(theSound);
-                                break;
-                            }
-                        case PassengerCharacter.Rude:
-                            {
-                                theSound = allSounds[Random.Range(10, 15)];
-                                passengerSound.PlayOneShot(theSound);
-                                break;
-                            }
-                        case PassengerCharacter.Quiet:
-                            {
-                                theSound = allSounds[Random.Range(16, 18)];
-                                passengerSound.PlayOneShot(theSound);
-                                break;
-                            }
-                    }
-                    break;
-                }
-            case PassengerGender.F:
-                {
-                    switch (targetPassenger.Character)
-                    {
-                        case PassengerCharacter.Talkative:
-                            {
-                                theSound = allSounds[Random.Range(19, 25)];
-                                passengerSound.PlayOneShot(theSound);
-                                break;
-                            }
-                        case PassengerCharacter.Nice:
-                            {
-                                theSound = allSounds[Random.Range(26, 31)];
-                                passengerSound.PlayOneShot(theSound);
-                                break;
-                            }
-                        case PassengerCharacter.Rude:
-                            {
-                                theSound = allSounds[Random.Range(32, 35)];
-                                passengerSound.PlayOneShot(theSound);
-                                break;
-                            }
-                        case PassengerCharacter.Quiet:
-                            {
-                                theSound = allSounds[Random.Range(36, 39)];
-                                passengerSound.PlayOneShot(theSound);
-                                break;
-                            }
-                    }
-                    break;
-                }
-        }
+        // Random passenger voiceline on interaction
+        PlayPassengerVoiceline();
 
         if (targetPassenger.isChecked) 
         {
@@ -188,7 +135,7 @@ public class TicketCheckingScreenController : MonoBehaviour
         NPCTextBox.text = "";
 
         GoodbyeButton.SetActive(false);
-        HideDocuments();
+        HideAllDocuments();
         ticketCheckingScreenContainer.SetActive(false); 
         player.isInConversation = false;
     }
@@ -213,6 +160,7 @@ public class TicketCheckingScreenController : MonoBehaviour
 
         GetTicketsButton.SetActive(false);
         ticket.SetActive(true); 
+        documentsAudioSource.PlayOneShot(documentsSounds[Random.Range(0, documentsSounds.Length)]);
 
         if(targetPassenger.armyIDData.firstName != "" || targetPassenger.pensionerIDData.firstName != "" || targetPassenger.schoolIDData.name != "" || targetPassenger.universityIDData.name != "")
         {
@@ -239,6 +187,8 @@ public class TicketCheckingScreenController : MonoBehaviour
         if(targetPassenger.pensionerIDData.firstName != "") { ShowDocument(pensionerID); ShowDocument(personalID); }
         if(targetPassenger.schoolIDData.name != "") { ShowDocument(schoolID); }
         if(targetPassenger.universityIDData.name != "") { ShowDocument(universityID); }
+
+        documentsAudioSource.PlayOneShot(documentsSounds[Random.Range(0, documentsSounds.Length)]);
     }
 
     static public void ShowDocument(GameObject document) { document.SetActive(true); }
@@ -256,7 +206,7 @@ public class TicketCheckingScreenController : MonoBehaviour
         pensionerID.GetComponent<PensionerID>().SetPensionerIDText(targetPassenger.pensionerIDData);
     }
 
-    void HideDocuments()
+    public void HideAllDocuments()
     {
         ticket.GetComponent<Ticket>().ResetPosition();
         schoolID.GetComponent<SchoolID>().ResetPosition();
@@ -271,6 +221,8 @@ public class TicketCheckingScreenController : MonoBehaviour
         personalID.SetActive(false); 
         armyID.SetActive(false);
         pensionerID.SetActive(false);
+
+        documentsAudioSource.PlayOneShot(documentsSounds[Random.Range(0, documentsSounds.Length)]);
     }
 
     public void DocumentsAreFine()
@@ -345,6 +297,8 @@ public class TicketCheckingScreenController : MonoBehaviour
         
         lastPrinting = TypeLine(line);
         StartCoroutine(lastPrinting);
+
+        PlayPassengerVoiceline();
     }
 
     IEnumerator TypeLine(string line)
@@ -353,6 +307,38 @@ public class TicketCheckingScreenController : MonoBehaviour
         {
             NPCTextBox.text += c;
             yield return new WaitForSeconds(textSpeed);
+        }
+    }
+
+    void PlayPassengerVoiceline()
+    {
+        switch (targetPassenger.Gender)
+        {
+            case PassengerGender.M:
+            {
+                switch (targetPassenger.Character)
+                {
+                    case PassengerCharacter.Talkative: { passengerAudioSource.PlayOneShot(passengerSounds[Random.Range(0, 5)]); break; }
+                    case PassengerCharacter.Nice: { passengerAudioSource.PlayOneShot(passengerSounds[Random.Range(5, 10)]); break; }
+                    case PassengerCharacter.Rude: { passengerAudioSource.PlayOneShot(passengerSounds[Random.Range(10, 16)]); break; }
+                    case PassengerCharacter.Quiet: { passengerAudioSource.PlayOneShot(passengerSounds[Random.Range(16, 19)]); break; }
+                    default: { Debug.LogWarning($"Unknown passenger character: {targetPassenger.Character}"); break; }
+                }
+                break;
+            }
+            case PassengerGender.F:
+            {
+                switch (targetPassenger.Character)
+                {
+                    case PassengerCharacter.Talkative: { passengerAudioSource.PlayOneShot(passengerSounds[Random.Range(19, 26)]); break; }
+                    case PassengerCharacter.Nice: { passengerAudioSource.PlayOneShot(passengerSounds[Random.Range(26, 32)]); break; }
+                    case PassengerCharacter.Rude: { passengerAudioSource.PlayOneShot(passengerSounds[Random.Range(32, 36)]); break; }
+                    case PassengerCharacter.Quiet: { passengerAudioSource.PlayOneShot(passengerSounds[Random.Range(36, 40)]); break; }
+                    default: { Debug.LogWarning($"Unknown passenger character: {targetPassenger.Character}"); break; }
+                }
+                break;
+            }
+            default: { Debug.LogWarning($"Unknown passenger gender: {targetPassenger.Gender}"); break; }
         }
     }
 }
