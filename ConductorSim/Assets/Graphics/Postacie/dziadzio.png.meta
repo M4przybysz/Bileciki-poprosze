@@ -103,10 +103,10 @@ TextureImporter:
       name: dziadzio_0
       rect:
         serializedVersion: 2
-        x: 307
-        y: 150
-        width: 243
-        height: 218
+        x: 34
+        y: 52
+        width: 238
+        height: 215
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

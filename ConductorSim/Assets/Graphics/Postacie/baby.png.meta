@@ -103,10 +103,10 @@ TextureImporter:
       name: baby_0
       rect:
         serializedVersion: 2
-        x: 125
-        y: 124
-        width: 118
-        height: 121
+        x: 98
+        y: 87
+        width: 115
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

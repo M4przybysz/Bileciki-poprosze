@@ -103,10 +103,10 @@ TextureImporter:
       name: erm actually kid_0
       rect:
         serializedVersion: 2
-        x: 130
-        y: 125
-        width: 139
-        height: 135
+        x: 79
+        y: 80
+        width: 137
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -103,10 +103,10 @@ TextureImporter:
       name: gimnazjalistka_0
       rect:
         serializedVersion: 2
-        x: 86
-        y: 105
-        width: 170
-        height: 164
+        x: 79
+        y: 73
+        width: 168
+        height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
