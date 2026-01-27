@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement variables
     Vector2 input;
-    float speed = 2f;
+    float speed = 2.25f;
     float speedModifier = defaultSpeedModifier;
 
     // Action limiters
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     public const float salary = 84f;
     float wallet;
 
-    // dodane pola do buffu prêdkoœci (zmiana: zarz¹dzanie bez korutyn)
+    // dodane pola do buffu prï¿½dkoï¿½ci (zmiana: zarzï¿½dzanie bez korutyn)
     float speedBuffMultiplier = 1f;
     bool speedBuffActive = false;
     float speedBuffEndTimeUnscaled = 0f;
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleInputs();
 
-        // Zarz¹dzanie buffem prêdkoœci (u¿ywamy czasu nie-skalowanego, wiêc dzia³a w pauzie)
+        // Zarzï¿½dzanie buffem prï¿½dkoï¿½ci (uï¿½ywamy czasu nie-skalowanego, wiï¿½c dziaï¿½a w pauzie)
         if (speedBuffActive && Time.unscaledTime >= speedBuffEndTimeUnscaled)
         {
             speedBuffMultiplier = 1f;
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Uwaga: speedBuffMultiplier wp³ywa multiplicatively na koñcow¹ prêdkoœæ
+        // Uwaga: speedBuffMultiplier wpï¿½ywa multiplicatively na koï¿½cowï¿½ prï¿½dkoï¿½ï¿½
         playerRigidbody.linearVelocity = input * speed * speedModifier * speedBuffMultiplier;
     }
 
@@ -188,15 +188,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // publiczna metoda wywo³ywana przez sklep
-    // percent akceptuje wartoœci w formacie u³amkowym (0.25) lub procentowym (25).
+    // publiczna metoda wywoï¿½ywana przez sklep
+    // percent akceptuje wartoï¿½ci w formacie uï¿½amkowym (0.25) lub procentowym (25).
     // duration w sekundach.
     public void ApplySpeedBuffPercent(float percent, float duration)
     {
-        // obs³u¿ przypadek gdy projektant poda 25 zamiast 0.25
+        // obsï¿½uï¿½ przypadek gdy projektant poda 25 zamiast 0.25
         if (percent > 2f) percent = percent / 100f;
 
-        // ogranicz rozs¹dnie multiplier (np. max +200%)
+        // ogranicz rozsï¿½dnie multiplier (np. max +200%)
         percent = Mathf.Clamp(percent, -0.9f, 2f); // -90% do +200%
 
         float multiplier = 1f + percent;

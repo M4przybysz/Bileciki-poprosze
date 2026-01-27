@@ -157,7 +157,7 @@ void ApplyOrientationFromSeat()
 
     PassengerSeat FindNearestSeat()
     {
-        PassengerSeat[] seats = FindObjectsOfType<PassengerSeat>();
+        PassengerSeat[] seats = FindObjectsByType<PassengerSeat>(FindObjectsSortMode.None);
         if (seats == null || seats.Length == 0) return null;
 
         PassengerSeat best = null;
