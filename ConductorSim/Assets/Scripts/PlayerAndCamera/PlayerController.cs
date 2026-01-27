@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TicketCheckingScreenController TicketCheckingScreen; 
     [SerializeField] SpriteRenderer playerSprite;
     [SerializeField] Animator playerAnimator;
+    [SerializeField] AudioSource playerFootsteps;
     
     // Unity components
     Rigidbody2D playerRigidbody;
@@ -115,11 +116,24 @@ public class PlayerController : MonoBehaviour
             if (sprinting) { speedModifier = sprintSpeedModifier * fatigueScript.GetSpeedModifier(); }
             else {speedModifier = defaultSpeedModifier * fatigueScript.GetSpeedModifier(); }
 
+            // Player Footsteps
+            if (input.x != 0f || input.y != 0f)
+            {
+                if (!playerFootsteps.isPlaying)
+                {
+                    playerFootsteps.Play();
+                }
+            }
+            else
+            {
+                playerFootsteps.Stop();
+            }
+
             // Starting conversation 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if(isByBed && train.trainState == "ride") { uiController.ShowUIElement(UseBedConfirm); }
-                else if(targetPassenger != null) { StartConverstation(); }
+                if (isByBed && train.trainState == "ride") { uiController.ShowUIElement(UseBedConfirm); }
+                else if (targetPassenger != null) { StartConverstation(); }
             }   
         }
     }

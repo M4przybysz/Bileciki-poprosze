@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 3da317aae46a3764c90413f1db258f41
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - station_whistle: {instanceID: 0}
+  - ride_whistle: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

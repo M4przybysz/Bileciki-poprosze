@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,11 @@ using UnityEngine;
     [SerializeField] Transform passengerCarsContainer;
     [SerializeField] Transform passengerContainer;
     [SerializeField] GameObject passengerPrefab;
+
+    // Music
+    public AudioSource aS1, aS2;
+    float defaultVolume = 1.0f;
+    float transitionTime = 0f;
 
     // Consts
     static readonly string[] stationNames = {"Rzeszów Główny", "Stalowa Wola Rozwadów", "Lublin Główny", "Warszawa Centralna", 
@@ -54,6 +60,7 @@ using UnityEngine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        aS1.Play();
         // Get all cars in the train
         passengerCars = new TrainCar[passengerCarsContainer.childCount];
         string debugInfo = $"Train cars:\n";
@@ -110,8 +117,12 @@ using UnityEngine;
 
             if(targetTime <= 0)
             {
-                if(trainState == "stop") // End of station stop time
+                AudioSource nowPlaying = aS1;
+                AudioSource target = aS2;
+                if (trainState == "stop") // End of station stop time
                 {
+                    nowPlaying = aS1;
+                    target = aS2;
                     whistle.PlayRideWhistle();
                     targetTime = minutesPerRide[currentStationNumber] * 60;
                     trainState = "ride";
@@ -119,6 +130,8 @@ using UnityEngine;
                 }
                 else if(trainState == "ride") // End of ride time
                 {
+                    nowPlaying = aS2;
+                    target = aS1;
                     whistle.PlayStationWhistle();
                     print($"Stopped on station {currentStationName}");
 
@@ -140,6 +153,8 @@ using UnityEngine;
 
                     trainState = "stop";
                 }
+
+                StartCoroutine(MixSources(nowPlaying, target)); // Switch soundtrack
             }   
         }
     }
@@ -211,5 +226,29 @@ using UnityEngine;
         
         string stats = $"Podsumowanie dzisiejszego dnia:\n  - Ilość pasażerów: {passengersCounter}\n  - Ilość niesprawdzonych pasażerów: {passengersCounter - checkedPassengersCounter}\n  - Ilość niesprawdzonych oszustów: {uncheckedFakersCounter}\n  - Ilość sprawdzonych pasażerów: {checkedPassengersCounter}\n  - Ilość poprawnie sprawdzonych pasażerów: {checkedPassengersCounter - mistakesCounter}\n  - Ilość błędnie sprawdzonych pasażerów: {mistakesCounter}\n\n  - Wypłata: {PlayerController.salary} zł\n  - Opłata za mieszkanie w wagonie: 40 zł\n  - Wypłata potrącona za błędy i niezłapanych oszustów: {mistakesCost} zł\n  - Zawartość portfela na koniec dnia: {player.GetWallet()} zł";
         gameEndScreen.ShowEndScreen(stats);
+    }
+
+    // Music Transition
+    IEnumerator MixSources(AudioSource nowPlaying, AudioSource target)
+    {
+        float percentage = 0;
+        while (nowPlaying.volume > 0)
+        {
+            nowPlaying.volume = Mathf.Lerp(defaultVolume, 0, percentage);
+            percentage += Time.deltaTime / transitionTime;
+            yield return null;
+        }
+
+        nowPlaying.Pause();
+        if (target.isPlaying == false) { target.Play(); }
+        target.UnPause();
+        percentage = 0;
+
+        while (target.volume < defaultVolume)
+        {
+            target.volume = Mathf.Lerp(0, defaultVolume, percentage);
+            percentage += Time.deltaTime / transitionTime;
+            yield return null;
+        }
     }
 }
