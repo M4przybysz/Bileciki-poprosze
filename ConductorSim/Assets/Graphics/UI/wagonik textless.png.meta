@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6f875ce4969b6ca45b800c4901c9c3d3
+guid: 630e9a99d5c7f8744a61a10b07e34b32
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 855313390924086564
-    second: "wagon_przedzia\u0142owy_\u015Bciany_0"
+      213: -3725407723645939214
+    second: wagonik textless_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "wagon_przedzia\u0142owy_\u015Bciany_0"
+      name: wagonik textless_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 520
-        width: 4000
-        height: 922
+        x: 7
+        y: 245
+        width: 2547
+        height: 973
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42d3aa55ffeaedb00800000000000000
-      internalID: 855313390924086564
+      spriteID: 2f15694d961bc4cc0800000000000000
+      internalID: -3725407723645939214
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "wagon_przedzia\u0142owy_\u015Bciany_0": 855313390924086564
+      wagonik textless_0: -3725407723645939214
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
