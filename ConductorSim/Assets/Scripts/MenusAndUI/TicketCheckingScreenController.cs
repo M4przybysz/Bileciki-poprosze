@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class TicketCheckingScreenController : MonoBehaviour
 {
@@ -51,6 +53,11 @@ public class TicketCheckingScreenController : MonoBehaviour
     [SerializeField] GameObject ticket, schoolID, universityID, personalID, armyID, pensionerID;
     [SerializeField] GameObject GetTicketsButton, GetDocumentsButton, GoodDocumentsButton, BadDocumentsButton, GoodbyeButton;
 
+    // Passenger sounds
+    public AudioSource passengerSound;
+    public AudioClip[] allSounds;
+    private AudioClip theSound;
+
     // Passenger and their documents data
     static Passenger targetPassenger;
     public static TicketData ticketData;
@@ -84,7 +91,7 @@ public class TicketCheckingScreenController : MonoBehaviour
                 }
 
                 timeToNextDialogue = Random.Range(10, 30);
-            }
+            }   
         }
     }
 
@@ -94,8 +101,75 @@ public class TicketCheckingScreenController : MonoBehaviour
         player.isInConversation = true;
 
         PullPassengerData(passenger);
-        
-        if(targetPassenger.isChecked) 
+
+        // Passenger voices
+        switch (targetPassenger.Gender)
+        {
+            case PassengerGender.M:
+                {
+                    switch (targetPassenger.Character)
+                    {
+                        case PassengerCharacter.Talkative:
+                            {
+                                theSound = allSounds[Random.Range(0, 4)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Nice:
+                            {
+                                theSound = allSounds[Random.Range(5, 9)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Rude:
+                            {
+                                theSound = allSounds[Random.Range(10, 15)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Quiet:
+                            {
+                                theSound = allSounds[Random.Range(16, 18)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                    }
+                    break;
+                }
+            case PassengerGender.F:
+                {
+                    switch (targetPassenger.Character)
+                    {
+                        case PassengerCharacter.Talkative:
+                            {
+                                theSound = allSounds[Random.Range(19, 25)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Nice:
+                            {
+                                theSound = allSounds[Random.Range(26, 31)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Rude:
+                            {
+                                theSound = allSounds[Random.Range(32, 35)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                        case PassengerCharacter.Quiet:
+                            {
+                                theSound = allSounds[Random.Range(36, 39)];
+                                passengerSound.PlayOneShot(theSound);
+                                break;
+                            }
+                    }
+                    break;
+                }
+        }
+
+        if (targetPassenger.isChecked) 
         {
             PrintLine("Tak?"); 
             GoodbyeButton.SetActive(true); 
