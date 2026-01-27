@@ -32,7 +32,7 @@ using UnityEngine;
     const int maxPassengersNumber = 174;
     const int startStationNumber = 0;
     const int endStationNumber = 9;
-    public const int timeScale = 100; // How many times faster does in-game time flow (default is x5)
+    public const int timeScale = 5; // How many times faster does in-game time flow (default is x5)
 
     // Train elements
     public static TrainCar[] passengerCars;
