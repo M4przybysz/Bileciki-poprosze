@@ -1,0 +1,20 @@
+UIBinder.cs
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ShopUIBinder : MonoBehaviour
+{
+    [SerializeField] WARSShop warsShop; // przypisz obiekt ze skryptem sklepu
+    [SerializeField] Button[] buyButtons; // ustaw w inspektorze w tej samej kolejnoœci co items
+
+    void Start()
+    {
+        if (warsShop == null) Debug.LogError("ShopUIBinder: brak WARSShop");
+        for (int i = 0; i < buyButtons.Length; i++)
+        {
+            int idx = i; // konieczne zamkniêcie zmiennej
+            if (buyButtons[i] != null)
+                buyButtons[i].onClick.AddListener(() => warsShop.BuyItemByIndex(idx));
+        }
+    }
+}
