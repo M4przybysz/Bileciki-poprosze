@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TicketCheckingScreenController TicketCheckingScreen; 
     [SerializeField] SpriteRenderer playerSprite;
     [SerializeField] Animator playerAnimator;
+    [SerializeField] AudioSource playerFootsteps;
     
     // Unity components
     Rigidbody2D playerRigidbody;
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement variables
     Vector2 input;
-    float speed = 2f;
+    float speed = 2.25f;
     float speedModifier = defaultSpeedModifier;
 
     // Action limiters
@@ -37,6 +39,11 @@ public class PlayerController : MonoBehaviour
     // Player's wallet
     public const float salary = 84f;
     float wallet;
+
+    // dodane pola do buffu pr�dko�ci (zmiana: zarz�dzanie bez korutyn)
+    float speedBuffMultiplier = 1f;
+    bool speedBuffActive = false;
+    float speedBuffEndTimeUnscaled = 0f;
 
     //=====================================================================================================
     // Start and Update
@@ -55,6 +62,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInputs();
+
+        // Zarz�dzanie buffem pr�dko�ci (u�ywamy czasu nie-skalowanego, wi�c dzia�a w pauzie)
+        if (speedBuffActive && Time.unscaledTime >= speedBuffEndTimeUnscaled)
+        {
+            speedBuffMultiplier = 1f;
+            speedBuffActive = false;
+        }
     }
 
     void FixedUpdate()
@@ -66,7 +80,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        playerRigidbody.linearVelocity = input * speed * speedModifier;
+        // Uwaga: speedBuffMultiplier wp�ywa multiplicatively na ko�cow� pr�dko��
+        playerRigidbody.linearVelocity = input * speed * speedModifier * speedBuffMultiplier;
     }
 
     //=====================================================================================================
@@ -101,11 +116,24 @@ public class PlayerController : MonoBehaviour
             if (sprinting) { speedModifier = sprintSpeedModifier * fatigueScript.GetSpeedModifier(); }
             else {speedModifier = defaultSpeedModifier * fatigueScript.GetSpeedModifier(); }
 
+            // Player Footsteps
+            if (input.x != 0f || input.y != 0f)
+            {
+                if (!playerFootsteps.isPlaying)
+                {
+                    playerFootsteps.Play();
+                }
+            }
+            else
+            {
+                playerFootsteps.Stop();
+            }
+
             // Starting conversation 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if(isByBed && train.trainState == "ride") { uiController.ShowUIElement(UseBedConfirm); }
-                else if(targetPassenger != null) { StartConverstation(); }
+                if (isByBed && train.trainState == "ride") { uiController.ShowUIElement(UseBedConfirm); }
+                else if (targetPassenger != null) { StartConverstation(); }
             }   
         }
     }
@@ -158,5 +186,26 @@ public class PlayerController : MonoBehaviour
             transform.position = GameManager.playerPosition;
             wallet = GameManager.playerWallet;
         }
+    }
+
+    // publiczna metoda wywo�ywana przez sklep
+    // percent akceptuje warto�ci w formacie u�amkowym (0.25) lub procentowym (25).
+    // duration w sekundach.
+    public void ApplySpeedBuffPercent(float percent, float duration)
+    {
+        // obs�u� przypadek gdy projektant poda 25 zamiast 0.25
+        if (percent > 2f) percent = percent / 100f;
+
+        // ogranicz rozs�dnie multiplier (np. max +200%)
+        percent = Mathf.Clamp(percent, -0.9f, 2f); // -90% do +200%
+
+        float multiplier = 1f + percent;
+
+        // ustaw buff
+        speedBuffMultiplier = multiplier;
+        speedBuffActive = true;
+        speedBuffEndTimeUnscaled = Time.unscaledTime + Mathf.Max(0.01f, duration);
+
+        Debug.Log($"PlayerController: speed buff applied x{multiplier} for {duration}s (unscaled).");
     }
 }

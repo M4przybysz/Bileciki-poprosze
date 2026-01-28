@@ -32,6 +32,12 @@ public class PlayerFatigue : MonoBehaviour
 
     public bool IsImmobilized => isPassingOut || fatigue >= 100f;
 
+    // --- nowe pola do efektów z jedzenia (minimalne zmiany) ---
+    float fatigueGainMultiplier = 1f; // 1 = normalne narastanie, mniejsze = wolniej
+    bool preventFatigue = false;
+    Coroutine preventFatigueCoroutine;
+    Coroutine capacityCoroutine;
+
     // ====================================================================
     // Dialogue 
     // ====================================================================
@@ -57,9 +63,7 @@ public class PlayerFatigue : MonoBehaviour
     [Header("Screen Effects")]
     [SerializeField] Volume postProcessVolume;
     [SerializeField] Image blackScreen;
-    [Tooltip("Maksymalna warto�� alpha nak�adki przy 100% zm�czenia (0..1)")]
     [SerializeField] [Range(0f, 1f)] float maxDarkness = 0.8f;
-    [Tooltip("Szybko�� wyg�adzenia alpha nak�adki (wi�ksza = szybsze przej�cie)")]
     [SerializeField] float blackFadeSpeed = 2f;
     Vignette vignette;
 
@@ -72,9 +76,7 @@ public class PlayerFatigue : MonoBehaviour
         if (postProcessVolume != null)
             postProcessVolume.profile.TryGet(out vignette);
 
-        if (audioSource == null)
-            audioSource = GetComponent<AudioSource>();
-
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -90,12 +92,12 @@ public class PlayerFatigue : MonoBehaviour
         UpdatePhaseImmediate();
         previousPhase = currentPhase;
 
-        if (blackScreen != null) { SetBlackAlpha(Mathf.Lerp(0f, maxDarkness, fatigue / 100f)); }
+        if (blackScreen != null) SetBlackAlpha(Mathf.Lerp(0f, maxDarkness, fatigue / 100f));
     }
 
     void Update()
     {
-        if (isPassingOut) { return; }
+        if (isPassingOut) return;
 
         UpdateFatigue();
         UpdatePhase();
@@ -108,9 +110,10 @@ public class PlayerFatigue : MonoBehaviour
 
     void UpdateFatigue()
     {
-        float gain = baseFatigueGain * Time.deltaTime;
+        if (preventFatigue) return;
 
-        if (isSprinting) { gain *= sprintFatigueMultiplier; }
+        float gain = baseFatigueGain * fatigueGainMultiplier * Time.deltaTime;
+        if (isSprinting) gain *= sprintFatigueMultiplier;
 
         fatigue = Mathf.Clamp(fatigue + gain, 0f, 100f);
     }
@@ -140,6 +143,55 @@ public class PlayerFatigue : MonoBehaviour
         else currentPhase = FatiguePhase.PassingOut;
     }
 
+    // ====================================================================
+    // Public API - minimalne metody używane przez sklep
+    // ====================================================================
+    public void ClearEffects()
+    {
+        if (preventFatigueCoroutine != null) { StopCoroutine(preventFatigueCoroutine); preventFatigueCoroutine = null; }
+        if (capacityCoroutine != null) { StopCoroutine(capacityCoroutine); capacityCoroutine = null; }
+
+        preventFatigue = false;
+        fatigueGainMultiplier = 1f;
+
+        // Zresetuj zmęczenie do zera — od tej chwili znów będzie normalnie narastać
+        fatigue = 0f;
+
+        // Zaktualizuj fazę i wywołaj reakcje jeśli potrzeba (np. vignette)
+        UpdatePhaseImmediate();
+        OnPhaseChanged(currentPhase);
+
+        Debug.Log("PlayerFatigue: efekty usunięte, zmęczenie zresetowane do 0.");
+    }
+
+    public void PreventFatigueFor(float seconds)
+    {
+        if (preventFatigueCoroutine != null) StopCoroutine(preventFatigueCoroutine);
+        preventFatigueCoroutine = StartCoroutine(PreventFatigueRoutine(seconds));
+    }
+
+    IEnumerator PreventFatigueRoutine(float seconds)
+    {
+        preventFatigue = true;
+        yield return new WaitForSeconds(seconds);
+        preventFatigue = false;
+        preventFatigueCoroutine = null;
+    }
+
+    public void ApplyFatigueCapacityBonusPercent(float percent, float duration)
+    {
+        if (capacityCoroutine != null) StopCoroutine(capacityCoroutine);
+        capacityCoroutine = StartCoroutine(CapacityRoutine(percent, duration));
+    }
+
+    IEnumerator CapacityRoutine(float percent, float duration)
+    {
+        float previous = fatigueGainMultiplier;
+        fatigueGainMultiplier = Mathf.Clamp01(fatigueGainMultiplier * (1f - percent));
+        yield return new WaitForSeconds(duration);
+        fatigueGainMultiplier = previous;
+        capacityCoroutine = null;
+    }
 
     // ====================================================================
     // Phase reactions 
@@ -208,49 +260,33 @@ public class PlayerFatigue : MonoBehaviour
 
     void TriggerDialogue(string[] lines)
     {
-        if (lines == null || lines.Length == 0) { return; }
-
+        if (lines == null || lines.Length == 0) return;
         string line = lines[Random.Range(0, lines.Length)];
         Debug.Log("[Fatigue] " + line);
     }
 
     void PlayYawn()
     {
-        if (audioSource == null)
-        {
-            Debug.LogWarning("PlayerFatigue: brak AudioSource � nie odtworzono yawnClip.");
-            return;
-        }
-
-        if (yawnClip == null)
-        {
-            Debug.LogWarning("PlayerFatigue: yawnClip nie ustawiony.");
-            return;
-        }
-
+        if (audioSource == null) { Debug.LogWarning("PlayerFatigue: brak AudioSource — nie odtworzono yawnClip."); return; }
+        if (yawnClip == null) { Debug.LogWarning("PlayerFatigue: yawnClip nie ustawiony."); return; }
         audioSource.PlayOneShot(yawnClip);
     }
 
     void PlayPassOut()
     {
-        if (audioSource == null)
-        {
-            Debug.Log("PlayerFatigue: PlayPassOut wywo�ane, lecz nie ma AudioSource.");
-            return;
-        }
-
-        Debug.Log("PlayerFatigue: pass-out audio usuni�te z kodu (brak clipa).");
+        if (audioSource == null) { Debug.Log("PlayerFatigue: PlayPassOut wywołane, lecz nie ma AudioSource."); return; }
+        Debug.Log("PlayerFatigue: pass-out audio usunięte z kodu (brak clipa).");
     }
 
     void SetVignette(float intensity)
     {
-        if (vignette == null) { return; }
+        if (vignette == null) return;
         vignette.intensity.Override(intensity);
     }
 
     IEnumerator FadeBlackScreen(float targetAlpha, float duration)
     {
-        if (blackScreen == null) { yield break; }
+        if (blackScreen == null) yield break;
 
         Color start = blackScreen.color;
         float time = 0f;
@@ -285,9 +321,8 @@ public class PlayerFatigue : MonoBehaviour
     }
 
     // ====================================================================
-    // Public API (for other systems)
+    // Public API (pozostałe)
     // ====================================================================
-
     public void SetSprinting(bool sprinting) { isSprinting = sprinting; }
 
     public float GetSpeedModifier()
